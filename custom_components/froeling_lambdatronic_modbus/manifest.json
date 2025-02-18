@@ -1,5 +1,5 @@
 {
-    "domain": "froeling_lambdatronic_modbus",
+    "domain": "froeling_modbus",
     "name": "Froeling Lambdatronic Modbus",
     "version": "1.0.0",
     "documentation": "https://github.com/GyroGearl00se/hacs_froeling_lambdatronic_modbus",
