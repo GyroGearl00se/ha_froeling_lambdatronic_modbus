@@ -6,7 +6,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.const import Platform
 
-DOMAIN = "froeling_modbus"
+DOMAIN = "froeling_lambdatronic_modbus"
 
 async def async_setup(hass, config):
     return True

@@ -111,7 +111,7 @@ class FroelingSensor(SensorEntity):
 
     @property
     def name(self):
-        translated_name = self._translations.get(f"component.froeling_modbus.entity.sensor.{self._entity_id}.name", self._entity_id)
+        translated_name = self._translations.get(f"component.froeling_lambdatronic_modbus.entity.sensor.{self._entity_id}.name", self._entity_id)
         return f"{self._device_name} {translated_name}"
 
     @property
@@ -263,7 +263,7 @@ class FroelingTextSensor(SensorEntity):
 
     @property
     def name(self):
-        translated_name = self._translations.get(f"component.froeling_modbus.entity.sensor.{self._entity_id}.name", self._entity_id)
+        translated_name = self._translations.get(f"component.froeling_lambdatronic_modbus.entity.sensor.{self._entity_id}.name", self._entity_id)
         return f"{self._device_name} {translated_name}"
 
     @property

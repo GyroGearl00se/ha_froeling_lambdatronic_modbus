@@ -1,1 +1,1 @@
-DOMAIN = "froeling_modbus"
+DOMAIN = "froeling_lambdatronic_modbus"
