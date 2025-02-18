@@ -1,0 +1,211 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Configure Froeling Modbus",
+                "description": "Please enter the connection details for your Froeling Modbus device.",
+                "data": {
+                    "name": "Unique Name (Default: Froeling)",
+                    "host": "Hostname/IP",
+                    "port": "Port (Default: 502)",
+                    "update_interval": "Update interval (Default: 60 seconds)",
+                    "kessel": "Boiler",
+                    "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
+                    "hk01": "Heating Circuit 01",
+                    "hk02": "Heating Circuit 02",
+                    "austragung": "Feed System",
+                    "puffer01": "Buffer 01",
+                    "zirkulationspumpe": "Circulation Pump"
+                }
+            }
+        }
+    },
+    "entity": {
+        "sensor": {
+            "Anlagenzustand": {
+                "name": "System State"
+            },
+            "Kesselzustand": {
+                "name": "Boiler State"
+            },
+            "Aussentemperatur": {
+                "name": "Outside Temperature"
+            },
+            "Kesseltemperatur": {
+                "name": "Boiler Temperature"
+            },
+            "Abgastemperatur": {
+                "name": "Exhaust Temperature"
+            },
+            "Verbleibende_Heizstunden_bis_zur_Asche_entleeren_Warnung": {
+                "name": "Remaining Heating Hours Until Ash Emptying Warning"
+            },
+            "Saugzug_Ansteuerung": {
+                "name": "Induced Draft Control"
+            },
+            "Saugzugdrehzahl": {
+                "name": "Induced Draft Speed"
+            },
+            "Sauerstoffregler": {
+                "name": "Oxygen Controller"
+            },
+            "Restsauerstoffgehalt": {
+                "name": "Residual Oxygen Content"
+            },
+            "Ruecklauffuehler": {
+                "name": "Return Sensor"
+            },
+            "Primaerluft": {
+                "name": "Primary Air"
+            },
+            "Sekundaerluft": {
+                "name": "Secondary Air"
+            },
+            "Betriebsstunden": {
+                "name": "Operating Hours"
+            },
+            "Stunden_seit_letzter_Wartung": {
+                "name": "Hours Since Last Maintenance"
+            },
+            "Betriebsstunden_in_der_Feuererhaltung": {
+                "name": "Operating Hours in Fire Maintenance"
+            },
+            "HK01_Vorlauf_Isttemperatur": {
+                "name": "HK01 Flow Actual Temperature"
+            },
+            "HK01_Vorlauf_Solltemperatur": {
+                "name": "HK01 Flow Target Temperature"
+            },
+            "HK02_Vorlauf_Isttemperatur": {
+                "name": "HK02 Flow Actual Temperature"
+            },
+            "HK02_Vorlauf_Solltemperatur": {
+                "name": "HK02 Flow Target Temperature"
+            },
+            "Puffer_1_Temperatur_oben": {
+                "name": "Buffer 1 Top Temperature"
+            },
+            "Puffer_1_Temperatur_mitte": {
+                "name": "Buffer 1 Middle Temperature"
+            },
+            "Puffer_1_Temperatur_unten": {
+                "name": "Buffer 1 Bottom Temperature"
+            },
+            "Puffer_1_Pufferpumpen_Ansteuerung": {
+                "name": "Buffer 1 Pump Control"
+            },
+            "Puffer_1_Ladezustand": {
+                "name": "Buffer 1 Charge State"
+            },
+            "Boiler_1_Temperatur_oben": {
+                "name": "Boiler 1 Top Temperature"
+            },
+            "Boiler_1_Pumpe_Ansteuerung": {
+                "name": "Boiler 1 Pump Control"
+            },
+            "Fuellstand_im_Pelletsbehaelter": {
+                "name": "Pellet Container Level"
+            },
+            "Resetierbarer_kg_Zaehler": {
+                "name": "Resettable kg Counter"
+            },
+            "Resetierbarer_t_Zaehler": {
+                "name": "Resettable t Counter"
+            },
+            "Pelletverbrauch_Gesamt": {
+                "name": "Total Pellet Consumption"
+            },
+            "Ruecklauftemperatur_an_der_Zirkulations_Leitung": {
+                "name": "Return Temperature at the Circulation Line"
+            },
+            "Stoemungsschalter_an_der_Brauchwasser_Leitung": {
+                "name": "Flow Switch at the Domestic Water Line"
+            },
+            "Drehzahl_der_Zirkulations_Pumpe": {
+                "name": "Speed of the Circulation Pump"
+            }
+        },
+        "number": {
+            "Kessel_Solltemperatur": {
+                "name": "Boiler Target Temperature"
+            },
+            "Bei_welcher_RL_Temperatur_an_der_Zirkulationsleitung_soll_die_Pumpe_ausschalten": {
+                "name": "At Which Return Line Temperature Should the Circulation Pump Turn Off"
+            },
+            "HK1_Vorlauf_Temperatur_10C_Aussentemperatur": {
+                "name": "HK1 Flow Temperature at 10°C Outside Temperature"
+            },
+            "HK1_Vorlauf_Temperatur_minus_10C_Aussentemperatur": {
+                "name": "HK1 Flow Temperature at -10°C Outside Temperature"
+            },
+            "HK1_Heizkreispumpe_ausschalten_wenn_Vorlauf_Soll_kleiner_ist_als": {
+                "name": "HK1 Heating Circuit Pump Off When Flow Target is Less Than"
+            },
+            "HK1_Absenkung_der_Vorlauftemperatur_im_Absenkbetrieb": {
+                "name": "HK1 Reduction of Flow Temperature in Setback Mode"
+            },
+            "HK1_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Heizbetrieb_einschaltet": {
+                "name": "HK1 Outside Temperature Below Which Heating Circuit Pump Turns On in Heating Mode"
+            },
+            "HK1_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Absenkbetrieb_einschaltet": {
+                "name": "HK1 Outside Temperature Below Which Heating Circuit Pump Turns On in Setback Mode"
+            },
+            "HK1_Frostschutztemperatur": {
+                "name": "HK1 Frost Protection Temperature"
+            },
+            "HK1_Temp_am_Puffer_oben_ab_der_der_Ueberhitzungsschutz_aktiv_wird": {
+                "name": "HK1 Temperature at Buffer Top Where Overheat Protection Activates"
+            },
+            "HK2_Vorlauf_Temperatur_10C_Aussentemperatur": {
+                "name": "HK2 Flow Temperature at 10°C Outside Temperature"
+            },
+            "HK2_Vorlauf_Temperatur_minus_10C_Aussentemperatur": {
+                "name": "HK2 Flow Temperature at -10°C Outside Temperature"
+            },
+            "HK2_Heizkreispumpe_ausschalten_wenn_Vorlauf_Soll_kleiner_ist_als": {
+                "name": "HK2 Heating Circuit Pump Off When Flow Target is Less Than"
+            },
+            "HK2_Absenkung_der_Vorlauftemperatur_im_Absenkbetrieb": {
+                "name": "HK2 Reduction of Flow Temperature in Setback Mode"
+            },
+            "HK2_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Heizbetrieb_einschaltet": {
+                "name": "HK2 Outside Temperature Below Which Heating Circuit Pump Turns On in Heating Mode"
+            },
+            "HK2_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Absenkbetrieb_einschaltet": {
+                "name": "HK2 Outside Temperature Below Which Heating Circuit Pump Turns On in Setback Mode"
+            },
+            "HK2_Frostschutztemperatur": {
+                "name": "HK2 Frost Protection Temperature"
+            },
+            "HK2_Temp_am_Puffer_oben_ab_der_der_Ueberhitzungsschutz_aktiv_wird": {
+                "name": "HK2 Temperature at Buffer Top Where Overheat Protection Activates"
+            },
+            "Boiler_1_Gewuenschte_Boilertemperatur": {
+                "name": "Boiler 1 Desired Temperature"
+            },
+            "Boiler_1_Nachladen_wenn_Boilertemperatur_unter": {
+                "name": "Boiler 1 Recharge When Temperature is Below"
+            },
+            "Pelletlager_Restbestand": {
+                "name": "Pellet Storage Remaining Stock"
+            }
+        },
+        "binary_sensor": {
+            "hk1_pumpe_an_aus": {
+                "name": "HK01 Pump ON/OFF"
+            },
+            "hk2_pumpe_an_aus": {
+                "name": "HK02 Pump ON/OFF"
+            },
+            "puffer_1_pufferpumpe_an_aus": {
+                "name": "Buffer 1 Pump ON/OFF"
+            },
+            "zirkulationspumpe_an_aus": {
+                "name": "Circulation Pump ON/OFF"
+            },
+            "boiler_1_pumpe_an_aus": {
+                "name": "Boiler 1 Pump ON/OFF"
+            }
+        }
+    }
+}

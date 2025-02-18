@@ -1,0 +1,1 @@
+DOMAIN = "froeling_modbus"
