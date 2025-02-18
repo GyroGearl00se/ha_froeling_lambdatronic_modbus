@@ -4,6 +4,7 @@ import logging
 from datetime import timedelta
 from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.translation import async_get_translations
+from const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -125,6 +126,16 @@ class FroelingSensor(SensorEntity):
     @property
     def device_class(self):
         return self._device_class
+
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(DOMAIN, self._device_name)},
+            "name": self._device_name,
+            "manufacturer": "Froeling",
+            "model": "Lambdatronic Modbus",
+            "sw_version": "1.0",
+        }
 
     async def async_update(self, _=None):
         client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
@@ -269,6 +280,16 @@ class FroelingTextSensor(SensorEntity):
     @property
     def state(self):
         return self._state
+    
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(DOMAIN, self._device_name)},
+            "name": self._device_name,
+            "manufacturer": "Froeling",
+            "model": "Lambdatronic Modbus",
+            "sw_version": "1.0",
+        }
 
     async def async_update_text_sensor(self, _=None):
         client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)

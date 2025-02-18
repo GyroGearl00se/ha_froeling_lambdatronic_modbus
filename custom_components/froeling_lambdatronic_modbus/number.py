@@ -4,6 +4,7 @@ import logging
 from datetime import timedelta
 from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.translation import async_get_translations
+from const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -99,6 +100,16 @@ class FroelingNumber(NumberEntity):
     @property
     def native_max_value(self):
         return self._max_value
+
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(DOMAIN, self._device_name)},
+            "name": self._device_name,
+            "manufacturer": "Froeling",
+            "model": "Lambdatronic Modbus",
+            "sw_version": "1.0",
+        }
 
     async def async_set_native_value(self, value):
         client = ModbusTcpClient(self._host, port=self._port)

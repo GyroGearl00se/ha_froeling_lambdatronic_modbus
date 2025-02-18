@@ -4,6 +4,7 @@ import logging
 from datetime import timedelta
 from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.translation import async_get_translations
+from const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -66,6 +67,16 @@ class FroelingBinarySensor(BinarySensorEntity):
     def is_on(self):
         return self._state
 
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(DOMAIN, self._device_name)},
+            "name": self._device_name,
+            "manufacturer": "Froeling",
+            "model": "Lambdatronic Modbus",
+            "sw_version": "1.0",
+        }
+
     async def async_update(self, _=None):
         client = ModbusTcpClient(self._host, port=self._port)
         if client.connect():
@@ -106,6 +117,16 @@ class FroelingSensor(BinarySensorEntity):
     def is_on(self):
         return self._state
     
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(DOMAIN, self._device_name)},
+            "name": self._device_name,
+            "manufacturer": "Froeling",
+            "model": "Lambdatronic Modbus",
+            "sw_version": "1.0",
+        }
+
     async def async_update(self, _=None):
         client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
