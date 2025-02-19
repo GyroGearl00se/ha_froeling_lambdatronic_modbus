@@ -1,10 +1,10 @@
 # Froeling Lambdatronic Modbus
-Home Assistant integration for Fröling Lambdatronic heating systems via Modbus (currently supports Modbus TCP only).
+Home Assistant integration for Fröling Lambdatronic heating systems via Modbus (currently supports Modbus TCP only - maybe ).
 
 ## ⚠️ Disclaimer ⚠️
 > **This integration is experimental and has not been tested over long periods.**  
 > It may contain missing or incorrect sensor data.  
-> Feel free to open an [issue](https://github.com/your-repo/issues) or contribute via a [pull request](https://github.com/your-repo/pulls).
+> Feel free to open an [issue](https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus/issues) or contribute via a [pull request](https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus/pulls).
 
 ---
 

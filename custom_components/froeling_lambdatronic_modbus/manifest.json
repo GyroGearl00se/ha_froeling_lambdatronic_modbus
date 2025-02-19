@@ -4,10 +4,10 @@
     "codeowners": ["@GyroGearl00se"],
     "config_flow": true,
     "dependencies": [],
-    "documentation": "https://github.com/GyroGearl00se/hacs_froeling_lambdatronic_modbus",
+    "documentation": "https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus",
     "integration_type": "hub",
     "iot_class": "local_polling",
-    "issue_tracker": "https://github.com/GyroGearl00se/hacs_froeling_lambdatronic_modbus/issues",
+    "issue_tracker": "https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus/issues",
     "requirements": ["pymodbus==2.5.3"],
     "version": "1.0.0"
   }
