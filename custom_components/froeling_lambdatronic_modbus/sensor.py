@@ -147,6 +147,8 @@ class FroelingSensor(SensorEntity):
                     self._state = None
                 else:
                     raw_value = result.registers[0]
+                    if raw_value > 32767:
+                        raw_value -= 65536
                     scaled_value = raw_value / self._scaling_factor
                     if self._decimal_places == 0:
                         self._state = int(scaled_value)  # Convert to integer if decimal_places is 0
