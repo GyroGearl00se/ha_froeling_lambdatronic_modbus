@@ -1,12 +1,6 @@
 # Froeling Lambdatronic Modbus
 Home Assistant integration for Fröling Lambdatronic heating systems via Modbus (currently supports Modbus TCP only - maybe ).
 
-## ⚠️ Disclaimer ⚠️
-> **This integration is experimental and has not been tested over long periods.**  
-> It may contain missing or incorrect sensor data.  
-> Feel free to open an [issue](https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus/issues) or contribute via a [pull request](https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus/pulls).
-
----
 
 ## 🚀 Features
 With this integration, you can:
@@ -42,11 +36,40 @@ Other Serial-to-Ethernet converters should work as well.
 ---
 
 ## 📦 Installation
-1. Copy the integration files into your Home Assistant `custom_components` folder.
-2. Restart Home Assistant.
-3. Add the integration via the Home Assistant UI.
+### Manual
+- Download [latest release](https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus/releases).
+- Copy the custom_components/froeling_lambdatronic_modbus into your Home Assistant `custom_components` folder.
+- Restart Home Assistant.
+- Add the integration via the Home Assistant UI.
 
+### HACS
+- Open HACS and click on the 3 dots in the top right corner.
+- Select "Custom repositories"
+- Add the URL "https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus" to the repository. Select type "Integration"
+- Click the "ADD" button.
+- Install the Integration via HACS UI.
 ---
+
+## 🛠️ Setup
+- Open Home Assistant Settings > Integrations
+- "\+ Add Integration" and select "Froeling Lambdatronic Modbus"
+- Fill out the configuration form
+    - Enter a device name (Default: Froeling)
+    - Hostname/IP of your Modbus TCP device
+    - Port (Default: 502)
+    - Update Interval (Default: 60s)
+    - Select the components which are enabled on your unit
+        - Currently available:  
+        Kessel (Boiler)  
+        Boiler 01 (DHW Boiler)  
+        Heizkreis 01 (Heating Circuit)  
+        Heizkreis 02 (Heating Circuit)  
+        Austragung (Feed System)  
+        Puffer 01 (Buffer)  
+        Zirkulationspumpe (Circulations Pump)
+        ... More to come. If you're missing a component - let me know.
+
+- Click the "OK" button
 
 ## 🧡 Contributing
 Contributions are welcome!  
