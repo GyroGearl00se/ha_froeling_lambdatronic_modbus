@@ -36,18 +36,19 @@ Other Serial-to-Ethernet converters should work as well.
 ---
 
 ## 📦 Installation
+### HACS (recommended)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=GyroGearl00se&repository=ha_froeling_lambdatronic_modbus&category=Dashboard)
+
+- Ensure that [HACS](https://hacs.xyz/) is installed in your Home Assistant setup.
+- Search for "Froeling Lambdatronic Modbus" in HACS and install it.
+- Restart Home Assistant.
+
 ### Manual
 - Download [latest release](https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus/releases).
 - Copy the custom_components/froeling_lambdatronic_modbus into your Home Assistant `custom_components` folder.
 - Restart Home Assistant.
 - Add the integration via the Home Assistant UI.
-
-### HACS
-- Open HACS and click on the 3 dots in the top right corner.
-- Select "Custom repositories"
-- Add the URL "https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus" to the repository. Select type "Integration"
-- Click the "ADD" button.
-- Install the Integration via HACS UI.
+- 
 ---
 
 ## 🛠️ Setup
@@ -70,6 +71,11 @@ Other Serial-to-Ethernet converters should work as well.
         ... More to come. If you're missing a component - let me know.
 
 - Click the "OK" button
+
+## You want to visualize the gathered entities ?
+Checkout [Froeling Card - Also available via HACS](https://github.com/GyroGearl00se/lovelace-froeling-card)
+![image](https://github.com/user-attachments/assets/077fbc1d-9ca0-475b-b266-77067cb2650f)
+
 
 ## 🧡 Contributing
 Contributions are welcome!  
