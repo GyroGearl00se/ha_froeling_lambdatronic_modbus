@@ -1,5 +1,5 @@
 from homeassistant.components.sensor import SensorEntity
-from pymodbus.client.sync import ModbusTcpClient
+from pymodbus.client import ModbusTcpClient
 import logging
 from datetime import timedelta
 from homeassistant.helpers.event import async_track_time_interval
@@ -141,7 +141,7 @@ class FroelingSensor(SensorEntity):
         client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
             try:
-                result = client.read_input_registers(self._register - 30001, 1, unit=2)
+                result = client.read_input_registers(self._register - 30001, count=1, slave=2)
                 if result.isError():
                     _LOGGER.error("Error reading Modbus input register %s", self._register - 30001)
                     self._state = None
@@ -297,7 +297,7 @@ class FroelingTextSensor(SensorEntity):
         client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
             try:
-                result = client.read_input_registers(self._register - 30001, 1, unit=2)
+                result = client.read_input_registers(self._register - 30001, count=1, slave=2)
                 if result.isError():
                     _LOGGER.error("Error reading Modbus input register %s", self._register - 30001)
                     self._state = None
