@@ -141,7 +141,7 @@ class FroelingSensor(SensorEntity):
         client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
             try:
-                result = client.read_input_registers(self._register - 30001, count=1, slave=2)
+                result = client.read_input_registers(self._register - 30001, count=1, device_id=2)
                 if result.isError():
                     _LOGGER.error("Error reading Modbus input register %s", self._register - 30001)
                     self._state = None
@@ -297,7 +297,7 @@ class FroelingTextSensor(SensorEntity):
         client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
             try:
-                result = client.read_input_registers(self._register - 30001, count=1, slave=2)
+                result = client.read_input_registers(self._register - 30001, count=1, device_id=2)
                 if result.isError():
                     _LOGGER.error("Error reading Modbus input register %s", self._register - 30001)
                     self._state = None
