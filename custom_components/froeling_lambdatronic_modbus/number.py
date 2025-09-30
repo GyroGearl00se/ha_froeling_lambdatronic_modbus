@@ -127,7 +127,7 @@ class FroelingNumber(NumberEntity):
         client = ModbusTcpClient(self._host, port=self._port)
         if client.connect():
             try:
-                result = client.read_holding_registers(self._register - 40001, count=1, slave=2)
+                result = client.read_holding_registers(self._register - 40001, count=1, device_id=2)
                 if result.isError():
                     _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
                     self._value = None
