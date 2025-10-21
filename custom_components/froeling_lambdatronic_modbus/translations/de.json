@@ -206,6 +206,14 @@
       "boiler_1_pumpe_an_aus": {
         "name": "Boiler 1 Pumpe AN/AUS"
       }
+    },
+    "select": {
+      "hk01_betriebsart": {
+        "name": "HK01 Betriebsart"
+      },
+      "hk02_betriebsart": {
+        "name": "HK02 Betriebsart"
+      }
     }
   }
 }

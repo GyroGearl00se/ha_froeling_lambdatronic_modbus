@@ -206,6 +206,14 @@
       "boiler_1_pumpe_an_aus": {
         "name": "Boiler 1 Pump ON/OFF"
       }
+    },
+    "select": {
+      "hk01_betriebsart": {
+        "name": "HK01 Operating Mode"
+      },
+      "hk02_betriebsart": {
+        "name": "HK02 Operating Mode"
+      }
     }
   }
 }
