@@ -17,6 +17,7 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 vol.Required("port", default=502): int,
                 vol.Required("update_interval", default=60): int,
                 vol.Optional("kessel", default=True): bool,
+                vol.Optional("fehlerpuffer", default=True): bool,
                 vol.Optional("boiler01", default=True): bool,
                 vol.Optional("hk01", default=True): bool,
                 vol.Optional("hk02", default=True): bool,

@@ -10,6 +10,7 @@
           "port": "Port (Default: 502)",
           "update_interval": "Update interval (Default: 60 seconds)",
           "kessel": "Boiler",
+          "fehlerpuffer": "Error Buffer",
           "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
           "hk01": "Heating Circuit 01",
           "hk02": "Heating Circuit 02",
@@ -123,6 +124,66 @@
       },
       "drehzahl_der_zirkulations_pumpe": {
         "name": "Speed of the Circulation Pump"
+      },
+      "Kessel_Fehlerpuffer_1": {
+        "name": "Boiler Error Buffer 1"
+      },
+      "Kessel_Fehlerpuffer_2": {
+        "name": "Boiler Error Buffer 2"
+      },
+      "Kessel_Fehlerpuffer_3": {
+        "name": "Boiler Error Buffer 3"
+      },
+      "Kessel_Fehlerpuffer_4": {
+        "name": "Boiler Error Buffer 4"
+      },
+      "Kessel_Fehlerpuffer_5": {
+        "name": "Boiler Error Buffer 5"
+      },
+      "Kessel_Fehlerpuffer_6": {
+        "name": "Boiler Error Buffer 6"
+      },
+      "Kessel_Fehlerpuffer_7": {
+        "name": "Boiler Error Buffer 7"
+      },
+      "Kessel_Fehlerpuffer_8": {
+        "name": "Boiler Error Buffer 8"
+      },
+      "Kessel_Fehlerpuffer_9": {
+        "name": "Boiler Error Buffer 9"
+      },
+      "Kessel_Fehlerpuffer_10": {
+        "name": "Boiler Error Buffer 10"
+      },
+      "Kessel_Fehlerpuffer_11": {
+        "name": "Boiler Error Buffer 11"
+      },
+      "Kessel_Fehlerpuffer_12": {
+        "name": "Boiler Error Buffer 12"
+      },
+      "Kessel_Fehlerpuffer_13": {
+        "name": "Boiler Error Buffer 13"
+      },
+      "Kessel_Fehlerpuffer_14": {
+        "name": "Boiler Error Buffer 14"
+      },
+      "Kessel_Fehlerpuffer_15": {
+        "name": "Boiler Error Buffer 15"
+      },
+      "Kessel_Fehlerpuffer_16": {
+        "name": "Boiler Error Buffer 16"
+      },
+      "Kessel_Fehlerpuffer_17": {
+        "name": "Boiler Error Buffer 17"
+      },
+      "Kessel_Fehlerpuffer_18": {
+        "name": "Boiler Error Buffer 18"
+      },
+      "Kessel_Fehlerpuffer_19": {
+        "name": "Boiler Error Buffer 19"
+      },
+      "Kessel_Fehlerpuffer_20": {
+        "name": "Boiler Error Buffer 20"
       }
     },
     "number": {

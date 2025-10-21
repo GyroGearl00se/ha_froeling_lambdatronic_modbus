@@ -10,6 +10,7 @@
           "port": "Port (Standard: 502)",
           "update_interval": "Update intervall (Standard: 60 Sekunden)",
           "kessel": "Kessel",
+          "fehlerpuffer": "Fehlerpuffer",
           "boiler01": "Boiler 01",
           "hk01": "Heizkreis 01",
           "hk02": "Heizkreis 02",
@@ -123,6 +124,66 @@
       },
       "drehzahl_der_zirkulations_pumpe": {
         "name": "Drehzahl der Zirkulations Pumpe"
+      },
+      "Kessel_Fehlerpuffer_1": {
+        "name": "Kessel Fehlerpuffer 1"
+      },
+      "Kessel_Fehlerpuffer_2": {
+        "name": "Kessel Fehlerpuffer 2"
+      },
+      "Kessel_Fehlerpuffer_3": {
+        "name": "Kessel Fehlerpuffer 3"
+      },
+      "Kessel_Fehlerpuffer_4": {
+        "name": "Kessel Fehlerpuffer 4"
+      },
+      "Kessel_Fehlerpuffer_5": {
+        "name": "Kessel Fehlerpuffer 5"
+      },
+      "Kessel_Fehlerpuffer_6": {
+        "name": "Kessel Fehlerpuffer 6"
+      },
+      "Kessel_Fehlerpuffer_7": {
+        "name": "Kessel Fehlerpuffer 7"
+      },
+      "Kessel_Fehlerpuffer_8": {
+        "name": "Kessel Fehlerpuffer 8"
+      },
+      "Kessel_Fehlerpuffer_9": {
+        "name": "Kessel Fehlerpuffer 9"
+      },
+      "Kessel_Fehlerpuffer_10": {
+        "name": "Kessel Fehlerpuffer 10"
+      },
+      "Kessel_Fehlerpuffer_11": {
+        "name": "Kessel Fehlerpuffer 11"
+      },
+      "Kessel_Fehlerpuffer_12": {
+        "name": "Kessel Fehlerpuffer 12"
+      },
+      "Kessel_Fehlerpuffer_13": {
+        "name": "Kessel Fehlerpuffer 13"
+      },
+      "Kessel_Fehlerpuffer_14": {
+        "name": "Kessel Fehlerpuffer 14"
+      },
+      "Kessel_Fehlerpuffer_15": {
+        "name": "Kessel Fehlerpuffer 15"
+      },
+      "Kessel_Fehlerpuffer_16": {
+        "name": "Kessel Fehlerpuffer 16"
+      },
+      "Kessel_Fehlerpuffer_17": {
+        "name": "Kessel Fehlerpuffer 17"
+      },
+      "Kessel_Fehlerpuffer_18": {
+        "name": "Kessel Fehlerpuffer 18"
+      },
+      "Kessel_Fehlerpuffer_19": {
+        "name": "Kessel Fehlerpuffer 19"
+      },
+      "Kessel_Fehlerpuffer_20": {
+        "name": "Kessel Fehlerpuffer 20"
       }
     },
     "number": {
