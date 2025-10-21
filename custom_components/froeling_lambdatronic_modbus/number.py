@@ -1,4 +1,4 @@
-from homeassistant.components.number import NumberEntity
+from homeassistant.components.number import NumberEntity, NumberMode
 from pymodbus.client import ModbusTcpClient
 import logging
 from datetime import timedelta
@@ -61,7 +61,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         async_track_time_interval(hass, number.async_update, update_interval)
 
 class FroelingNumber(NumberEntity):
-    def __init__(self, hass, translations, data, entity_id, register, unit, scaling_factor, decimal_places=0, min_value=0, max_value=0):
+    def __init__(self, hass, translations, data, entity_id, register, unit, scaling_factor, decimal_places=0, min_value=0, max_value=0, mode: NumberMode | None = None, step: float | None = None):
         self._hass = hass
         self._translations = translations
         self._host = data['host']
@@ -75,6 +75,8 @@ class FroelingNumber(NumberEntity):
         self._min_value = min_value
         self._max_value = max_value
         self._value = None
+        self._mode = mode
+        self._native_step_override = step
 
     @property
     def unique_id(self):
@@ -92,6 +94,25 @@ class FroelingNumber(NumberEntity):
     @property
     def native_unit_of_measurement(self):
         return self._unit
+
+    @property
+    def native_step(self):
+        if self._native_step_override is not None:
+            return self._native_step_override
+        if self._decimal_places and self._decimal_places > 0:
+            try:
+                return 1 / float(self._scaling_factor)
+            except Exception:
+                return 1.0
+        return 1.0
+
+    @property
+    def mode(self) -> NumberMode:
+        return self._mode or NumberMode.BOX
+
+    @property
+    def suggested_display_precision(self) -> int:
+        return int(self._decimal_places or 0)
 
     @property
     def native_min_value(self):
