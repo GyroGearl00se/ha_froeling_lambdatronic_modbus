@@ -69,7 +69,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 FroelingSensor(hass, translations, data, "Fuellstand_im_Pelletsbehaelter", 30022, "%", 207, 1, device_class="none"),
                 FroelingSensor(hass, translations, data, "Resetierbarer_kg_Zaehler", 30082, "kg", 1, 0, device_class="weight"),
                 FroelingSensor(hass, translations, data, "Resetierbarer_t_Zaehler", 30083, "t", 1, 0, device_class="weight"),
-                FroelingSensor(hass, translations, data, "Pelletverbrauch_Gesamt", 30084, "t", 10, 0, device_class="weight"),
+                FroelingSensor(hass, translations, data, "Pelletverbrauch_Gesamt", 30084, "t", 10, 1, device_class="weight"),
             ])
         if data.get('zirkulationspumpe', False):
             sensors.extend([
