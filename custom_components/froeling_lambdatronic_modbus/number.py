@@ -116,7 +116,7 @@ class FroelingNumber(NumberEntity):
         if client.connect():
             try:
                 scaled_value = int(value * self._scaling_factor)
-                client.write_register(self._register - 40001, scaled_value, unit=2)
+                client.write_register(self._register - 40001, scaled_value, device_id=2)
                 self._value = value
             except Exception as e:
                 _LOGGER.error("Exception during Modbus communication: %s", e)
