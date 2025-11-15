@@ -71,6 +71,7 @@ Other Serial-to-Ethernet converters should also work.
      - Austragung (Feed System)
      - Puffer 01 (Buffer)
      - Zirkulationspumpe (Circulation Pump)
+     - Zweitkessel (Second Boiler)
 4. Submit and wait for entities to appear.
 
 ---

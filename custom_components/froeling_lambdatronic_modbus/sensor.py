@@ -84,6 +84,13 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 FroelingSensor(hass, translations, data, "Stoemungsschalter_an_der_Brauchwasser_Leitung", 30601, "", 2, 0, device_class="none"),
                 FroelingSensor(hass, translations, data, "Drehzahl_der_Zirkulations_Pumpe", 30711, "%", 1, 0, device_class="none"),
             ])
+        if data.get('zweitkessel', False):
+            sensors.extend([
+                FroelingSensor(hass, translations, data, "Temperatur_Zweitkessel", 30501, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, "Umschaltventil_Zweitkessel", 30504, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, "Zustand_Brennerrelais", 30502, "", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, "Betriebsstunden_Zweitkessel", 30503, "h", 1, 0, device_class="none"),
+            ])
         return sensors
 
     text_sensors = create_text_sensors()

@@ -23,6 +23,7 @@ CONFIG_SCHEMA = vol.Schema(
                 vol.Optional("austragung", default=True): cv.boolean,
                 vol.Optional("puffer01", default=True): cv.boolean,
                 vol.Optional("zirkulationspumpe", default=True): cv.boolean,
+                vol.Optional("zweitkessel", default=True): cv.boolean
             }
         )
     },

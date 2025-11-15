@@ -16,7 +16,8 @@
           "hk02": "Heizkreis 02",
           "austragung": "Austragung",
           "puffer01": "Puffer 01",
-          "zirkulationspumpe": "Zirkulationspumpe"
+          "zirkulationspumpe": "Zirkulationspumpe",
+          "zweitkessel": "Zweitkessel"
         }
       }
     }
@@ -184,6 +185,18 @@
       },
       "Kessel_Fehlerpuffer_20": {
         "name": "Kessel Fehlerpuffer 20"
+      },
+      "Temperatur_Zweitkessel": {
+        "name": "Temperatur des Zweitkessel"
+      },
+      "Umschaltventil_Zweitkessel": {
+        "name": "Umschaltventil Zweitkessel"
+      },
+      "Zustand_Brennerrelais": {
+        "name": "Zustand des Brennerrelais"
+      },
+      "Betriebsstunden_Zweitkessel": {
+        "name": "Betriebsstunden von Zweitkessel"
       }
     },
     "number": {
@@ -249,6 +262,24 @@
       },
       "pelletlager_restbestand": {
         "name": "Pelletlager Restbestand"
+      },
+      "Minimaltemperatur_Zweitkessel": {
+        "name": "Minimaltemperatur des Zweitkessel"
+      },
+      "Start_Zweitkessel": {
+        "name": "Start des Zweitkessel"
+      },
+      "Temperaturdifferenz_Zweitkessel_Puffer": {
+        "name": "Temperaturdifferenz zwischen Zweitkessel und Puffer"
+      },
+      "Minimale_Laufzeit_Zweitkessel": {
+        "name": "Minimale Laufzeit des Zweitkessel"
+      },
+      "Einschaltverzögerung_Zweitkessel": {
+        "name": "Einschaltverzögerung des Zweitkessel"
+      },
+      "Rückschaltverzögerung_Zweitkessel_Umschaltventil": {
+        "name": "Rückschaltverzögerung des Zweitkessel Umschaltventil"
       }
     },
     "binary_sensor": {

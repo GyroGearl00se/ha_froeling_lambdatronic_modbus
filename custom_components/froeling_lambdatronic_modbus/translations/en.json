@@ -16,7 +16,8 @@
           "hk02": "Heating Circuit 02",
           "austragung": "Feed System",
           "puffer01": "Buffer 01",
-          "zirkulationspumpe": "Circulation Pump"
+          "zirkulationspumpe": "Circulation Pump",
+          "zweitkessel": "Second Boiler"
         }
       }
     }
@@ -184,6 +185,18 @@
       },
       "Kessel_Fehlerpuffer_20": {
         "name": "Boiler Error Buffer 20"
+      },
+      "Temperatur_Zweitkessel": {
+        "name": "Second Boiler Temperature"
+      },
+      "Umschaltventil_Zweitkessel": {
+        "name": "Second Boiler Changeover Valve"
+      },
+      "Zustand_Brennerrelais": {
+        "name": "Burner Relay Status"
+      },
+      "Betriebsstunden_Zweitkessel": {
+        "name": "Second Boiler Operating Hours"
       }
     },
     "number": {
@@ -249,6 +262,24 @@
       },
       "pelletlager_restbestand": {
         "name": "Pellet Storage Remaining Stock"
+      },
+      "Minimaltemperatur_Zweitkessel": {
+        "name": "Second Boiler Minimum Temperature"
+      },
+      "Start_Zweitkessel": {
+        "name": "Second Boiler Start"
+      },
+      "Temperaturdifferenz_Zweitkessel_Puffer": {
+        "name": "Second Boiler-Buffer Temperature Difference"
+      },
+      "Minimale_Laufzeit_Zweitkessel": {
+        "name": "Second Boiler Minimum Running Time"
+      },
+      "Einschaltverzögerung_Zweitkessel": {
+        "name": "Second Boiler Startup Delay"
+      },
+      "Rückschaltverzögerung_Zweitkessel_Umschaltventil": {
+        "name": "Second Boiler Shutdown Delay"
       }
     },
     "binary_sensor": {

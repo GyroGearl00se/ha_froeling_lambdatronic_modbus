@@ -51,6 +51,15 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             numbers.extend([
                 FroelingNumber(hass, translations, data, "Pelletlager_Restbestand", 40320, "t", 10, 1, 0, 100)
             ])
+        if data.get('zweitkessel', False):
+            numbers.extend([
+                FroelingNumber(hass, translations, data, "Minimaltemperatur_Zweitkessel", 40507, "°C", 2, 0, 20, 95),
+                FroelingNumber(hass, translations, data, "Start_Zweitkessel", 40504, "°C", 2, 0, 0, 100),
+                FroelingNumber(hass, translations, data, "Temperaturdifferenz_Zweitkessel_Puffer", 40508, "°C", 2, 0, 0, 50),
+                FroelingNumber(hass, translations, data, "Minimale_Laufzeit_Zweitkessel", 40505, "min", 60, 0, 0, 500),
+                FroelingNumber(hass, translations, data, "Einschaltverzögerung_Zweitkessel", 40502, "min", 60, 0, 0, 500),
+                FroelingNumber(hass, translations, data, "Rückschaltverzögerung_Zweitkessel_Umschaltventil", 40512, "s", 1, 0, 0, 3600),
+            ])
 
         return numbers
 
