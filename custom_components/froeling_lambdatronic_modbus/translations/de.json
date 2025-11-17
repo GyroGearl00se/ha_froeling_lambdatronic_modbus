@@ -275,10 +275,10 @@
       "minimale_laufzeit_zweitkessel": {
         "name": "Minimale Laufzeit des Zweitkessel"
       },
-      "einschaltverzögerung_zweitkessel": {
+      "einschaltverzoegerung_zweitkessel": {
         "name": "Einschaltverzögerung des Zweitkessel"
       },
-      "rückschaltverzögerung_zweitkessel_umschaltventil": {
+      "rueckschaltverzoegerung_zweitkessel_umschaltventil": {
         "name": "Rückschaltverzögerung des Zweitkessel Umschaltventil"
       }
     },

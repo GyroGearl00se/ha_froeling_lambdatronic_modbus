@@ -275,10 +275,10 @@
       "minimale_laufzeit_zweitkessel": {
         "name": "Second Boiler Minimum Running Time"
       },
-      "einschaltverzögerung_zweitkessel": {
+      "einschaltverzoegerung_zweitkessel": {
         "name": "Second Boiler Startup Delay"
       },
-      "rückschaltverzögerung_zweitkessel_umschaltventil": {
+      "rueckschaltverzoegerung_zweitkessel_umschaltventil": {
         "name": "Second Boiler Shutdown Delay"
       }
     },
