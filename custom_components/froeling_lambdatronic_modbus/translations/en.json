@@ -126,76 +126,76 @@
       "drehzahl_der_zirkulations_pumpe": {
         "name": "Speed of the Circulation Pump"
       },
-      "Kessel_Fehlerpuffer_1": {
+      "kessel_fehlerpuffer_1": {
         "name": "Boiler Error Buffer 1"
       },
-      "Kessel_Fehlerpuffer_2": {
+      "kessel_fehlerpuffer_2": {
         "name": "Boiler Error Buffer 2"
       },
-      "Kessel_Fehlerpuffer_3": {
+      "kessel_fehlerpuffer_3": {
         "name": "Boiler Error Buffer 3"
       },
-      "Kessel_Fehlerpuffer_4": {
+      "kessel_fehlerpuffer_4": {
         "name": "Boiler Error Buffer 4"
       },
-      "Kessel_Fehlerpuffer_5": {
+      "kessel_fehlerpuffer_5": {
         "name": "Boiler Error Buffer 5"
       },
-      "Kessel_Fehlerpuffer_6": {
+      "kessel_fehlerpuffer_6": {
         "name": "Boiler Error Buffer 6"
       },
-      "Kessel_Fehlerpuffer_7": {
+      "kessel_fehlerpuffer_7": {
         "name": "Boiler Error Buffer 7"
       },
-      "Kessel_Fehlerpuffer_8": {
+      "kessel_fehlerpuffer_8": {
         "name": "Boiler Error Buffer 8"
       },
-      "Kessel_Fehlerpuffer_9": {
+      "kessel_fehlerpuffer_9": {
         "name": "Boiler Error Buffer 9"
       },
-      "Kessel_Fehlerpuffer_10": {
+      "kessel_fehlerpuffer_10": {
         "name": "Boiler Error Buffer 10"
       },
-      "Kessel_Fehlerpuffer_11": {
+      "kessel_fehlerpuffer_11": {
         "name": "Boiler Error Buffer 11"
       },
-      "Kessel_Fehlerpuffer_12": {
+      "kessel_fehlerpuffer_12": {
         "name": "Boiler Error Buffer 12"
       },
-      "Kessel_Fehlerpuffer_13": {
+      "kessel_fehlerpuffer_13": {
         "name": "Boiler Error Buffer 13"
       },
-      "Kessel_Fehlerpuffer_14": {
+      "kessel_fehlerpuffer_14": {
         "name": "Boiler Error Buffer 14"
       },
-      "Kessel_Fehlerpuffer_15": {
+      "kessel_fehlerpuffer_15": {
         "name": "Boiler Error Buffer 15"
       },
-      "Kessel_Fehlerpuffer_16": {
+      "kessel_fehlerpuffer_16": {
         "name": "Boiler Error Buffer 16"
       },
-      "Kessel_Fehlerpuffer_17": {
+      "kessel_fehlerpuffer_17": {
         "name": "Boiler Error Buffer 17"
       },
-      "Kessel_Fehlerpuffer_18": {
+      "kessel_fehlerpuffer_18": {
         "name": "Boiler Error Buffer 18"
       },
-      "Kessel_Fehlerpuffer_19": {
+      "kessel_fehlerpuffer_19": {
         "name": "Boiler Error Buffer 19"
       },
-      "Kessel_Fehlerpuffer_20": {
+      "kessel_fehlerpuffer_20": {
         "name": "Boiler Error Buffer 20"
       },
-      "Temperatur_Zweitkessel": {
+      "temperatur_zweitkessel": {
         "name": "Second Boiler Temperature"
       },
-      "Umschaltventil_Zweitkessel": {
+      "umschaltventil_zweitkessel": {
         "name": "Second Boiler Changeover Valve"
       },
-      "Zustand_Brennerrelais": {
+      "zustand_brennerrelais": {
         "name": "Burner Relay Status"
       },
-      "Betriebsstunden_Zweitkessel": {
+      "betriebsstunden_zweitkessel": {
         "name": "Second Boiler Operating Hours"
       }
     },
@@ -263,22 +263,22 @@
       "pelletlager_restbestand": {
         "name": "Pellet Storage Remaining Stock"
       },
-      "Minimaltemperatur_Zweitkessel": {
+      "minimaltemperatur_zweitkessel": {
         "name": "Second Boiler Minimum Temperature"
       },
-      "Start_Zweitkessel": {
+      "start_zweitkessel": {
         "name": "Second Boiler Start"
       },
-      "Temperaturdifferenz_Zweitkessel_Puffer": {
+      "temperaturdifferenz_zweitkessel_puffer": {
         "name": "Second Boiler-Buffer Temperature Difference"
       },
-      "Minimale_Laufzeit_Zweitkessel": {
+      "minimale_laufzeit_zweitkessel": {
         "name": "Second Boiler Minimum Running Time"
       },
-      "Einschaltverzögerung_Zweitkessel": {
+      "einschaltverzögerung_zweitkessel": {
         "name": "Second Boiler Startup Delay"
       },
-      "Rückschaltverzögerung_Zweitkessel_Umschaltventil": {
+      "rückschaltverzögerung_zweitkessel_umschaltventil": {
         "name": "Second Boiler Shutdown Delay"
       }
     },

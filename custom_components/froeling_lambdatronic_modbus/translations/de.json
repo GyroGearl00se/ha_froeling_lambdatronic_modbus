@@ -126,76 +126,76 @@
       "drehzahl_der_zirkulations_pumpe": {
         "name": "Drehzahl der Zirkulations Pumpe"
       },
-      "Kessel_Fehlerpuffer_1": {
+      "kessel_fehlerpuffer_1": {
         "name": "Kessel Fehlerpuffer 1"
       },
-      "Kessel_Fehlerpuffer_2": {
+      "kessel_fehlerpuffer_2": {
         "name": "Kessel Fehlerpuffer 2"
       },
-      "Kessel_Fehlerpuffer_3": {
+      "kessel_fehlerpuffer_3": {
         "name": "Kessel Fehlerpuffer 3"
       },
-      "Kessel_Fehlerpuffer_4": {
+      "kessel_fehlerpuffer_4": {
         "name": "Kessel Fehlerpuffer 4"
       },
-      "Kessel_Fehlerpuffer_5": {
+      "kessel_fehlerpuffer_5": {
         "name": "Kessel Fehlerpuffer 5"
       },
-      "Kessel_Fehlerpuffer_6": {
+      "kessel_fehlerpuffer_6": {
         "name": "Kessel Fehlerpuffer 6"
       },
-      "Kessel_Fehlerpuffer_7": {
+      "kessel_fehlerpuffer_7": {
         "name": "Kessel Fehlerpuffer 7"
       },
-      "Kessel_Fehlerpuffer_8": {
+      "kessel_fehlerpuffer_8": {
         "name": "Kessel Fehlerpuffer 8"
       },
-      "Kessel_Fehlerpuffer_9": {
+      "kessel_fehlerpuffer_9": {
         "name": "Kessel Fehlerpuffer 9"
       },
-      "Kessel_Fehlerpuffer_10": {
+      "kessel_fehlerpuffer_10": {
         "name": "Kessel Fehlerpuffer 10"
       },
-      "Kessel_Fehlerpuffer_11": {
+      "kessel_fehlerpuffer_11": {
         "name": "Kessel Fehlerpuffer 11"
       },
-      "Kessel_Fehlerpuffer_12": {
+      "kessel_fehlerpuffer_12": {
         "name": "Kessel Fehlerpuffer 12"
       },
-      "Kessel_Fehlerpuffer_13": {
+      "kessel_fehlerpuffer_13": {
         "name": "Kessel Fehlerpuffer 13"
       },
-      "Kessel_Fehlerpuffer_14": {
+      "kessel_fehlerpuffer_14": {
         "name": "Kessel Fehlerpuffer 14"
       },
-      "Kessel_Fehlerpuffer_15": {
+      "kessel_fehlerpuffer_15": {
         "name": "Kessel Fehlerpuffer 15"
       },
-      "Kessel_Fehlerpuffer_16": {
+      "kessel_fehlerpuffer_16": {
         "name": "Kessel Fehlerpuffer 16"
       },
-      "Kessel_Fehlerpuffer_17": {
+      "kessel_fehlerpuffer_17": {
         "name": "Kessel Fehlerpuffer 17"
       },
-      "Kessel_Fehlerpuffer_18": {
+      "kessel_fehlerpuffer_18": {
         "name": "Kessel Fehlerpuffer 18"
       },
-      "Kessel_Fehlerpuffer_19": {
+      "kessel_fehlerpuffer_19": {
         "name": "Kessel Fehlerpuffer 19"
       },
-      "Kessel_Fehlerpuffer_20": {
+      "kessel_fehlerpuffer_20": {
         "name": "Kessel Fehlerpuffer 20"
       },
-      "Temperatur_Zweitkessel": {
+      "temperatur_zweitkessel": {
         "name": "Temperatur des Zweitkessel"
       },
-      "Umschaltventil_Zweitkessel": {
+      "umschaltventil_zweitkessel": {
         "name": "Umschaltventil Zweitkessel"
       },
-      "Zustand_Brennerrelais": {
+      "zustand_brennerrelais": {
         "name": "Zustand des Brennerrelais"
       },
-      "Betriebsstunden_Zweitkessel": {
+      "betriebsstunden_zweitkessel": {
         "name": "Betriebsstunden von Zweitkessel"
       }
     },
@@ -263,22 +263,22 @@
       "pelletlager_restbestand": {
         "name": "Pelletlager Restbestand"
       },
-      "Minimaltemperatur_Zweitkessel": {
+      "minimaltemperatur_zweitkessel": {
         "name": "Minimaltemperatur des Zweitkessel"
       },
-      "Start_Zweitkessel": {
+      "start_zweitkessel": {
         "name": "Start des Zweitkessel"
       },
-      "Temperaturdifferenz_Zweitkessel_Puffer": {
+      "temperaturdifferenz_zweitkessel_puffer": {
         "name": "Temperaturdifferenz zwischen Zweitkessel und Puffer"
       },
-      "Minimale_Laufzeit_Zweitkessel": {
+      "minimale_laufzeit_zweitkessel": {
         "name": "Minimale Laufzeit des Zweitkessel"
       },
-      "Einschaltverzögerung_Zweitkessel": {
+      "einschaltverzögerung_zweitkessel": {
         "name": "Einschaltverzögerung des Zweitkessel"
       },
-      "Rückschaltverzögerung_Zweitkessel_Umschaltventil": {
+      "rückschaltverzögerung_zweitkessel_umschaltventil": {
         "name": "Rückschaltverzögerung des Zweitkessel Umschaltventil"
       }
     },
