@@ -27,6 +27,15 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 )
         return text_sensors
     
+    def create_sensors_holding():
+        sensors_holding = []
+        if data.get('zweitkessel', False):
+            sensors_holding.extend([
+                FroelingSensorHolding(hass, translations, data, "Start_Zweitkessel", 40504, "°C", 2, 0, device_class="temperature"),
+                FroelingSensorHolding(hass, translations, data, "Rueckschaltverzoegerung_Zweitkessel_Umschaltventil", 40512, "s", 1, 0, device_class="none")
+            ])
+        return sensors_holding
+    
     def create_sensors():
         sensors = []
         sensors.extend([
@@ -99,11 +108,16 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     sensors = create_sensors()
     async_add_entities(sensors)
 
+    sensors_holding = create_sensors_holding()
+    async_add_entities(sensors_holding)
+    
     update_interval = timedelta(seconds=data.get('update_interval', 60))
     for sensor in sensors:
         async_track_time_interval(hass, sensor.async_update, update_interval)
     for sensor in text_sensors:
         async_track_time_interval(hass, sensor.async_update_text_sensor, update_interval)
+    for sensor in sensors_holding:
+        async_track_time_interval(hass, sensor.async_update_sensors_holding, update_interval)
 
 class FroelingSensor(SensorEntity):
     def __init__(self, hass, translations, data, entity_id, register, unit, scaling_factor, decimal_places=0, device_class=None):
@@ -755,6 +769,69 @@ class FroelingTextSensor(SensorEntity):
                     else:
                         self._state = self._mapping.get(raw_value, f"Unbekannter Fehler ({raw_value})")
                     _LOGGER.debug( "Reading Modbus input register: %s, raw=%s, state: %s", self._register - 30001, raw_value, self._state)
+            except Exception as e:
+                _LOGGER.error("Exception during Modbus communication: %s", e)
+            finally:
+                client.close()
+
+class FroelingSensorHolding(SensorEntity):
+    def __init__(self, hass, translations, data, entity_id, register, unit, scaling_factor, decimal_places=0, device_class=None):
+        self._hass = hass
+        self._translations = translations
+        self._host = data['host']
+        self._port = data['port']
+        self._device_name = data['name']
+        self._entity_id = entity_id
+        self._register = register
+        self._unit = unit
+        self._scaling_factor = scaling_factor
+        self._decimal_places = decimal_places
+        self._device_class = device_class
+        self._state = None
+
+    @property
+    def unique_id(self):
+        return f"{self._device_name}_{self._entity_id}"
+
+    @property
+    def name(self):
+        translated_name = self._translations.get(f"component.froeling_lambdatronic_modbus.entity.sensor.{self._entity_id}.name", self._entity_id)
+        return f"{self._device_name} {translated_name}"
+
+    @property
+    def state(self):
+        return self._state
+
+    @property
+    def unit_of_measurement(self):
+        return self._unit
+
+    @property
+    def device_class(self):
+        return self._device_class
+
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(DOMAIN, self._device_name)},
+            "name": self._device_name,
+            "manufacturer": "Froeling",
+            "model": "Lambdatronic Modbus",
+            "sw_version": "1.0",
+        }
+
+    async def async_update_sensors_holding(self, _=None):
+        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
+        if client.connect():
+            try:
+                result = client.read_holding_registers(self._register - 40001, count=1, device_id=2)
+                if result.isError():
+                    _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
+                    self._state = None
+                else:
+                    raw_value = result.registers[0]
+                    self._state = round(raw_value / self._scaling_factor, self._decimal_places)
+                    _LOGGER.debug("Reading Modbus holding register: %s, state: %s", self._register - 40001, self._state)
             except Exception as e:
                 _LOGGER.error("Exception during Modbus communication: %s", e)
             finally:

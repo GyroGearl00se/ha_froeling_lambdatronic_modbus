@@ -197,6 +197,12 @@
       },
       "betriebsstunden_zweitkessel": {
         "name": "Second Boiler Operating Hours"
+      },
+      "start_zweitkessel": {
+        "name": "Second Boiler Start"
+      },
+      "rueckschaltverzoegerung_zweitkessel_umschaltventil": {
+        "name": "Second Boiler Shutdown Delay"
       }
     },
     "number": {
@@ -266,9 +272,6 @@
       "minimaltemperatur_zweitkessel": {
         "name": "Second Boiler Minimum Temperature"
       },
-      "start_zweitkessel": {
-        "name": "Second Boiler Start"
-      },
       "temperaturdifferenz_zweitkessel_puffer": {
         "name": "Second Boiler-Buffer Temperature Difference"
       },
@@ -277,9 +280,6 @@
       },
       "einschaltverzoegerung_zweitkessel": {
         "name": "Second Boiler Startup Delay"
-      },
-      "rueckschaltverzoegerung_zweitkessel_umschaltventil": {
-        "name": "Second Boiler Shutdown Delay"
       }
     },
     "binary_sensor": {

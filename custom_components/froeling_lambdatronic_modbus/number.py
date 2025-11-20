@@ -54,11 +54,9 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         if data.get('zweitkessel', False):
             numbers.extend([
                 FroelingNumber(hass, translations, data, "Minimaltemperatur_Zweitkessel", 40507, "°C", 2, 0, 20, 95),
-                FroelingNumber(hass, translations, data, "Start_Zweitkessel", 40504, "°C", 2, 0, 0, 100),
                 FroelingNumber(hass, translations, data, "Temperaturdifferenz_Zweitkessel_Puffer", 40508, "°C", 2, 0, 0, 50),
                 FroelingNumber(hass, translations, data, "Minimale_Laufzeit_Zweitkessel", 40505, "min", 60, 0, 0, 500),
                 FroelingNumber(hass, translations, data, "Einschaltverzoegerung_Zweitkessel", 40502, "min", 60, 0, 0, 500),
-                FroelingNumber(hass, translations, data, "Rueckschaltverzoegerung_Zweitkessel_Umschaltventil", 40512, "s", 1, 0, 0, 3600),
             ])
 
         return numbers
@@ -142,7 +140,7 @@ class FroelingNumber(NumberEntity):
         }
 
     async def async_set_native_value(self, value):
-        client = ModbusTcpClient(self._host, port=self._port)
+        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
             try:
                 scaled_value = int(value * self._scaling_factor)
@@ -154,7 +152,7 @@ class FroelingNumber(NumberEntity):
                 client.close()
 
     async def async_update(self, _=None):
-        client = ModbusTcpClient(self._host, port=self._port)
+        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
             try:
                 result = client.read_holding_registers(self._register - 40001, count=1, device_id=2)
@@ -163,7 +161,6 @@ class FroelingNumber(NumberEntity):
                     self._value = None
                 else:
                     raw_value = result.registers[0]
-                    _LOGGER.debug("Error reading Modbus holding register %s", self._register - 40001)
                     self._value = round(raw_value / self._scaling_factor, self._decimal_places)
                     _LOGGER.debug("processed Modbus holding register %s: raw_value=%s, _value=%s", self._register - 40001, raw_value, self._value)
             except Exception as e:

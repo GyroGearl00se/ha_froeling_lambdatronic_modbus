@@ -197,6 +197,12 @@
       },
       "betriebsstunden_zweitkessel": {
         "name": "Betriebsstunden von Zweitkessel"
+      },
+      "start_zweitkessel": {
+        "name": "Start des Zweitkessel"
+      },
+      "rueckschaltverzoegerung_zweitkessel_umschaltventil": {
+        "name": "Rückschaltverzögerung des Zweitkessel Umschaltventil"
       }
     },
     "number": {
@@ -266,9 +272,6 @@
       "minimaltemperatur_zweitkessel": {
         "name": "Minimaltemperatur des Zweitkessel"
       },
-      "start_zweitkessel": {
-        "name": "Start des Zweitkessel"
-      },
       "temperaturdifferenz_zweitkessel_puffer": {
         "name": "Temperaturdifferenz zwischen Zweitkessel und Puffer"
       },
@@ -277,9 +280,6 @@
       },
       "einschaltverzoegerung_zweitkessel": {
         "name": "Einschaltverzögerung des Zweitkessel"
-      },
-      "rueckschaltverzoegerung_zweitkessel_umschaltventil": {
-        "name": "Rückschaltverzögerung des Zweitkessel Umschaltventil"
       }
     },
     "binary_sensor": {

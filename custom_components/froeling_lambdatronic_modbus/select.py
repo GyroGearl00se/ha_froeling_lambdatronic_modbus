@@ -97,7 +97,7 @@ class FroelingSelect(SelectEntity):
             _LOGGER.error("Selected option index %s is out of allowed range [%s, %s]", value, self._min_value, self._max_value)
             return
 
-        client = ModbusTcpClient(self._host, port=self._port)
+        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
             try:
                 client.write_register(self._register - 40001, value, device_id=2)
@@ -108,7 +108,7 @@ class FroelingSelect(SelectEntity):
                 client.close()
 
     async def async_update(self, _=None):
-        client = ModbusTcpClient(self._host, port=self._port)
+        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
             try:
                 result = client.read_holding_registers(self._register - 40001, count=1, device_id=2)
