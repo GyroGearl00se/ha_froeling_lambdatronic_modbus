@@ -1,0 +1,40 @@
+name: Update manifest version on GitHub Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Extract version from tag
+        id: version
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          VERSION="${TAG#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update manifest.json version
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          jq --arg version "$VERSION" '.version = $version' \
+            custom_components/froeling_lambdatronic_modbus/manifest.json \
+            > manifest.tmp
+          mv manifest.tmp custom_components/froeling_lambdatronic_modbus/manifest.json
+
+      - name: Commit updated manifest.json
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add custom_components/froeling_lambdatronic_modbus/manifest.json
+          git commit -m "Update manifest version to ${VERSION}" || echo "No changes to commit"
+          git push
