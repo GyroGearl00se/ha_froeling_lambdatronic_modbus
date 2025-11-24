@@ -14,15 +14,16 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+          ref: ${{ github.event.release.target_commitish }}
 
       - name: Extract version from tag
         id: version
         run: |
-          TAG="${GITHUB_REF#refs/tags/}"
+          TAG="${{ github.event.release.tag_name }}"
           VERSION="${TAG#v}"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Update manifest.json version
+      - name: Update manifest.json
         run: |
           VERSION="${{ steps.version.outputs.version }}"
           jq --arg version "$VERSION" '.version = $version' \
@@ -37,4 +38,4 @@ jobs:
           git config user.email "github-actions@github.com"
           git add custom_components/froeling_lambdatronic_modbus/manifest.json
           git commit -m "Update manifest version to ${VERSION}" || echo "No changes to commit"
-          git push
+          git push origin ${{ github.event.release.target_commitish }}
