@@ -40,6 +40,8 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         sensors = []
         sensors.extend([
             FroelingSensor(hass, translations, data, "Aussentemperatur", 31001, "°C", 2, 0, device_class="temperature"),
+            FroelingSensor(hass, translations, data, "Stunden_im_Pelletsbetrieb", 30063, "h", 1, 0, device_class="none"),
+            FroelingSensor(hass, translations, data, "Stunden_im_Heizen", 30064, "h", 1, 0, device_class="none")
         ])
         if data.get('kessel', False):
             sensors.extend([

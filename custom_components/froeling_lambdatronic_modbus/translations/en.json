@@ -203,6 +203,12 @@
       },
       "rueckschaltverzoegerung_zweitkessel_umschaltventil": {
         "name": "Second Boiler Shutdown Delay"
+      },
+      "stunden_im_Pelletsbetrieb": {
+        "name": "Hours in Pellet Operation"
+      },
+      "stunden_im_Heizen": {
+        "name": "Hours in Heating"
       }
     },
     "number": {

@@ -203,6 +203,12 @@
       },
       "rueckschaltverzoegerung_zweitkessel_umschaltventil": {
         "name": "Rückschaltverzögerung des Zweitkessel Umschaltventil"
+      },
+      "Stunden_im_Pelletsbetrieb": {
+        "name": "Stunden im Pelletsbetrieb"
+      },
+      "Stunden_im_Heizen": {
+        "name": "Stunden im Heizen"
       }
     },
     "number": {
