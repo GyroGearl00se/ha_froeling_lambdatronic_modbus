@@ -22,8 +22,8 @@ jobs:
       - name: Extract version from tag
         id: version
         run: |
-          TAG="${GITHUB_REF##*/}"   # z.B. refs/tags/v1.2.3 -> v1.2.3
-          VERSION="${TAG#v}"        # Entfernt das führende "v"
+          TAG="${GITHUB_REF##*/}"
+          VERSION="${TAG#v}"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Update manifest.json
@@ -41,7 +41,7 @@ jobs:
           git config user.email "github-actions@github.com"
           git add custom_components/froeling_lambdatronic_modbus/manifest.json
           git commit -m "Update manifest version to ${VERSION}" || echo "No changes to commit"
-          git push origin HEAD
+          git push origin HEAD:main
 
       - name: Create draft GitHub Release
         uses: actions/create-release@v1
