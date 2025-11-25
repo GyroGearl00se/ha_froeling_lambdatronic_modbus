@@ -1,14 +1,16 @@
-name: Update manifest version on GitHub Release
+name: Create Draft Release on Tag
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
 
 permissions:
   contents: write
+  releases: write
 
 jobs:
-  update-version:
+  create-draft-release:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,13 +19,12 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-          ref: ${{ github.event.release.target_commitish }}
 
       - name: Extract version from tag
         id: version
         run: |
-          TAG="${{ github.event.release.tag_name }}"
-          VERSION="${TAG#v}"
+          TAG="${GITHUB_REF##*/}"   # z.B. refs/tags/v1.2.3 -> v1.2.3
+          VERSION="${TAG#v}"        # Entfernt das führende "v"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Update manifest.json
@@ -41,4 +42,13 @@ jobs:
           git config user.email "github-actions@github.com"
           git add custom_components/froeling_lambdatronic_modbus/manifest.json
           git commit -m "Update manifest version to ${VERSION}" || echo "No changes to commit"
-          git push origin ${{ github.event.release.target_commitish }}
+          git push origin HEAD
+
+      - name: Create draft GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: "v${{ steps.version.outputs.version }}"
+          release_name: "v${{ steps.version.outputs.version }}"
+          draft: true
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
