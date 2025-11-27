@@ -85,6 +85,18 @@ class FroelingNumber(NumberEntity):
         self._mode = mode
         self._native_step_override = step
 
+    @staticmethod
+    def _to_uint16_from_signed(value: int) -> int:
+        if value < -32768:
+            value = -32768
+        elif value > 32767:
+            value = 32767
+        return value & 0xFFFF
+
+    @staticmethod
+    def _from_uint16_to_signed(value: int) -> int:
+        return value - 0x10000 if value >= 0x8000 else value
+
     @property
     def unique_id(self):
         return f"{self._device_name}_{self._entity_id}"
@@ -143,8 +155,9 @@ class FroelingNumber(NumberEntity):
         client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
         if client.connect():
             try:
-                scaled_value = int(value * self._scaling_factor)
-                client.write_register(self._register - 40001, scaled_value, device_id=2)
+                scaled_value = int(round(value * self._scaling_factor))
+                reg_value = self._to_uint16_from_signed(scaled_value)
+                client.write_register(self._register - 40001, reg_value, device_id=2)
                 self._value = value
             except Exception as e:
                 _LOGGER.error("Exception during Modbus communication: %s", e)
@@ -160,9 +173,10 @@ class FroelingNumber(NumberEntity):
                     _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
                     self._value = None
                 else:
-                    raw_value = result.registers[0]
-                    self._value = round(raw_value / self._scaling_factor, self._decimal_places)
-                    _LOGGER.debug("processed Modbus holding register %s: raw_value=%s, _value=%s", self._register - 40001, raw_value, self._value)
+                    raw_uint16 = result.registers[0]
+                    signed_value = self._from_uint16_to_signed(raw_uint16)
+                    self._value = round(signed_value / self._scaling_factor, self._decimal_places)
+                    _LOGGER.debug("processed Modbus holding register %s: raw=%s signed=%s scaled=%s", self._register - 40001, raw_uint16, signed_value, self._value)
             except Exception as e:
                 _LOGGER.error("Exception during Modbus communication: %s", e)
             finally:
