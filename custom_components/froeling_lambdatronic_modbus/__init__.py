@@ -6,6 +6,8 @@ from homeassistant.const import Platform
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 
+from .modbus_controller import ModbusController
+
 DOMAIN = "froeling_lambdatronic_modbus"
 
 CONFIG_SCHEMA = vol.Schema(
@@ -37,12 +39,18 @@ PLATFORMS = [Platform.SENSOR, Platform.NUMBER, Platform.BINARY_SENSOR, Platform.
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     hass.data.setdefault(DOMAIN, {})
-    hass.data[DOMAIN][entry.entry_id] = entry.data
+    controller = ModbusController(hass, entry.data.get("host"), entry.data.get("port", 502))
+    hass.data[DOMAIN][entry.entry_id] = {"config": entry.data, "controller": controller}
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
     for platform in PLATFORMS:
         await hass.config_entries.async_forward_entry_unload(entry, platform)
-    hass.data[DOMAIN].pop(entry.entry_id)
+    ent = hass.data[DOMAIN].pop(entry.entry_id, None)
+    if ent and isinstance(ent, dict) and "controller" in ent:
+        try:
+            await ent["controller"].async_close()
+        except Exception:
+            pass
     return True

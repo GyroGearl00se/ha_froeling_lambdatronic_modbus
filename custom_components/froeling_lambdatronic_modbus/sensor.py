@@ -1,29 +1,31 @@
 from homeassistant.components.sensor import SensorEntity
-from pymodbus.client import ModbusTcpClient
 import logging
 from datetime import timedelta
 from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.translation import async_get_translations
 from .const import DOMAIN
+from .modbus_controller import ModbusController
 
 _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
-    data = config_entry.data
+    ent = hass.data[DOMAIN][config_entry.entry_id]
+    data = ent["config"]
+    controller: ModbusController = ent["controller"]
 
     translations = await async_get_translations(hass, hass.config.language, "entity")
     def create_text_sensors():
         text_sensors = []
         text_sensors.extend([
-            FroelingTextSensor(hass, translations, data, "Anlagenzustand", 34001, ANLAGENZUSTAND_MAPPING),
-            FroelingTextSensor(hass, translations, data, "Kesselzustand", 34002, KESSELZUSTAND_MAPPING)
+            FroelingTextSensor(hass, translations, data, controller, "Anlagenzustand", 34001, ANLAGENZUSTAND_MAPPING),
+            FroelingTextSensor(hass, translations, data, controller, "Kesselzustand", 34002, KESSELZUSTAND_MAPPING)
         ])
         if data.get('fehlerpuffer', False):
             for i in range(20):
                 reg = 33001 + i
                 entity_id = f"Kessel_Fehlerpuffer_{i+1}"
                 text_sensors.append(
-                    FroelingTextSensor(hass, translations, data, entity_id, reg, KESSEL_FEHLER_MAPPING)
+                    FroelingTextSensor(hass, translations, data, controller, entity_id, reg, KESSEL_FEHLER_MAPPING)
                 )
         return text_sensors
     
@@ -31,76 +33,76 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         sensors_holding = []
         if data.get('zweitkessel', False):
             sensors_holding.extend([
-                FroelingSensorHolding(hass, translations, data, "Start_Zweitkessel", 40504, "°C", 2, 0, device_class="temperature"),
-                FroelingSensorHolding(hass, translations, data, "Rueckschaltverzoegerung_Zweitkessel_Umschaltventil", 40512, "s", 1, 0, device_class="none")
+                FroelingSensorHolding(hass, translations, data, controller, "Start_Zweitkessel", 40504, "°C", 2, 0, device_class="temperature"),
+                FroelingSensorHolding(hass, translations, data, controller, "Rueckschaltverzoegerung_Zweitkessel_Umschaltventil", 40512, "s", 1, 0, device_class="none")
             ])
         return sensors_holding
-    
+
     def create_sensors():
         sensors = []
         sensors.extend([
-            FroelingSensor(hass, translations, data, "Aussentemperatur", 31001, "°C", 2, 0, device_class="temperature"),
-            FroelingSensor(hass, translations, data, "Stunden_im_Pelletsbetrieb", 30063, "h", 1, 0, device_class="none"),
-            FroelingSensor(hass, translations, data, "Stunden_im_Heizen", 30064, "h", 1, 0, device_class="none")
+            FroelingSensor(hass, translations, data, controller, "Aussentemperatur", 31001, "°C", 2, 0, device_class="temperature"),
+            FroelingSensor(hass, translations, data, controller, "Stunden_im_Pelletsbetrieb", 30063, "h", 1, 0, device_class="none"),
+            FroelingSensor(hass, translations, data, controller, "Stunden_im_Heizen", 30064, "h", 1, 0, device_class="none")
         ])
         if data.get('kessel', False):
             sensors.extend([
-                FroelingSensor(hass, translations, data, "Kesseltemperatur", 30001, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "Abgastemperatur", 30002, "°C", 1, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "Verbleibende_Heizstunden_bis_zur_Asche_entleeren_Warnung", 30087, "h", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Saugzug_Ansteuerung", 30014, "%", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Saugzugdrehzahl", 30007, "Upm", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Sauerstoffregler", 30017, "%", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Restsauerstoffgehalt", 30004, "%", 10, 1, device_class="none"),
-                FroelingSensor(hass, translations, data, "Ruecklauffuehler", 30010, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "Primaerluft", 30012, "%", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Sekundaerluft", 30013, "%", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Betriebsstunden", 30021, "h", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Stunden_seit_letzter_Wartung", 30056, "h", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Betriebsstunden_in_der_Feuererhaltung", 30025, "h", 1, 0, device_class="none")
+                FroelingSensor(hass, translations, data, controller, "Kesseltemperatur", 30001, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Abgastemperatur", 30002, "°C", 1, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Verbleibende_Heizstunden_bis_zur_Asche_entleeren_Warnung", 30087, "h", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Saugzug_Ansteuerung", 30014, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Saugzugdrehzahl", 30007, "Upm", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Sauerstoffregler", 30017, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Restsauerstoffgehalt", 30004, "%", 10, 1, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Ruecklauffuehler", 30010, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Primaerluft", 30012, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Sekundaerluft", 30013, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Betriebsstunden", 30021, "h", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Stunden_seit_letzter_Wartung", 30056, "h", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Betriebsstunden_in_der_Feuererhaltung", 30025, "h", 1, 0, device_class="none")
             ])
         if data.get('hk01', False):
             sensors.extend([
-                FroelingSensor(hass, translations, data, "HK01_Vorlauf_Isttemperatur", 31031, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "HK01_Vorlauf_Solltemperatur", 31032, "°C", 2, 0, device_class="temperature")
+                FroelingSensor(hass, translations, data, controller, "HK01_Vorlauf_Isttemperatur", 31031, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "HK01_Vorlauf_Solltemperatur", 31032, "°C", 2, 0, device_class="temperature")
             ])
         if data.get('hk02', False):
             sensors.extend([
-                FroelingSensor(hass, translations, data, "HK02_Vorlauf_Isttemperatur", 31061, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "HK02_Vorlauf_Solltemperatur", 31062, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "HK02_Vorlauf_Isttemperatur", 31061, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "HK02_Vorlauf_Solltemperatur", 31062, "°C", 2, 0, device_class="temperature"),
             ])
         if data.get('puffer01', False):
             sensors.extend([
-                FroelingSensor(hass, translations, data, "Puffer_1_Temperatur_oben", 32001, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "Puffer_1_Temperatur_mitte", 32002, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "Puffer_1_Temperatur_unten", 32003, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "Puffer_1_Pufferpumpen_Ansteuerung", 32004, "%", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Puffer_1_Ladezustand", 32007, "%", 1, 0, device_class="none")
+                FroelingSensor(hass, translations, data, controller, "Puffer_1_Temperatur_oben", 32001, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Puffer_1_Temperatur_mitte", 32002, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Puffer_1_Temperatur_unten", 32003, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Puffer_1_Pufferpumpen_Ansteuerung", 32004, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Puffer_1_Ladezustand", 32007, "%", 1, 0, device_class="none")
             ])
         if data.get('boiler01', False):
             sensors.extend([
-                FroelingSensor(hass, translations, data, "Boiler_1_Temperatur_oben", 31631, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "Boiler_1_Pumpe_Ansteuerung", 31633, "%", 1, 0, device_class="none")
+                FroelingSensor(hass, translations, data, controller, "Boiler_1_Temperatur_oben", 31631, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Boiler_1_Pumpe_Ansteuerung", 31633, "%", 1, 0, device_class="none")
             ])
         if data.get('austragung', False):
             sensors.extend([
-                FroelingSensor(hass, translations, data, "Fuellstand_im_Pelletsbehaelter", 30022, "%", 207, 1, device_class="none"),
-                FroelingSensor(hass, translations, data, "Resetierbarer_kg_Zaehler", 30082, "kg", 1, 0, device_class="weight"),
-                FroelingSensor(hass, translations, data, "Resetierbarer_t_Zaehler", 30083, "t", 1, 0, device_class="weight"),
-                FroelingSensor(hass, translations, data, "Pelletverbrauch_Gesamt", 30084, "t", 10, 1, device_class="weight"),
+                FroelingSensor(hass, translations, data, controller, "Fuellstand_im_Pelletsbehaelter", 30022, "%", 207, 1, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Resetierbarer_kg_Zaehler", 30082, "kg", 1, 0, device_class="weight"),
+                FroelingSensor(hass, translations, data, controller, "Resetierbarer_t_Zaehler", 30083, "t", 1, 0, device_class="weight"),
+                FroelingSensor(hass, translations, data, controller, "Pelletverbrauch_Gesamt", 30084, "t", 10, 1, device_class="weight"),
             ])
         if data.get('zirkulationspumpe', False):
             sensors.extend([
-                FroelingSensor(hass, translations, data, "Ruecklauftemperatur_an_der_Zirkulations_Leitung", 30712, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "Stoemungsschalter_an_der_Brauchwasser_Leitung", 30601, "", 2, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Drehzahl_der_Zirkulations_Pumpe", 30711, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Ruecklauftemperatur_an_der_Zirkulations_Leitung", 30712, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Stoemungsschalter_an_der_Brauchwasser_Leitung", 30601, "", 2, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Drehzahl_der_Zirkulations_Pumpe", 30711, "%", 1, 0, device_class="none"),
             ])
         if data.get('zweitkessel', False):
             sensors.extend([
-                FroelingSensor(hass, translations, data, "Temperatur_Zweitkessel", 30501, "°C", 2, 0, device_class="temperature"),
-                FroelingSensor(hass, translations, data, "Umschaltventil_Zweitkessel", 30504, "%", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Zustand_Brennerrelais", 30502, "", 1, 0, device_class="none"),
-                FroelingSensor(hass, translations, data, "Betriebsstunden_Zweitkessel", 30503, "h", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Temperatur_Zweitkessel", 30501, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Umschaltventil_Zweitkessel", 30504, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Zustand_Brennerrelais", 30502, "", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Betriebsstunden_Zweitkessel", 30503, "h", 1, 0, device_class="none"),
             ])
         return sensors
 
@@ -122,11 +124,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         async_track_time_interval(hass, sensor.async_update_sensors_holding, update_interval)
 
 class FroelingSensor(SensorEntity):
-    def __init__(self, hass, translations, data, entity_id, register, unit, scaling_factor, decimal_places=0, device_class=None):
+    def __init__(self, hass, translations, data, controller: ModbusController, entity_id, register, unit, scaling_factor, decimal_places=0, device_class=None):
         self._hass = hass
         self._translations = translations
-        self._host = data['host']
-        self._port = data['port']
+        self._controller = controller
         self._device_name = data['name']
         self._entity_id = entity_id
         self._register = register
@@ -168,27 +169,27 @@ class FroelingSensor(SensorEntity):
         }
 
     async def async_update(self, _=None):
-        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
-        if client.connect():
-            try:
-                result = client.read_input_registers(self._register - 30001, count=1, device_id=2)
-                if result.isError():
-                    _LOGGER.error("Error reading Modbus input register %s", self._register - 30001)
-                    self._state = None
-                else:
-                    raw_value = result.registers[0]
-                    if raw_value > 32767:
-                        raw_value -= 65536
-                    scaled_value = raw_value / self._scaling_factor
-                    if self._decimal_places == 0:
-                        self._state = int(scaled_value)  # Convert to integer if decimal_places is 0
-                    else:
-                        self._state = round(scaled_value, self._decimal_places)
-                    _LOGGER.debug("Reading Modbus input register: %s, state: %s", self._register - 30001, self._state)
-            except Exception as e:
-                _LOGGER.error("Exception during Modbus communication: %s", e)
-            finally:
-                client.close()
+        result = await self._controller.async_read_input_registers(self._register - 30001, count=1)
+        if result is None:
+            _LOGGER.debug("Modbus read returned None (connect failure) for register %s", self._register - 30001)
+            self._state = None
+            return
+        try:
+            if result.isError():
+                _LOGGER.error("Error reading Modbus input register %s", self._register - 30001)
+                self._state = None
+                return
+            raw_value = result.registers[0]
+            if raw_value > 32767:
+                raw_value -= 65536
+            scaled_value = raw_value / self._scaling_factor
+            if self._decimal_places == 0:
+                self._state = int(scaled_value)
+            else:
+                self._state = round(scaled_value, self._decimal_places)
+            _LOGGER.debug("Reading Modbus input register: %s, state: %s", self._register - 30001, self._state)
+        except Exception as e:
+            _LOGGER.debug("Exception processing Modbus result: %s", e)
 
 ANLAGENZUSTAND_MAPPING = {
     0: "Dauerlast",
@@ -722,11 +723,10 @@ KESSEL_FEHLER_MAPPING = {
 }
 
 class FroelingTextSensor(SensorEntity):
-    def __init__(self, hass, translations, data, entity_id, register, mapping):
+    def __init__(self, hass, translations, data, controller: ModbusController, entity_id, register, mapping):
         self._hass = hass
         self._translations = translations
-        self._host = data['host']
-        self._port = data['port']
+        self._controller = controller
         self._device_name = data['name']
         self._entity_id = entity_id
         self._register = register
@@ -757,31 +757,30 @@ class FroelingTextSensor(SensorEntity):
         }
 
     async def async_update_text_sensor(self, _=None):
-        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
-        if client.connect():
-            try:
-                result = client.read_input_registers(self._register - 30001, count=1, device_id=2)
-                if result.isError():
-                    _LOGGER.error("Error reading Modbus input register %s", self._register - 30001)
-                    self._state = None
-                else:
-                    raw_value = result.registers[0]
-                    if raw_value == 0xFFFF:
-                        self._state = "Kein Fehler"
-                    else:
-                        self._state = self._mapping.get(raw_value, f"Unbekannter Fehler ({raw_value})")
-                    _LOGGER.debug( "Reading Modbus input register: %s, raw=%s, state: %s", self._register - 30001, raw_value, self._state)
-            except Exception as e:
-                _LOGGER.error("Exception during Modbus communication: %s", e)
-            finally:
-                client.close()
+        result = await self._controller.async_read_input_registers(self._register - 30001, count=1)
+        if result is None:
+            _LOGGER.debug("Modbus read returned None (connect failure) for register %s", self._register - 30001)
+            self._state = None
+            return
+        try:
+            if result.isError():
+                _LOGGER.error("Error reading Modbus input register %s", self._register - 30001)
+                self._state = None
+                return
+            raw_value = result.registers[0]
+            if raw_value == 0xFFFF:
+                self._state = "Kein Fehler"
+            else:
+                self._state = self._mapping.get(raw_value, f"Unbekannter Fehler ({raw_value})")
+            _LOGGER.debug( "Reading Modbus input register: %s, raw=%s, state: %s", self._register - 30001, raw_value, self._state)
+        except Exception as e:
+            _LOGGER.debug("Exception processing Modbus result: %s", e)
 
 class FroelingSensorHolding(SensorEntity):
-    def __init__(self, hass, translations, data, entity_id, register, unit, scaling_factor, decimal_places=0, device_class=None):
+    def __init__(self, hass, translations, data, controller: ModbusController, entity_id, register, unit, scaling_factor, decimal_places=0, device_class=None):
         self._hass = hass
         self._translations = translations
-        self._host = data['host']
-        self._port = data['port']
+        self._controller = controller
         self._device_name = data['name']
         self._entity_id = entity_id
         self._register = register
@@ -823,18 +822,18 @@ class FroelingSensorHolding(SensorEntity):
         }
 
     async def async_update_sensors_holding(self, _=None):
-        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
-        if client.connect():
-            try:
-                result = client.read_holding_registers(self._register - 40001, count=1, device_id=2)
-                if result.isError():
-                    _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
-                    self._state = None
-                else:
-                    raw_value = result.registers[0]
-                    self._state = round(raw_value / self._scaling_factor, self._decimal_places)
-                    _LOGGER.debug("Reading Modbus holding register: %s, state: %s", self._register - 40001, self._state)
-            except Exception as e:
-                _LOGGER.error("Exception during Modbus communication: %s", e)
-            finally:
-                client.close()
+        result = await self._controller.async_read_holding_registers(self._register - 40001, count=1)
+        if result is None:
+            _LOGGER.debug("Modbus holding read returned None (connect failure) for register %s", self._register - 40001)
+            self._state = None
+            return
+        try:
+            if result.isError():
+                _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
+                self._state = None
+                return
+            raw_value = result.registers[0]
+            self._state = round(raw_value / self._scaling_factor, self._decimal_places)
+            _LOGGER.debug("Reading Modbus holding register: %s, state: %s", self._register - 40001, self._state)
+        except Exception as e:
+            _LOGGER.debug("Exception processing Modbus holding result: %s", e)

@@ -1,15 +1,18 @@
 from homeassistant.components.number import NumberEntity, NumberMode
-from pymodbus.client import ModbusTcpClient
 import logging
 from datetime import timedelta
 from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.translation import async_get_translations
 from .const import DOMAIN
+from .modbus_controller import ModbusController
 
 _LOGGER = logging.getLogger(__name__)
 
+
 async def async_setup_entry(hass, config_entry, async_add_entities):
-    data = config_entry.data
+    ent = hass.data[DOMAIN][config_entry.entry_id]
+    data = ent["config"]
+    controller: ModbusController = ent["controller"]
     translations = await async_get_translations(hass, hass.config.language, "entity")
 
     def create_numbers():
@@ -17,46 +20,46 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
         if data.get('kessel', False):
             numbers.extend([
-                FroelingNumber(hass, translations, data, "Kessel_Solltemperatur", 40001, "°C", 2, 0, 70, 90),
-                FroelingNumber(hass, translations, data, "Bei_welcher_RL_Temperatur_an_der_Zirkulationsleitung_soll_die_Pumpe_ausschalten", 40601, "°C", 2, 0, 20, 120)
+                FroelingNumber(hass, translations, data, controller, "Kessel_Solltemperatur", 40001, "°C", 2, 0, 70, 90),
+                FroelingNumber(hass, translations, data, controller, "Bei_welcher_RL_Temperatur_an_der_Zirkulationsleitung_soll_die_Pumpe_ausschalten", 40601, "°C", 2, 0, 20, 120)
             ])
         if data.get('hk01', False):
             numbers.extend([
-                FroelingNumber(hass, translations, data, "HK1_Vorlauf_Temperatur_10C_Aussentemperatur", 41032, "°C", 2, 0, 10, 110),
-                FroelingNumber(hass, translations, data, "HK1_Vorlauf_Temperatur_minus_10C_Aussentemperatur", 41033, "°C", 2, 0, 10, 110),
-                FroelingNumber(hass, translations, data, "HK1_Heizkreispumpe_ausschalten_wenn_Vorlauf_Soll_kleiner_ist_als", 41040, "°C", 2, 0, 10, 30),
-                FroelingNumber(hass, translations, data, "HK1_Absenkung_der_Vorlauftemperatur_im_Absenkbetrieb", 41034, "°C", 2, 0, 0, 70),
-                FroelingNumber(hass, translations, data, "HK1_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Heizbetrieb_einschaltet", 41037, "°C", 2, 0, -20, 50),
-                FroelingNumber(hass, translations, data, "HK1_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Absenkbetrieb_einschaltet", 41038, "°C", 2, 0, -20, 50),
-                FroelingNumber(hass, translations, data, "HK1_Frostschutztemperatur", 41039, "°C", 2, 0, 10, 20),
-                FroelingNumber(hass, translations, data, "HK1_Temp_am_Puffer_oben_ab_der_der_Ueberhitzungsschutz_aktiv_wird", 41048, "°C", 1, 0, 60, 120)
+                FroelingNumber(hass, translations, data, controller, "HK1_Vorlauf_Temperatur_10C_Aussentemperatur", 41032, "°C", 2, 0, 10, 110),
+                FroelingNumber(hass, translations, data, controller, "HK1_Vorlauf_Temperatur_minus_10C_Aussentemperatur", 41033, "°C", 2, 0, 10, 110),
+                FroelingNumber(hass, translations, data, controller, "HK1_Heizkreispumpe_ausschalten_wenn_Vorlauf_Soll_kleiner_ist_als", 41040, "°C", 2, 0, 10, 30),
+                FroelingNumber(hass, translations, data, controller, "HK1_Absenkung_der_Vorlauftemperatur_im_Absenkbetrieb", 41034, "°C", 2, 0, 0, 70),
+                FroelingNumber(hass, translations, data, controller, "HK1_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Heizbetrieb_einschaltet", 41037, "°C", 2, 0, -20, 50),
+                FroelingNumber(hass, translations, data, controller, "HK1_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Absenkbetrieb_einschaltet", 41038, "°C", 2, 0, -20, 50),
+                FroelingNumber(hass, translations, data, controller, "HK1_Frostschutztemperatur", 41039, "°C", 2, 0, 10, 20),
+                FroelingNumber(hass, translations, data, controller, "HK1_Temp_am_Puffer_oben_ab_der_der_Ueberhitzungsschutz_aktiv_wird", 41048, "°C", 1, 0, 60, 120)
             ])
         if data.get('hk02', False):
             numbers.extend([
-                FroelingNumber(hass, translations, data, "HK2_Vorlauf_Temperatur_10C_Aussentemperatur", 41062, "°C", 2, 0, 10, 110),
-                FroelingNumber(hass, translations, data, "HK2_Vorlauf_Temperatur_minus_10C_Aussentemperatur", 41063, "°C", 2, 0, 10, 110),
-                FroelingNumber(hass, translations, data, "HK2_Heizkreispumpe_ausschalten_wenn_Vorlauf_Soll_kleiner_ist_als", 41070, "°C", 2, 0, 10, 30),
-                FroelingNumber(hass, translations, data, "HK2_Absenkung_der_Vorlauftemperatur_im_Absenkbetrieb", 41064, "°C", 2, 0, 0, 70),
-                FroelingNumber(hass, translations, data, "HK2_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Heizbetrieb_einschaltet", 41067, "°C", 2, 0, -20, 50),
-                FroelingNumber(hass, translations, data, "HK2_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Absenkbetrieb_einschaltet", 41068, "°C", 2, 0, -20, 50),
-                FroelingNumber(hass, translations, data, "HK2_Frostschutztemperatur", 41069, "°C", 2, 0, -10, 20),
-                FroelingNumber(hass, translations, data, "HK2_Temp_am_Puffer_oben_ab_der_der_Ueberhitzungsschutz_aktiv_wird", 41079, "°C", 1, 0, 60, 120)
+                FroelingNumber(hass, translations, data, controller, "HK2_Vorlauf_Temperatur_10C_Aussentemperatur", 41062, "°C", 2, 0, 10, 110),
+                FroelingNumber(hass, translations, data, controller, "HK2_Vorlauf_Temperatur_minus_10C_Aussentemperatur", 41063, "°C", 2, 0, 10, 110),
+                FroelingNumber(hass, translations, data, controller, "HK2_Heizkreispumpe_ausschalten_wenn_Vorlauf_Soll_kleiner_ist_als", 41070, "°C", 2, 0, 10, 30),
+                FroelingNumber(hass, translations, data, controller, "HK2_Absenkung_der_Vorlauftemperatur_im_Absenkbetrieb", 41064, "°C", 2, 0, 0, 70),
+                FroelingNumber(hass, translations, data, controller, "HK2_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Heizbetrieb_einschaltet", 41067, "°C", 2, 0, -20, 50),
+                FroelingNumber(hass, translations, data, controller, "HK2_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Absenkbetrieb_einschaltet", 41068, "°C", 2, 0, -20, 50),
+                FroelingNumber(hass, translations, data, controller, "HK2_Frostschutztemperatur", 41069, "°C", 2, 0, -10, 20),
+                FroelingNumber(hass, translations, data, controller, "HK2_Temp_am_Puffer_oben_ab_der_der_Ueberhitzungsschutz_aktiv_wird", 41079, "°C", 1, 0, 60, 120)
             ])
         if data.get('boiler01', False):
             numbers.extend([
-                FroelingNumber(hass, translations, data, "Boiler_1_Gewuenschte_Boilertemperatur", 41632, "°C", 2, 0, 10, 100),
-                FroelingNumber(hass, translations, data, "Boiler_1_Nachladen_wenn_Boilertemperatur_unter", 41633, "°C", 2, 0, 1, 90)
+                FroelingNumber(hass, translations, data, controller, "Boiler_1_Gewuenschte_Boilertemperatur", 41632, "°C", 2, 0, 10, 100),
+                FroelingNumber(hass, translations, data, controller, "Boiler_1_Nachladen_wenn_Boilertemperatur_unter", 41633, "°C", 2, 0, 1, 90)
             ])
         if data.get('austragung', False):
             numbers.extend([
-                FroelingNumber(hass, translations, data, "Pelletlager_Restbestand", 40320, "t", 10, 1, 0, 100)
+                FroelingNumber(hass, translations, data, controller, "Pelletlager_Restbestand", 40320, "t", 10, 1, 0, 100)
             ])
         if data.get('zweitkessel', False):
             numbers.extend([
-                FroelingNumber(hass, translations, data, "Minimaltemperatur_Zweitkessel", 40507, "°C", 2, 0, 20, 95),
-                FroelingNumber(hass, translations, data, "Temperaturdifferenz_Zweitkessel_Puffer", 40508, "°C", 2, 0, 0, 50),
-                FroelingNumber(hass, translations, data, "Minimale_Laufzeit_Zweitkessel", 40505, "min", 60, 0, 0, 500),
-                FroelingNumber(hass, translations, data, "Einschaltverzoegerung_Zweitkessel", 40502, "min", 60, 0, 0, 500),
+                FroelingNumber(hass, translations, data, controller, "Minimaltemperatur_Zweitkessel", 40507, "°C", 2, 0, 20, 95),
+                FroelingNumber(hass, translations, data, controller, "Temperaturdifferenz_Zweitkessel_Puffer", 40508, "°C", 2, 0, 0, 50),
+                FroelingNumber(hass, translations, data, controller, "Minimale_Laufzeit_Zweitkessel", 40505, "min", 60, 0, 0, 500),
+                FroelingNumber(hass, translations, data, controller, "Einschaltverzoegerung_Zweitkessel", 40502, "min", 60, 0, 0, 500),
             ])
 
         return numbers
@@ -68,11 +71,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         async_track_time_interval(hass, number.async_update, update_interval)
 
 class FroelingNumber(NumberEntity):
-    def __init__(self, hass, translations, data, entity_id, register, unit, scaling_factor, decimal_places=0, min_value=0, max_value=0, mode: NumberMode | None = None, step: float | None = None):
+    def __init__(self, hass, translations, data, controller: ModbusController, entity_id, register, unit, scaling_factor, decimal_places=0, min_value=0, max_value=0, mode: NumberMode | None = None, step: float | None = None):
         self._hass = hass
         self._translations = translations
-        self._host = data['host']
-        self._port = data['port']
+        self._controller = controller
         self._device_name = data['name']
         self._entity_id = entity_id
         self._register = register
@@ -152,32 +154,28 @@ class FroelingNumber(NumberEntity):
         }
 
     async def async_set_native_value(self, value):
-        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
-        if client.connect():
-            try:
-                scaled_value = int(round(value * self._scaling_factor))
-                reg_value = self._to_uint16_from_signed(scaled_value)
-                client.write_register(self._register - 40001, reg_value, device_id=2)
-                self._value = value
-            except Exception as e:
-                _LOGGER.error("Exception during Modbus communication: %s", e)
-            finally:
-                client.close()
+        scaled_value = int(round(value * self._scaling_factor))
+        reg_value = self._to_uint16_from_signed(scaled_value)
+        ok = await self._controller.async_write_register(self._register - 40001, reg_value)
+        if not ok:
+            _LOGGER.debug("Failed to write register %s", self._register - 40001)
+            return
+        self._value = value
 
     async def async_update(self, _=None):
-        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
-        if client.connect():
-            try:
-                result = client.read_holding_registers(self._register - 40001, count=1, device_id=2)
-                if result.isError():
-                    _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
-                    self._value = None
-                else:
-                    raw_uint16 = result.registers[0]
-                    signed_value = self._from_uint16_to_signed(raw_uint16)
-                    self._value = round(signed_value / self._scaling_factor, self._decimal_places)
-                    _LOGGER.debug("processed Modbus holding register %s: raw=%s signed=%s scaled=%s", self._register - 40001, raw_uint16, signed_value, self._value)
-            except Exception as e:
-                _LOGGER.error("Exception during Modbus communication: %s", e)
-            finally:
-                client.close()
+        result = await self._controller.async_read_holding_registers(self._register - 40001, count=1)
+        if result is None:
+            _LOGGER.debug("Modbus holding read returned None (connect failure) for register %s", self._register - 40001)
+            self._value = None
+            return
+        try:
+            if result.isError():
+                _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
+                self._value = None
+                return
+            raw_uint16 = result.registers[0]
+            signed_value = self._from_uint16_to_signed(raw_uint16)
+            self._value = round(signed_value / self._scaling_factor, self._decimal_places)
+            _LOGGER.debug("processed Modbus holding register %s: raw=%s signed=%s scaled=%s", self._register - 40001, raw_uint16, signed_value, self._value)
+        except Exception as e:
+            _LOGGER.debug("Exception processing Modbus holding result: %s", e)

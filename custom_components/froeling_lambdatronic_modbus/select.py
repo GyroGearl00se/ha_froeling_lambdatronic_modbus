@@ -1,15 +1,18 @@
 from homeassistant.components.select import SelectEntity
-from pymodbus.client import ModbusTcpClient
 import logging
 from datetime import timedelta
 from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.translation import async_get_translations
 from .const import DOMAIN
+from .modbus_controller import ModbusController
 
 _LOGGER = logging.getLogger(__name__)
 
+
 async def async_setup_entry(hass, config_entry, async_add_entities):
-    data = config_entry.data
+    ent = hass.data[DOMAIN][config_entry.entry_id]
+    data = ent["config"]
+    controller: ModbusController = ent["controller"]
     translations = await async_get_translations(hass, hass.config.language, "entity")
 
     def create_selects():
@@ -17,11 +20,11 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
         if data.get('hk01', False):
             selects.extend([
-                FroelingSelect(hass,translations,data,"HK01_Betriebsart",48047,OPERATINGMODES,min_value=0,max_value=5)
+                FroelingSelect(hass,translations,data,controller,"HK01_Betriebsart",48047,OPERATINGMODES,min_value=0,max_value=5)
             ])
         if data.get('hk02', False):
             selects.extend([
-                FroelingSelect(hass,translations,data,"HK02_Betriebsart",48048,OPERATINGMODES,min_value=0,max_value=5)
+                FroelingSelect(hass,translations,data,controller,"HK02_Betriebsart",48048,OPERATINGMODES,min_value=0,max_value=5)
             ])
         return selects
 
@@ -40,12 +43,12 @@ OPERATINGMODES = [
     "Partybetrieb",
 ]
 
+
 class FroelingSelect(SelectEntity):
-    def __init__(self, hass, translations, data, entity_id: str, register: int, options: list[str], min_value: int = 0, max_value: int | None = None):
+    def __init__(self, hass, translations, data, controller: ModbusController, entity_id: str, register: int, options: list[str], min_value: int = 0, max_value: int | None = None):
         self._hass = hass
         self._translations = translations
-        self._host = data['host']
-        self._port = data['port']
+        self._controller = controller
         self._device_name = data['name']
         self._entity_id = entity_id
         self._register = register
@@ -97,43 +100,39 @@ class FroelingSelect(SelectEntity):
             _LOGGER.error("Selected option index %s is out of allowed range [%s, %s]", value, self._min_value, self._max_value)
             return
 
-        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
-        if client.connect():
-            try:
-                client.write_register(self._register - 40001, value, device_id=2)
-                self._current_index = value
-            except Exception as e:
-                _LOGGER.error("Exception during Modbus communication (write select): %s", e)
-            finally:
-                client.close()
+        ok = await self._controller.async_write_register(self._register - 40001, value)
+        if not ok:
+            _LOGGER.error("Exception during Modbus communication (write select) for register %s", self._register - 40001)
+            return
+        self._current_index = value
 
     async def async_update(self, _=None):
-        client = ModbusTcpClient(self._host, port=self._port, retries=2, timeout=15)
-        if client.connect():
-            try:
-                result = client.read_holding_registers(self._register - 40001, count=1, device_id=2)
-                if result.isError():
-                    _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
-                    self._current_index = None
-                else:
-                    raw_value = result.registers[0]
-                    if raw_value < self._min_value or raw_value > self._max_value:
-                        _LOGGER.warning(
-                            "Read out-of-range value %s from register %s (allowed [%s,%s])",
-                            raw_value,
-                            self._register - 40001,
-                            self._min_value,
-                            self._max_value,
-                        )
-                        return
-                    self._current_index = raw_value
-                    _LOGGER.debug(
-                        "processed Modbus holding register %s: raw_value=%s, current_option=%s",
-                        self._register - 40001,
-                        raw_value,
-                        self.current_option,
-                    )
-            except Exception as e:
-                _LOGGER.error("Exception during Modbus communication (read select): %s", e)
-            finally:
-                client.close()
+        result = await self._controller.async_read_holding_registers(self._register - 40001, count=1)
+        if result is None:
+            _LOGGER.debug("Modbus holding read returned None (connect failure) for register %s", self._register - 40001)
+            self._current_index = None
+            return
+        try:
+            if result.isError():
+                _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
+                self._current_index = None
+                return
+            raw_value = result.registers[0]
+            if raw_value < self._min_value or raw_value > self._max_value:
+                _LOGGER.warning(
+                    "Read out-of-range value %s from register %s (allowed [%s,%s])",
+                    raw_value,
+                    self._register - 40001,
+                    self._min_value,
+                    self._max_value,
+                )
+                return
+            self._current_index = raw_value
+            _LOGGER.debug(
+                "processed Modbus holding register %s: raw_value=%s, current_option=%s",
+                self._register - 40001,
+                raw_value,
+                self.current_option,
+            )
+        except Exception as e:
+            _LOGGER.debug("Exception processing Modbus holding result for select: %s", e)
