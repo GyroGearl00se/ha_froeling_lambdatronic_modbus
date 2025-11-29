@@ -104,6 +104,21 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 FroelingSensor(hass, translations, data, controller, "Zustand_Brennerrelais", 30502, "", 1, 0, device_class="none"),
                 FroelingSensor(hass, translations, data, controller, "Betriebsstunden_Zweitkessel", 30503, "h", 1, 0, device_class="none"),
             ])
+        if data.get('solarthermie', False):
+            sensors.extend([
+                FroelingSensor(hass, translations, data, controller, "Kollektor_Ruecklauftemperatur", 32612, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Kollektor_Vorlauftemperatur", 32613, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Kollektortemperatur", 32602, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Solarfuehler_Puffer_oben", 32008, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Solarfuehler_Puffer_unten", 30029, "°C", 2, 0, device_class="temperature"),
+                FroelingSensor(hass, translations, data, controller, "Laufzeit_Kollektorpumpe", 32603, "h", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Aktuelle_Leistung_des_Solar_WMZ", 32611, "kW", 100, 2, device_class="power"),
+                FroelingSensor(hass, translations, data, controller, "Ansteuerung_Kollektorpumpe", 32601, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Aktuelle_Ansteuerung_der_Kollektor_Boiler_Pumpe", 32623, "%", 1, 0, device_class="none"),
+                FroelingSensor(hass, translations, data, controller, "Solarthermie_DFL_Sensor", 32610, "l/h", 1, 0, device_class="volume_flow_rate"),
+                FroelingSensor(hass, translations, data, controller, "Solarthermie_Tagesertrag", 32620, "kWh", 1, 0, device_class="energy"),
+                FroelingSensor(hass, translations, data, controller, "Solarthermie_Gesamtertrag", 32622, "kWh", 1, 0, device_class="energy"),
+            ])
         return sensors
 
     text_sensors = create_text_sensors()

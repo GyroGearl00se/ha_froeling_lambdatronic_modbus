@@ -17,8 +17,8 @@
           "austragung": "Feed System",
           "puffer01": "Buffer 01",
           "zirkulationspumpe": "Circulation Pump",
-          "zweitkessel": "Second Boiler"
-        }
+          "zweitkessel": "Second Boiler",
+          "solarthermie": "Solar Thermal"
       }
     }
   },
@@ -209,6 +209,42 @@
       },
       "stunden_im_heizen": {
         "name": "Hours in Heating"
+      },
+      "kollektor_ruecklauftemperatur": {
+        "name": "Collector Return Temperature"
+      },
+      "kollektor_vorlauftemperatur": {
+        "name": "Collector Flow Temperature"
+      },
+      "Kollektortemperatur": {
+        "name": "Collector Temperature"
+      },
+      "Solarfuehler_Puffer_oben": {
+        "name": "Solar Sensor Buffer Top"
+      },
+      "Solarfuehler_Puffer_unten": {
+        "name": "Solar Sensor Buffer Bottom"
+      },
+      "Laufzeit_Kollektorpumpe": {
+        "name": "Collector Pump Running Time"
+      },
+      "Aktuelle_Leistung_des_Solar_WMZ": {
+        "name": "Current Power of the Solar WMZ"
+      },
+      "Ansteuerung_Kollektorpumpe": {
+        "name": "Collector Pump Control"
+      },
+      "Aktuelle_Ansteuerung_der_Kollektor_Boiler_Pumpe": {
+        "name": "Current Control of the Collector-Boiler Pump"
+      },
+      "Solarthermie_DFL_Sensor": {
+        "name": "Solar Thermal DFL Sensor"
+      },
+      "Solarthermie_Tagesertrag": {
+        "name": "Solar Thermal Daily Yield"
+      },
+      "Solarthermie_Gesamtertrag": {
+        "name": "Solar Thermal Total Yield"
       }
     },
     "number": {
@@ -286,6 +322,15 @@
       },
       "einschaltverzoegerung_zweitkessel": {
         "name": "Second Boiler Startup Delay"
+      },
+      "maximale_puffertemperatur_unten_bei_solarladung": {
+        "name": "Maximum Buffer Temperature Below When Solar Charging"
+      },
+      "kollektor_einschalt_differenz": {
+        "name": "Collector Startup Difference"
+      },
+      "kollektor_ausschalt_differenz": {
+        "name": "Collector Shutdown Difference"
       }
     },
     "binary_sensor": {

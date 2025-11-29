@@ -61,7 +61,13 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 FroelingNumber(hass, translations, data, controller, "Minimale_Laufzeit_Zweitkessel", 40505, "min", 60, 0, 0, 500),
                 FroelingNumber(hass, translations, data, controller, "Einschaltverzoegerung_Zweitkessel", 40502, "min", 60, 0, 0, 500),
             ])
-
+        if data.get('solarthermie', False):
+            numbers.extend([
+                FroelingNumber(hass, translations, data, controller, "Maximale_Puffertemperatur_unten_bei_Solarladung", 42603, "°C", 2, 0, 0, 90),
+                FroelingNumber(hass, translations, data, controller, "Kollektor_Einschalt_Differenz", 42601, "°C", 2, 0, 0, 50),
+                FroelingNumber(hass, translations, data, controller, "Kollektor_Ausschalt_Differenz", 42602, "°C", 2, 0, 0, 50),
+            ])
+            
         return numbers
 
     numbers = create_numbers()

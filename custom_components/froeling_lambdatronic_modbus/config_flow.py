@@ -24,6 +24,7 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 vol.Optional("austragung", default=True): bool,
                 vol.Optional("puffer01", default=True): bool,
                 vol.Optional("zirkulationspumpe", default=True): bool,
-                vol.Optional("zweitkessel", default=True): bool
+                vol.Optional("zweitkessel", default=True): bool,
+                vol.Optional("solarthermie", default=True): bool
             })
         )

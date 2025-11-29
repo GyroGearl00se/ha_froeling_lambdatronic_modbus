@@ -17,7 +17,8 @@
           "austragung": "Austragung",
           "puffer01": "Puffer 01",
           "zirkulationspumpe": "Zirkulationspumpe",
-          "zweitkessel": "Zweitkessel"
+          "zweitkessel": "Zweitkessel",
+          "solarthermie": "Solarthermie"
         }
       }
     }
@@ -209,6 +210,42 @@
       },
       "stunden_im_heizen": {
         "name": "Stunden im Heizen"
+      },
+      "kollektor_ruecklauftemperatur": {
+        "name": "Kollektor Rücklauftemperatur"
+      },
+      "kollektor_vorlauftemperatur": {
+        "name": "Kollektor Vorlauftemperatur"
+      },
+      "Kollektortemperatur": {
+        "name": "Kollektortemperatur"
+      },
+      "Solarfuehler_Puffer_oben": {
+        "name": "Solarfühler Puffer oben"
+      },
+      "Solarfuehler_Puffer_unten": {
+        "name": "Solarfühler Puffer unten"
+      },
+      "Laufzeit_Kollektorpumpe": {
+        "name": "Laufzeit Kollektorpumpe"
+      },
+      "Aktuelle_Leistung_des_Solar_WMZ": {
+        "name": "Aktuelle Leistung des Solar WMZ"
+      },
+      "Ansteuerung_Kollektorpumpe": {
+        "name": "Ansteuerung Kollektorpumpe"
+      },
+      "Aktuelle_Ansteuerung_der_Kollektor_Boiler_Pumpe": {
+        "name": "Aktuelle Ansteuerung der Kollektor-Boiler Pumpe"
+      },
+      "Solarthermie_DFL_Sensor": {
+        "name": "Solarthermie DFL Sensor"
+      },
+      "Solarthermie_Tagesertrag": {
+        "name": "Solarthermie Tagesertrag"
+      },
+      "Solarthermie_Gesamtertrag": {
+        "name": "Solarthermie Gesamtertrag"
       }
     },
     "number": {
@@ -286,6 +323,15 @@
       },
       "einschaltverzoegerung_zweitkessel": {
         "name": "Einschaltverzögerung des Zweitkessel"
+      },
+      "maximale_puffertemperatur_unten_bei_solarladung": {
+        "name": "Maximale Puffertemperatur unten bei Solarladung"
+      },
+      "kollektor_einschalt_differenz": {
+        "name": "Kollektor Einschalt-Differenz"
+      },
+      "kollektor_ausschalt_differenz": {
+        "name": "Kollektor Ausschalt-Differenz"
       }
     },
     "binary_sensor": {
