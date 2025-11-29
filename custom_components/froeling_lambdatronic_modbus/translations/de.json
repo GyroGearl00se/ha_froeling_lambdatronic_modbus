@@ -217,34 +217,34 @@
       "kollektor_vorlauftemperatur": {
         "name": "Kollektor Vorlauftemperatur"
       },
-      "Kollektortemperatur": {
+      "kollektortemperatur": {
         "name": "Kollektortemperatur"
       },
-      "Solarfuehler_Puffer_oben": {
+      "solarfuehler_puffer_oben": {
         "name": "Solarfühler Puffer oben"
       },
-      "Solarfuehler_Puffer_unten": {
+      "solarfuehler_puffer_unten": {
         "name": "Solarfühler Puffer unten"
       },
-      "Laufzeit_Kollektorpumpe": {
+      "laufzeit_kollektorpumpe": {
         "name": "Laufzeit Kollektorpumpe"
       },
-      "Aktuelle_Leistung_des_Solar_WMZ": {
+      "aktuelle_leistung_des_solar_wmz": {
         "name": "Aktuelle Leistung des Solar WMZ"
       },
-      "Ansteuerung_Kollektorpumpe": {
+      "ansteuerung_kollektorpumpe": {
         "name": "Ansteuerung Kollektorpumpe"
       },
-      "Aktuelle_Ansteuerung_der_Kollektor_Boiler_Pumpe": {
+      "aktuelle_ansteuerung_der_kollektor_boiler_pumpe": {
         "name": "Aktuelle Ansteuerung der Kollektor-Boiler Pumpe"
       },
-      "Solarthermie_DFL_Sensor": {
+      "solarthermie_dfl_sensor": {
         "name": "Solarthermie DFL Sensor"
       },
-      "Solarthermie_Tagesertrag": {
+      "solarthermie_tagesertrag": {
         "name": "Solarthermie Tagesertrag"
       },
-      "Solarthermie_Gesamtertrag": {
+      "solarthermie_gesamtertrag": {
         "name": "Solarthermie Gesamtertrag"
       }
     },
