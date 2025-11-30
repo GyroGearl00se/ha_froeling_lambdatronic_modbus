@@ -36,6 +36,9 @@ Use a Serial-to-Ethernet converter between the boiler’s COM2 and your network.
 
 Other Serial-to-Ethernet converters should also work.
 
+If you're looking for a way to power your Serial Ethernet converter directly from your Fröling board, check this out:
+[Power Supply](docs/power_supply.md)
+
 ---
 
 ## 📦 Installation
