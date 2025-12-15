@@ -12,8 +12,8 @@
           "kessel": "Boiler",
           "fehlerpuffer": "Error Buffer",
           "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
-          "hk01": "Heating Circuit 01",
-          "hk02": "Heating Circuit 02",
+          "hk1": "Heating Circuit 01",
+          "hk2": "Heating Circuit 02",
           "austragung": "Feed System",
           "puffer01": "Buffer 01",
           "zirkulationspumpe": "Circulation Pump",
@@ -73,17 +73,17 @@
       "betriebsstunden_in_der_feuererhaltung": {
         "name": "Operating Hours in Fire Maintenance"
       },
-      "hk01_vorlauf_isttemperatur": {
-        "name": "HK01 Flow Actual Temperature"
+      "hk1_vorlauf_isttemperatur": {
+        "name": "hk1 Flow Actual Temperature"
       },
-      "hk01_vorlauf_solltemperatur": {
-        "name": "HK01 Flow Target Temperature"
+      "hk1_vorlauf_solltemperatur": {
+        "name": "hk1 Flow Target Temperature"
       },
-      "hk02_vorlauf_isttemperatur": {
-        "name": "HK02 Flow Actual Temperature"
+      "hk2_vorlauf_isttemperatur": {
+        "name": "hk2 Flow Actual Temperature"
       },
-      "hk02_vorlauf_solltemperatur": {
-        "name": "HK02 Flow Target Temperature"
+      "hk2_vorlauf_solltemperatur": {
+        "name": "hk2 Flow Target Temperature"
       },
       "puffer_1_temperatur_oben": {
         "name": "Buffer 1 Top Temperature"
@@ -93,6 +93,12 @@
       },
       "puffer_1_temperatur_unten": {
         "name": "Buffer 1 Bottom Temperature"
+      },
+      "puffer_1_temperatur_fuehler_2": {
+        "name": "Buffer 1 Temperature Sensor 2"
+      },
+      "puffer_1_temperatur_fuehler_3": {
+        "name": "Buffer 1 Temperature Sensor 3"
       },
       "puffer_1_pufferpumpen_ansteuerung": {
         "name": "Buffer 1 Pump Control"
@@ -336,10 +342,10 @@
     },
     "binary_sensor": {
       "hk1_pumpe_an_aus": {
-        "name": "HK01 Pump ON/OFF"
+        "name": "hk1 Pump ON/OFF"
       },
       "hk2_pumpe_an_aus": {
-        "name": "HK02 Pump ON/OFF"
+        "name": "hk2 Pump ON/OFF"
       },
       "puffer_1_pufferpumpe_an_aus": {
         "name": "Buffer 1 Pump ON/OFF"
@@ -352,11 +358,11 @@
       }
     },
     "select": {
-      "hk01_betriebsart": {
-        "name": "HK01 Operating Mode"
+      "hk1_betriebsart": {
+        "name": "hk1 Operating Mode"
       },
-      "hk02_betriebsart": {
-        "name": "HK02 Operating Mode"
+      "hk2_betriebsart": {
+        "name": "hk2 Operating Mode"
       }
     }
   }

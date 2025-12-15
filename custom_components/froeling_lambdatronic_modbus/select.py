@@ -1,138 +1,100 @@
-from homeassistant.components.select import SelectEntity
+"""Select entity for Fröling Lambdatronic Modbus."""
+
 import logging
-from datetime import timedelta
-from homeassistant.helpers.event import async_track_time_interval
+from typing import Any
+
+from homeassistant.components.select import SelectEntity
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.helpers.translation import async_get_translations
+
 from .const import DOMAIN
-from .modbus_controller import ModbusController
+from .coordinator import FroelingDataUpdateCoordinator
+from .entity_definitions import ENTITY_DEFINITIONS
 
 _LOGGER = logging.getLogger(__name__)
 
 
-async def async_setup_entry(hass, config_entry, async_add_entities):
-    ent = hass.data[DOMAIN][config_entry.entry_id]
-    data = ent["config"]
-    controller: ModbusController = ent["controller"]
+async def async_setup_entry(hass: HomeAssistant, config_entry, async_add_entities):
+    """Set up the select platform."""
+    entry = hass.data[DOMAIN][config_entry.entry_id]
+    coordinator: FroelingDataUpdateCoordinator = entry["coordinator"]
+    config = entry["config"]
+
+    enabled_entities = config.get("entities", {})
     translations = await async_get_translations(hass, hass.config.language, "entity")
 
-    def create_selects():
-        selects: list[FroelingSelect] = []
+    selects = []
+    for category, entities in enabled_entities.items():
+        if category in ENTITY_DEFINITIONS:
+            for entity_id in entities:
+                if entity_id in ENTITY_DEFINITIONS[category]:
+                    definition = ENTITY_DEFINITIONS[category][entity_id]
+                    if definition.get("type") == "select":
+                        selects.append(
+                            FroelingSelect(coordinator, config, entity_id, translations)
+                        )
 
-        if data.get('hk01', False):
-            selects.extend([
-                FroelingSelect(hass,translations,data,controller,"HK01_Betriebsart",48047,OPERATINGMODES,min_value=0,max_value=5)
-            ])
-        if data.get('hk02', False):
-            selects.extend([
-                FroelingSelect(hass,translations,data,controller,"HK02_Betriebsart",48048,OPERATINGMODES,min_value=0,max_value=5)
-            ])
-        return selects
-
-    selects = create_selects()
     async_add_entities(selects)
-    update_interval = timedelta(seconds=data.get('update_interval', 60))
-    for select in selects:
-        async_track_time_interval(hass, select.async_update, update_interval)
-
-OPERATINGMODES = [
-    "Aus",
-    "Automatik",
-    "Extraheizen",
-    "Absenken",
-    "Dauerabsenken",
-    "Partybetrieb",
-]
 
 
-class FroelingSelect(SelectEntity):
-    def __init__(self, hass, translations, data, controller: ModbusController, entity_id: str, register: int, options: list[str], min_value: int = 0, max_value: int | None = None):
-        self._hass = hass
-        self._translations = translations
-        self._controller = controller
-        self._device_name = data['name']
+class FroelingSelect(CoordinatorEntity[FroelingDataUpdateCoordinator], SelectEntity):
+    """A Fröling select entity that fetches data from the coordinator."""
+
+    def __init__(
+        self,
+        coordinator: FroelingDataUpdateCoordinator,
+        config: dict[str, Any],
+        entity_id: str,
+        translations: dict[str, Any],
+    ):
+        """Initialize the select entity."""
+        super().__init__(coordinator)
         self._entity_id = entity_id
-        self._register = register
-        self._options = options
-        self._min_value = min_value
-        self._max_value = max_value if max_value is not None else len(options) - 1
-        self._current_index: int | None = None
+        self._device_name = config["name"]
+        self.entity_definition = coordinator._entity_definitions[entity_id]
 
-    @property
-    def unique_id(self):
-        return f"{self._device_name}_{self._entity_id}"
-
-    @property
-    def name(self):
-        translated_name = self._translations.get(
+        self._attr_unique_id = f"{self._device_name}_{self._entity_id}"
+        
+        translated_name = translations.get(
             f"component.froeling_lambdatronic_modbus.entity.select.{self._entity_id}.name",
-            self._entity_id,
+            self._entity_id.replace("_", " ").title(),
         )
-        return f"{self._device_name} {translated_name}"
-
-    @property
-    def options(self) -> list[str]:
-        return self._options
+        self._attr_name = f"{self._device_name} {translated_name}"
+        self._attr_options = self.entity_definition.get("options", [])
 
     @property
     def current_option(self) -> str | None:
-        if self._current_index is None:
-            return None
-        if 0 <= self._current_index < len(self._options):
-            return self._options[self._current_index]
+        """Return the currently selected option."""
+        index = self.coordinator.data.get(self._entity_id)
+        if index is not None and 0 <= index < len(self.options):
+            return self.options[index]
         return None
 
-    @property
-    def device_info(self):
-        return {
-            "identifiers": {(DOMAIN, self._device_name)},
-            "name": self._device_name,
-            "manufacturer": "Froeling",
-            "model": "Lambdatronic Modbus",
-            "sw_version": "1.0",
-        }
-
     async def async_select_option(self, option: str) -> None:
-        if option not in self._options:
-            _LOGGER.error("Invalid option selected: %s", option)
-            return
-        value = self._options.index(option)
-        if value < self._min_value or value > self._max_value:
-            _LOGGER.error("Selected option index %s is out of allowed range [%s, %s]", value, self._min_value, self._max_value)
+        """Change the selected option."""
+        if option not in self.options:
+            _LOGGER.warning("Selected option '%s' is not valid", option)
             return
 
-        ok = await self._controller.async_write_register(self._register - 40001, value)
-        if not ok:
-            _LOGGER.error("Exception during Modbus communication (write select) for register %s", self._register - 40001)
-            return
-        self._current_index = value
+        index = self.options.index(option)
+        register = self.entity_definition.get("register")
 
-    async def async_update(self, _=None):
-        result = await self._controller.async_read_holding_registers(self._register - 40001, count=1)
-        if result is None:
-            _LOGGER.debug("Modbus holding read returned None (connect failure) for register %s", self._register - 40001)
-            self._current_index = None
+        if register is None:
+            _LOGGER.error("No register defined for %s", self.entity_id)
             return
-        try:
-            if result.isError():
-                _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
-                self._current_index = None
-                return
-            raw_value = result.registers[0]
-            if raw_value < self._min_value or raw_value > self._max_value:
-                _LOGGER.warning(
-                    "Read out-of-range value %s from register %s (allowed [%s,%s])",
-                    raw_value,
-                    self._register - 40001,
-                    self._min_value,
-                    self._max_value,
-                )
-                return
-            self._current_index = raw_value
-            _LOGGER.debug(
-                "processed Modbus holding register %s: raw_value=%s, current_option=%s",
-                self._register - 40001,
-                raw_value,
-                self.current_option,
-            )
-        except Exception as e:
-            _LOGGER.debug("Exception processing Modbus holding result for select: %s", e)
+
+        await self.coordinator.controller.async_write_register(register - 40001, index)
+        await self.coordinator.async_request_refresh()
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Return the device info."""
+        return DeviceInfo(
+            identifiers={(DOMAIN, self._device_name)},
+            name=self._device_name,
+            manufacturer="Froeling",
+            model="Lambdatronic Modbus",
+            sw_version="1.0",
+        )

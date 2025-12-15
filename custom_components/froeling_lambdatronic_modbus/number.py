@@ -1,187 +1,114 @@
-from homeassistant.components.number import NumberEntity, NumberMode
+"""Number entity for Fröling Lambdatronic Modbus."""
+
 import logging
-from datetime import timedelta
-from homeassistant.helpers.event import async_track_time_interval
+from typing import Any
+
+from homeassistant.components.number import NumberEntity, NumberMode
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.helpers.translation import async_get_translations
+
 from .const import DOMAIN
-from .modbus_controller import ModbusController
+from .coordinator import FroelingDataUpdateCoordinator
+from .entity_definitions import ENTITY_DEFINITIONS
 
 _LOGGER = logging.getLogger(__name__)
 
 
-async def async_setup_entry(hass, config_entry, async_add_entities):
-    ent = hass.data[DOMAIN][config_entry.entry_id]
-    data = ent["config"]
-    controller: ModbusController = ent["controller"]
+async def async_setup_entry(hass: HomeAssistant, config_entry, async_add_entities):
+    """Set up the number platform."""
+    entry = hass.data[DOMAIN][config_entry.entry_id]
+    coordinator: FroelingDataUpdateCoordinator = entry["coordinator"]
+    config = entry["config"]
+
+    enabled_entities = config.get("entities", {})
     translations = await async_get_translations(hass, hass.config.language, "entity")
 
-    def create_numbers():
-        numbers = []
+    numbers = []
+    for category, entities in enabled_entities.items():
+        if category in ENTITY_DEFINITIONS:
+            for entity_id in entities:
+                if entity_id in ENTITY_DEFINITIONS[category]:
+                    definition = ENTITY_DEFINITIONS[category][entity_id]
+                    if definition.get("type") == "number":
+                        numbers.append(
+                            FroelingNumber(coordinator, config, entity_id, translations)
+                        )
 
-        if data.get('kessel', False):
-            numbers.extend([
-                FroelingNumber(hass, translations, data, controller, "Kessel_Solltemperatur", 40001, "°C", 2, 0, 70, 90),
-                FroelingNumber(hass, translations, data, controller, "Bei_welcher_RL_Temperatur_an_der_Zirkulationsleitung_soll_die_Pumpe_ausschalten", 40601, "°C", 2, 0, 20, 120)
-            ])
-        if data.get('hk01', False):
-            numbers.extend([
-                FroelingNumber(hass, translations, data, controller, "HK1_Vorlauf_Temperatur_10C_Aussentemperatur", 41032, "°C", 2, 0, 10, 110),
-                FroelingNumber(hass, translations, data, controller, "HK1_Vorlauf_Temperatur_minus_10C_Aussentemperatur", 41033, "°C", 2, 0, 10, 110),
-                FroelingNumber(hass, translations, data, controller, "HK1_Heizkreispumpe_ausschalten_wenn_Vorlauf_Soll_kleiner_ist_als", 41040, "°C", 2, 0, 10, 30),
-                FroelingNumber(hass, translations, data, controller, "HK1_Absenkung_der_Vorlauftemperatur_im_Absenkbetrieb", 41034, "°C", 2, 0, 0, 70),
-                FroelingNumber(hass, translations, data, controller, "HK1_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Heizbetrieb_einschaltet", 41037, "°C", 2, 0, -20, 50),
-                FroelingNumber(hass, translations, data, controller, "HK1_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Absenkbetrieb_einschaltet", 41038, "°C", 2, 0, -20, 50),
-                FroelingNumber(hass, translations, data, controller, "HK1_Frostschutztemperatur", 41039, "°C", 2, 0, 10, 20),
-                FroelingNumber(hass, translations, data, controller, "HK1_Temp_am_Puffer_oben_ab_der_der_Ueberhitzungsschutz_aktiv_wird", 41048, "°C", 1, 0, 60, 120)
-            ])
-        if data.get('hk02', False):
-            numbers.extend([
-                FroelingNumber(hass, translations, data, controller, "HK2_Vorlauf_Temperatur_10C_Aussentemperatur", 41062, "°C", 2, 0, 10, 110),
-                FroelingNumber(hass, translations, data, controller, "HK2_Vorlauf_Temperatur_minus_10C_Aussentemperatur", 41063, "°C", 2, 0, 10, 110),
-                FroelingNumber(hass, translations, data, controller, "HK2_Heizkreispumpe_ausschalten_wenn_Vorlauf_Soll_kleiner_ist_als", 41070, "°C", 2, 0, 10, 30),
-                FroelingNumber(hass, translations, data, controller, "HK2_Absenkung_der_Vorlauftemperatur_im_Absenkbetrieb", 41064, "°C", 2, 0, 0, 70),
-                FroelingNumber(hass, translations, data, controller, "HK2_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Heizbetrieb_einschaltet", 41067, "°C", 2, 0, -20, 50),
-                FroelingNumber(hass, translations, data, controller, "HK2_Aussentemperatur_unter_der_die_Heizkreispumpe_im_Absenkbetrieb_einschaltet", 41068, "°C", 2, 0, -20, 50),
-                FroelingNumber(hass, translations, data, controller, "HK2_Frostschutztemperatur", 41069, "°C", 2, 0, -10, 20),
-                FroelingNumber(hass, translations, data, controller, "HK2_Temp_am_Puffer_oben_ab_der_der_Ueberhitzungsschutz_aktiv_wird", 41079, "°C", 1, 0, 60, 120)
-            ])
-        if data.get('boiler01', False):
-            numbers.extend([
-                FroelingNumber(hass, translations, data, controller, "Boiler_1_Gewuenschte_Boilertemperatur", 41632, "°C", 2, 0, 10, 100),
-                FroelingNumber(hass, translations, data, controller, "Boiler_1_Nachladen_wenn_Boilertemperatur_unter", 41633, "°C", 2, 0, 1, 90)
-            ])
-        if data.get('austragung', False):
-            numbers.extend([
-                FroelingNumber(hass, translations, data, controller, "Pelletlager_Restbestand", 40320, "t", 10, 1, 0, 100)
-            ])
-        if data.get('zweitkessel', False):
-            numbers.extend([
-                FroelingNumber(hass, translations, data, controller, "Minimaltemperatur_Zweitkessel", 40507, "°C", 2, 0, 20, 95),
-                FroelingNumber(hass, translations, data, controller, "Temperaturdifferenz_Zweitkessel_Puffer", 40508, "°C", 2, 0, 0, 50),
-                FroelingNumber(hass, translations, data, controller, "Minimale_Laufzeit_Zweitkessel", 40505, "min", 60, 0, 0, 500),
-                FroelingNumber(hass, translations, data, controller, "Einschaltverzoegerung_Zweitkessel", 40502, "min", 60, 0, 0, 500),
-            ])
-        if data.get('solarthermie', False):
-            numbers.extend([
-                FroelingNumber(hass, translations, data, controller, "Maximale_Puffertemperatur_unten_bei_Solarladung", 42603, "°C", 2, 0, 0, 90),
-                FroelingNumber(hass, translations, data, controller, "Kollektor_Einschalt_Differenz", 42601, "°C", 2, 0, 0, 50),
-                FroelingNumber(hass, translations, data, controller, "Kollektor_Ausschalt_Differenz", 42602, "°C", 2, 0, 0, 50),
-            ])
-            
-        return numbers
-
-    numbers = create_numbers()
     async_add_entities(numbers)
-    update_interval = timedelta(seconds=data.get('update_interval', 60))
-    for number in numbers:
-        async_track_time_interval(hass, number.async_update, update_interval)
 
-class FroelingNumber(NumberEntity):
-    def __init__(self, hass, translations, data, controller: ModbusController, entity_id, register, unit, scaling_factor, decimal_places=0, min_value=0, max_value=0, mode: NumberMode | None = None, step: float | None = None):
-        self._hass = hass
-        self._translations = translations
-        self._controller = controller
-        self._device_name = data['name']
+
+class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEntity):
+    """A Fröling number entity that fetches data from the coordinator."""
+
+    def __init__(
+        self,
+        coordinator: FroelingDataUpdateCoordinator,
+        config: dict[str, Any],
+        entity_id: str,
+        translations: dict[str, Any],
+    ):
+        """Initialize the number entity."""
+        super().__init__(coordinator)
         self._entity_id = entity_id
-        self._register = register
-        self._unit = unit
-        self._scaling_factor = scaling_factor
-        self._decimal_places = decimal_places
-        self._min_value = min_value
-        self._max_value = max_value
-        self._value = None
-        self._mode = mode
-        self._native_step_override = step
+        self._device_name = config["name"]
+        self.entity_definition = coordinator._entity_definitions[entity_id]
 
-    @staticmethod
-    def _to_uint16_from_signed(value: int) -> int:
-        if value < -32768:
-            value = -32768
-        elif value > 32767:
-            value = 32767
-        return value & 0xFFFF
+        self._attr_unique_id = f"{self._device_name}_{self._entity_id}"
+        
+        translated_name = translations.get(
+            f"component.froeling_lambdatronic_modbus.entity.number.{self._entity_id}.name",
+            self._entity_id.replace("_", " ").title(),
+        )
+        self._attr_name = f"{self._device_name} {translated_name}"
 
-    @staticmethod
-    def _from_uint16_to_signed(value: int) -> int:
-        return value - 0x10000 if value >= 0x8000 else value
+        self._attr_native_unit_of_measurement = self.entity_definition.get("unit")
+        self._attr_native_min_value = self.entity_definition.get("min", 0)
+        self._attr_native_max_value = self.entity_definition.get("max", 100)
+        self._attr_mode = self.entity_definition.get("mode", NumberMode.BOX)
 
-    @property
-    def unique_id(self):
-        return f"{self._device_name}_{self._entity_id}"
+        scaling = self.entity_definition.get("scaling", 1)
+        if scaling != 0:
+            self._attr_native_step = 1.0 / scaling
+        else:
+            self._attr_native_step = 1.0
 
     @property
-    def name(self):
-        translated_name = self._translations.get(f"component.froeling_lambdatronic_modbus.entity.number.{self._entity_id}.name", self._entity_id)
-        return f"{self._device_name} {translated_name}"
-
-    @property
-    def native_value(self):
-        return self._value
-
-    @property
-    def native_unit_of_measurement(self):
-        return self._unit
-
-    @property
-    def native_step(self):
-        if self._native_step_override is not None:
-            return self._native_step_override
-        if self._decimal_places and self._decimal_places > 0:
-            try:
-                return 1 / float(self._scaling_factor)
-            except Exception:
-                return 1.0
-        return 1.0
-
-    @property
-    def mode(self) -> NumberMode:
-        return self._mode or NumberMode.BOX
-
-    @property
-    def suggested_display_precision(self) -> int:
-        return int(self._decimal_places or 0)
-
-    @property
-    def native_min_value(self):
-        return self._min_value
-
-    @property
-    def native_max_value(self):
-        return self._max_value
-
-    @property
-    def device_info(self):
-        return {
-            "identifiers": {(DOMAIN, self._device_name)},
-            "name": self._device_name,
-            "manufacturer": "Froeling",
-            "model": "Lambdatronic Modbus",
-            "sw_version": "1.0",
-        }
-
-    async def async_set_native_value(self, value):
-        scaled_value = int(round(value * self._scaling_factor))
-        reg_value = self._to_uint16_from_signed(scaled_value)
-        ok = await self._controller.async_write_register(self._register - 40001, reg_value)
-        if not ok:
-            _LOGGER.debug("Failed to write register %s", self._register - 40001)
-            return
-        self._value = value
-
-    async def async_update(self, _=None):
-        result = await self._controller.async_read_holding_registers(self._register - 40001, count=1)
-        if result is None:
-            _LOGGER.debug("Modbus holding read returned None (connect failure) for register %s", self._register - 40001)
-            self._value = None
-            return
+    def native_value(self) -> float | None:
+        """Return the state of the sensor."""
+        value = self.coordinator.data.get(self._entity_id)
+        if value is None:
+            return None
         try:
-            if result.isError():
-                _LOGGER.error("Error reading Modbus holding register %s", self._register - 40001)
-                self._value = None
-                return
-            raw_uint16 = result.registers[0]
-            signed_value = self._from_uint16_to_signed(raw_uint16)
-            self._value = round(signed_value / self._scaling_factor, self._decimal_places)
-            _LOGGER.debug("processed Modbus holding register %s: raw=%s signed=%s scaled=%s", self._register - 40001, raw_uint16, signed_value, self._value)
-        except Exception as e:
-            _LOGGER.debug("Exception processing Modbus holding result: %s", e)
+            return float(value)
+        except (ValueError, TypeError):
+            return None
+
+    async def async_set_native_value(self, value: float) -> None:
+        """Update the current value."""
+        scaling_factor = self.entity_definition.get("scaling", 1)
+        register = self.entity_definition.get("register")
+
+        if scaling_factor == 0 or register is None:
+            _LOGGER.error("Invalid entity definition for %s", self.entity_id)
+            return
+
+        scaled_value = int(round(value * scaling_factor))
+        
+        await self.coordinator.controller.async_write_register(
+            register - 40001, scaled_value
+        )
+        await self.coordinator.async_request_refresh()
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Return the device info."""
+        return DeviceInfo(
+            identifiers={(DOMAIN, self._device_name)},
+            name=self._device_name,
+            manufacturer="Froeling",
+            model="Lambdatronic Modbus",
+            sw_version="1.0",
+        )
+

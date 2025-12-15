@@ -12,8 +12,8 @@
           "kessel": "Kessel",
           "fehlerpuffer": "Fehlerpuffer",
           "boiler01": "Boiler 01",
-          "hk01": "Heizkreis 01",
-          "hk02": "Heizkreis 02",
+          "hk1": "Heizkreis 01",
+          "hk2": "Heizkreis 02",
           "austragung": "Austragung",
           "puffer01": "Puffer 01",
           "zirkulationspumpe": "Zirkulationspumpe",
@@ -73,17 +73,17 @@
       "betriebsstunden_in_der_feuererhaltung": {
         "name": "Betriebsstunden in der Feuererhaltung"
       },
-      "hk01_vorlauf_isttemperatur": {
-        "name": "HK01 - Vorlauf-Isttemperatur"
+      "hk1_vorlauf_isttemperatur": {
+        "name": "hk1 - Vorlauf-Isttemperatur"
       },
-      "hk01_vorlauf_solltemperatur": {
-        "name": "HK01 - Vorlauf-Solltemperatur"
+      "hk1_vorlauf_solltemperatur": {
+        "name": "hk1 - Vorlauf-Solltemperatur"
       },
-      "hk02_vorlauf_isttemperatur": {
-        "name": "HK02 - Vorlauf-Isttemperatur"
+      "hk2_vorlauf_isttemperatur": {
+        "name": "hk2 - Vorlauf-Isttemperatur"
       },
-      "hk02_vorlauf_solltemperatur": {
-        "name": "HK02 - Vorlauf-Solltemperatur"
+      "hk2_vorlauf_solltemperatur": {
+        "name": "hk2 - Vorlauf-Solltemperatur"
       },
       "puffer_1_temperatur_oben": {
         "name": "Puffer 1 Temperatur oben"
@@ -93,6 +93,12 @@
       },
       "puffer_1_temperatur_unten": {
         "name": "Puffer 1 Temperatur unten"
+      },
+      "puffer_1_temperatur_fuehler_2": {
+        "name": "Puffer 1 Temperatur Fühler 2"
+      },
+      "puffer_1_temperatur_fuehler_3": {
+        "name": "Puffer 1 Temperatur Fühler 3"
       },
       "puffer_1_pufferpumpen_ansteuerung": {
         "name": "Puffer 1 Pufferpumpen Ansteuerung"
@@ -336,10 +342,10 @@
     },
     "binary_sensor": {
       "hk1_pumpe_an_aus": {
-        "name": "HK01 Pumpe AN/AUS"
+        "name": "hk1 Pumpe AN/AUS"
       },
       "hk2_pumpe_an_aus": {
-        "name": "HK02 Pumpe AN/AUS"
+        "name": "hk2 Pumpe AN/AUS"
       },
       "puffer_1_pufferpumpe_an_aus": {
         "name": "Puffer 1 Pumpe AN/AUS"
@@ -352,11 +358,11 @@
       }
     },
     "select": {
-      "hk01_betriebsart": {
-        "name": "HK01 Betriebsart"
+      "hk1_betriebsart": {
+        "name": "hk1 Betriebsart"
       },
-      "hk02_betriebsart": {
-        "name": "HK02 Betriebsart"
+      "hk2_betriebsart": {
+        "name": "hk2 Betriebsart"
       }
     }
   }
