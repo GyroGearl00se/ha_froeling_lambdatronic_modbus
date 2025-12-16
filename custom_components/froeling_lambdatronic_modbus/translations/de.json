@@ -74,16 +74,16 @@
         "name": "Betriebsstunden in der Feuererhaltung"
       },
       "hk1_vorlauf_isttemperatur": {
-        "name": "hk1 - Vorlauf-Isttemperatur"
+        "name": "HK1 - Vorlauf-Isttemperatur"
       },
       "hk1_vorlauf_solltemperatur": {
-        "name": "hk1 - Vorlauf-Solltemperatur"
+        "name": "HK1 - Vorlauf-Solltemperatur"
       },
       "hk2_vorlauf_isttemperatur": {
-        "name": "hk2 - Vorlauf-Isttemperatur"
+        "name": "HK2 - Vorlauf-Isttemperatur"
       },
       "hk2_vorlauf_solltemperatur": {
-        "name": "hk2 - Vorlauf-Solltemperatur"
+        "name": "HK2 - Vorlauf-Solltemperatur"
       },
       "puffer_1_temperatur_oben": {
         "name": "Puffer 1 Temperatur oben"
@@ -342,10 +342,10 @@
     },
     "binary_sensor": {
       "hk1_pumpe_an_aus": {
-        "name": "hk1 Pumpe AN/AUS"
+        "name": "HK1 Pumpe AN/AUS"
       },
       "hk2_pumpe_an_aus": {
-        "name": "hk2 Pumpe AN/AUS"
+        "name": "HK2 Pumpe AN/AUS"
       },
       "puffer_1_pufferpumpe_an_aus": {
         "name": "Puffer 1 Pumpe AN/AUS"
@@ -359,10 +359,10 @@
     },
     "select": {
       "hk1_betriebsart": {
-        "name": "hk1 Betriebsart"
+        "name": "HK1 Betriebsart"
       },
       "hk2_betriebsart": {
-        "name": "hk2 Betriebsart"
+        "name": "HK2 Betriebsart"
       }
     }
   }

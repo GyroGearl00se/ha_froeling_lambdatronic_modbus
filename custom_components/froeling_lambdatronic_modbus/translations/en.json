@@ -74,16 +74,16 @@
         "name": "Operating Hours in Fire Maintenance"
       },
       "hk1_vorlauf_isttemperatur": {
-        "name": "hk1 Flow Actual Temperature"
+        "name": "HK1 Flow Actual Temperature"
       },
       "hk1_vorlauf_solltemperatur": {
-        "name": "hk1 Flow Target Temperature"
+        "name": "HK1 Flow Target Temperature"
       },
       "hk2_vorlauf_isttemperatur": {
-        "name": "hk2 Flow Actual Temperature"
+        "name": "HK2 Flow Actual Temperature"
       },
       "hk2_vorlauf_solltemperatur": {
-        "name": "hk2 Flow Target Temperature"
+        "name": "HK2 Flow Target Temperature"
       },
       "puffer_1_temperatur_oben": {
         "name": "Buffer 1 Top Temperature"
@@ -94,7 +94,7 @@
       "puffer_1_temperatur_unten": {
         "name": "Buffer 1 Bottom Temperature"
       },
-      "puffer_1_temperatur_fuehler_2": {
+            "puffer_1_temperatur_fuehler_2": {
         "name": "Buffer 1 Temperature Sensor 2"
       },
       "puffer_1_temperatur_fuehler_3": {
@@ -342,10 +342,10 @@
     },
     "binary_sensor": {
       "hk1_pumpe_an_aus": {
-        "name": "hk1 Pump ON/OFF"
+        "name": "HK1 Pump ON/OFF"
       },
       "hk2_pumpe_an_aus": {
-        "name": "hk2 Pump ON/OFF"
+        "name": "HK2 Pump ON/OFF"
       },
       "puffer_1_pufferpumpe_an_aus": {
         "name": "Buffer 1 Pump ON/OFF"
@@ -359,10 +359,10 @@
     },
     "select": {
       "hk1_betriebsart": {
-        "name": "hk1 Operating Mode"
+        "name": "HK1 Operating Mode"
       },
       "hk2_betriebsart": {
-        "name": "hk2 Operating Mode"
+        "name": "HK2 Operating Mode"
       }
     }
   }

@@ -680,7 +680,12 @@ ENTITY_DEFINITIONS = {
             "device_class": "temperature",
             "type": "sensor",
         },
-        "boiler_1_pumpe_ansteuerung": {"register": 31633, "unit": "%", "scaling": 1},
+        "boiler_1_pumpe_ansteuerung": {
+            "register": 31633,
+            "unit": "%",
+            "scaling": 1,
+            "type": "sensor",
+        },
         "boiler_1_pumpe_an_aus": {
             "register": 31633,
             "type": "binary_sensor_from_register",
@@ -1118,7 +1123,12 @@ ENTITY_DEFINITIONS = {
             "device_class": "temperature",
             "type": "sensor",
         },
-        "laufzeit_kollektorpumpe": {"register": 32603, "unit": "h", "scaling": 1},
+        "laufzeit_kollektorpumpe": {
+            "register": 32603,
+            "unit": "h",
+            "scaling": 1,
+            "type": "sensor",
+        },
         "aktuelle_leistung_des_solar_wmz": {
             "register": 32611,
             "unit": "kw",
@@ -1127,7 +1137,12 @@ ENTITY_DEFINITIONS = {
             "device_class": "power",
             "type": "sensor",
         },
-        "ansteuerung_kollektorpumpe": {"register": 32601, "unit": "%", "scaling": 1},
+        "ansteuerung_kollektorpumpe": {
+            "register": 32601,
+            "unit": "%",
+            "scaling": 1,
+            "type": "sensor",
+        },
         "aktuelle_ansteuerung_der_kollektor_boiler_pumpe": {
             "register": 32623,
             "unit": "%",
