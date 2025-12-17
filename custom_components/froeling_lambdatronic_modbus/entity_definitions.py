@@ -1131,7 +1131,7 @@ ENTITY_DEFINITIONS = {
         },
         "aktuelle_leistung_des_solar_wmz": {
             "register": 32611,
-            "unit": "kw",
+            "unit": "kW",
             "scaling": 100,
             "decimals": 2,
             "device_class": "power",
@@ -1151,21 +1151,21 @@ ENTITY_DEFINITIONS = {
         },
         "solarthermie_dfl_sensor": {
             "register": 32610,
-            "unit": "l/h",
+            "unit": "L/h",
             "scaling": 1,
             "device_class": "volume_flow_rate",
             "type": "sensor",
         },
         "solarthermie_tagesertrag": {
             "register": 32620,
-            "unit": "kwh",
+            "unit": "kWh",
             "scaling": 1,
             "device_class": "energy",
             "type": "sensor",
         },
         "solarthermie_gesamtertrag": {
             "register": 32622,
-            "unit": "kwh",
+            "unit": "kWh",
             "scaling": 1,
             "device_class": "energy",
             "type": "sensor",
