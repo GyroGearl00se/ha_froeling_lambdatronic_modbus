@@ -145,8 +145,60 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                     )
         return blocks
 
+    async def async_refresh_entity(self, entity_id: str) -> None:
+        """Fetch data for a single entity and update state."""
+        definition = self._entity_definitions.get(entity_id)
+        if not definition:
+            return
+
+        address = definition.get("register")
+        coil_address = definition.get("coil")
+
+        value = None
+        read_success = False
+
+        if coil_address is not None:
+            result = await self.controller.async_read_coils(coil_address, 1)
+            if result and not result.isError():
+                value = result.bits[0]
+                read_success = True
+        elif address is not None:
+            entity_type = definition.get("type")
+            reg_type = definition.get("register_type")
+
+            is_holding = (
+                entity_type in ("number", "select")
+                or (40001 <= address < 50000)
+                or reg_type == "holding"
+            )
+
+            if is_holding:
+                result = await self.controller.async_read_holding_registers(
+                    address - 40001, 1
+                )
+            else:
+                result = await self.controller.async_read_input_registers(
+                    address - 30001, 1
+                )
+
+            if result and not result.isError():
+                raw_value = result.registers[0]
+                value = self._process_raw_value(raw_value, definition)
+                read_success = True
+
+        if read_success:
+            if self.data is None:
+                self.data = {}
+            self.data[entity_id] = value
+            self.async_update_listeners()
+        else:
+            _LOGGER.debug("Failed to refresh entity %s", entity_id)
+
     async def _async_update_data(self) -> dict[str, Any]:
         """Fetch data from the device and process it."""
+        if not await self.controller.async_check_connection():
+            raise UpdateFailed("Could not connect to Modbus device")
+
         data = {}
 
         try:

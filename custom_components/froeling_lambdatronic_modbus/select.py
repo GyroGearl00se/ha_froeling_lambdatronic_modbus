@@ -86,7 +86,7 @@ class FroelingSelect(CoordinatorEntity[FroelingDataUpdateCoordinator], SelectEnt
             return
 
         await self.coordinator.controller.async_write_register(register - 40001, index)
-        await self.coordinator.async_request_refresh()
+        await self.coordinator.async_refresh_entity(self._entity_id)
 
     @property
     def device_info(self) -> DeviceInfo:
