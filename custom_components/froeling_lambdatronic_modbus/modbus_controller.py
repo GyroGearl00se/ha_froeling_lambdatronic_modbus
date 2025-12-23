@@ -16,7 +16,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class ModbusController:
-    """Async Modbus Controller using AsyncModbusTcpClient."""
+    """Async Modbus Controller to handle communication with the Fröling boiler."""
 
     def __init__(
         self,

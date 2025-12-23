@@ -29,7 +29,7 @@ MAPPINGS = {
 
 
 class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
-    """FroelingDataUpdateCoordinator."""
+    """Class to manage fetching data from the Fröling Modbus interface."""
 
     def __init__(
         self,
@@ -55,14 +55,13 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
     def _get_active_entity_definitions(self) -> dict[str, Any]:
         """Get definitions for only the enabled entities."""
-        active_definitions = {}
-        for category, entities in self._enabled_entities.items():
-            if category in ENTITY_DEFINITIONS:
-                for entity_id in entities:
-                    if entity_id in ENTITY_DEFINITIONS[category]:
-                        definition = ENTITY_DEFINITIONS[category][entity_id]
-                        active_definitions[entity_id] = definition
-        return active_definitions
+        return {
+            entity_id: ENTITY_DEFINITIONS[category][entity_id]
+            for category, entities in self._enabled_entities.items()
+            if category in ENTITY_DEFINITIONS
+            for entity_id in entities
+            if entity_id in ENTITY_DEFINITIONS[category]
+        }
 
     def _group_registers(
         self, max_gap: int = 5, block_size_limit: int = 122
@@ -203,7 +202,6 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
         try:
             for block_type, start_addr, count, entities_in_block in self._read_blocks:
-                # result = None
                 read_success = False
 
                 if block_type == "input":

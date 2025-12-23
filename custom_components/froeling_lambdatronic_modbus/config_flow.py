@@ -1,6 +1,7 @@
 """Fröling Lambdatronic Modbus Config Flow."""
 
 import logging
+from typing import Any
 
 import voluptuous as vol
 
@@ -27,16 +28,72 @@ MAPPINGS = {
 }
 
 
+async def _read_value_helper(
+    controller: ModbusController, definition: dict[str, Any]
+) -> Any:
+    """Read a value from the controller for preview purposes."""
+    try:
+        if "coil" in definition:
+            result = await controller.async_read_coils(definition["coil"], count=1)
+            if result and not result.isError():
+                return result.bits[0]
+        elif "register" in definition:
+            offset = (
+                40001
+                if definition.get("register_type") == "holding"
+                or definition.get("type") in ["number", "select"]
+                else 30001
+            )
+            read_method = (
+                controller.async_read_holding_registers
+                if offset == 40001
+                else controller.async_read_input_registers
+            )
+
+            result = await read_method(definition["register"] - offset, count=1)
+
+            if result and not result.isError():
+                raw_value = result.registers[0]
+
+                if definition.get("type") == "text":
+                    mapping_name = definition.get("mapping")
+                    if mapping_name and mapping_name in MAPPINGS:
+                        return MAPPINGS[mapping_name].get(
+                            raw_value, f"Unknown ({raw_value})"
+                        )
+                    return raw_value
+
+                if (
+                    raw_value > 32767
+                    and definition.get("register_type") != "holding"
+                    and definition.get("type") not in ["number", "select"]
+                ):
+                    raw_value -= 65536
+
+                scaling = definition.get("scaling", 1)
+                decimals = definition.get("decimals", 0)
+                scaled_value = raw_value / scaling
+
+                if decimals == 0:
+                    return int(scaled_value)
+                return round(scaled_value, decimals)
+    except Exception as e:
+        _LOGGER.error("Error reading value for preview: %s", e)
+        return "Error reading value"
+    return "N/A"
+
+
 class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """FroelingModbusConfigFlow."""
+    """Handle a config flow for Fröling Lambdatronic Modbus."""
 
-    def __init__(self):
-        """FroelingModbusConfigFlow init."""
-        self.config = {}
+    VERSION = 1
 
-    async def async_step_user(self, user_input=None):
-        """async_step_user."""
+    def __init__(self) -> None:
+        """Initialize the config flow."""
+        self.config: dict[str, Any] = {}
 
+    async def async_step_user(self, user_input: dict[str, Any] | None = None):
+        """Handle the initial step."""
         if user_input is not None:
             self.config.update(user_input)
             return await self.async_step_entities()
@@ -62,9 +119,8 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             ),
         )
 
-    async def async_step_entities(self, user_input=None):
-        """async_step_entities."""
-
+    async def async_step_entities(self, user_input: dict[str, Any] | None = None):
+        """Handle the entities step."""
         if user_input is not None:
             self.config["entities"] = user_input
             return self.async_create_entry(title=self.config["name"], data=self.config)
@@ -90,7 +146,7 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     translation_key = f"component.froeling_lambdatronic_modbus.entity.{platform}.{entity_id}.name"
                     translated_name = translations.get(translation_key, entity_id)
 
-                    value = await self._read_value(controller, definition)
+                    value = await _read_value_helper(controller, definition)
 
                     options.append(
                         {"label": f"{translated_name}: {value}", "value": entity_id}
@@ -115,71 +171,18 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             data_schema=vol.Schema(schema),
         )
 
-    async def _read_value(self, controller, definition):
-        try:
-            if "coil" in definition:
-                result = await controller.async_read_coils(definition["coil"], count=1)
-                if result and not result.isError():
-                    return result.bits[0]
-            elif "register" in definition:
-                offset = (
-                    40001
-                    if definition.get("register_type") == "holding"
-                    or definition.get("type") in ["number", "select"]
-                    else 30001
-                )
-                read_method = (
-                    controller.async_read_holding_registers
-                    if offset == 40001
-                    else controller.async_read_input_registers
-                )
-
-                result = await read_method(definition["register"] - offset, count=1)
-
-                if result and not result.isError():
-                    raw_value = result.registers[0]
-
-                    if definition.get("type") == "text":
-                        mapping_name = definition.get("mapping")
-                        if mapping_name and mapping_name in MAPPINGS:
-                            return MAPPINGS[mapping_name].get(
-                                raw_value, f"Unknown ({raw_value})"
-                            )
-                        return raw_value
-
-                    if (
-                        raw_value > 32767
-                        and definition.get("register_type") != "holding"
-                        and definition.get("type") not in ["number", "select"]
-                    ):
-                        raw_value -= 65536
-
-                    scaling = definition.get("scaling", 1)
-                    decimals = definition.get("decimals", 0)
-                    scaled_value = raw_value / scaling
-
-                    if decimals == 0:
-                        return int(scaled_value)
-                    return round(scaled_value, decimals)
-        except Exception as e:
-            _LOGGER.error("Error reading value for preview: %s", e)
-            return "Error reading value"
-        return "N/A"
-
     @staticmethod
     @callback
-    def async_get_options_flow(config_entry):
-        """async_get_options_flow."""
-
+    def async_get_options_flow(config_entry: config_entries.ConfigEntry):
+        """Get the options flow for this handler."""
         return FroelingOptionsFlowHandler()
 
 
 class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
-    """FroelingOptionsFlowHandler."""
+    """Handle options flow for Fröling Lambdatronic Modbus."""
 
-    async def async_step_init(self, user_input=None):
-        """Handle the options flow."""
-
+    async def async_step_init(self, user_input: dict[str, Any] | None = None):
+        """Handle the initial options step."""
         if user_input is not None:
             new_options = dict(self.config_entry.options)
             new_options["entities"] = user_input
@@ -210,7 +213,7 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
                     translation_key = f"component.froeling_lambdatronic_modbus.entity.{platform}.{entity_id}.name"
                     translated_name = translations.get(translation_key, entity_id)
 
-                    value = await self._read_value(controller, definition)
+                    value = await _read_value_helper(controller, definition)
 
                     options.append(
                         {"label": f"{translated_name}: {value}", "value": entity_id}
@@ -235,66 +238,3 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
         await controller.async_close()
 
         return self.async_show_form(step_id="init", data_schema=vol.Schema(schema))
-
-    async def _read_value(self, controller, definition):
-
-        try:
-            if "coil" in definition:
-                result = await controller.async_read_coils(definition["coil"], count=1)
-
-                if result and not result.isError():
-                    return result.bits[0]
-
-            elif "register" in definition:
-                offset = (
-                    40001
-                    if definition.get("register_type") == "holding"
-                    or definition.get("type") in ["number", "select"]
-                    else 30001
-                )
-
-                read_method = (
-                    controller.async_read_holding_registers
-                    if offset == 40001
-                    else controller.async_read_input_registers
-                )
-
-                result = await read_method(definition["register"] - offset, count=1)
-
-                if result and not result.isError():
-                    raw_value = result.registers[0]
-
-                    if definition.get("type") == "text":
-                        mapping_name = definition.get("mapping")
-
-                        if mapping_name and mapping_name in MAPPINGS:
-                            return MAPPINGS[mapping_name].get(
-                                raw_value, f"Unknown ({raw_value})"
-                            )
-
-                        return raw_value
-
-                    if (
-                        raw_value > 32767
-                        and definition.get("register_type") != "holding"
-                        and definition.get("type") not in ["number", "select"]
-                    ):
-                        raw_value -= 65536
-
-                    scaling = definition.get("scaling", 1)
-
-                    decimals = definition.get("decimals", 0)
-
-                    scaled_value = raw_value / scaling
-
-                    if decimals == 0:
-                        return int(scaled_value)
-
-                    return round(scaled_value, decimals)
-
-        except Exception as e:
-            _LOGGER.error("Error reading value for preview: %s", e)
-
-            return "Error reading value"
-
-        return "N/A"
