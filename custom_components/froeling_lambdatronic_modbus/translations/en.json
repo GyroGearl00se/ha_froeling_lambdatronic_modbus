@@ -8,6 +8,7 @@
           "name": "Unique Name (Default: Froeling)",
           "host": "Hostname/IP",
           "port": "Port (Default: 502)",
+          "device_id": "Device ID (Default: 2)",
           "update_interval": "Update interval (Default: 60 seconds)",
           "kessel": "Boiler",
           "fehlerpuffer": "Error Buffer",
@@ -21,6 +22,10 @@
           "solarthermie": "Solar Thermal"
         }
       }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the device. Please check Host and Port.",
+      "invalid_device_id": "Connection established, but no response from device. Please check Device ID."
     }
   },
   "entity": {

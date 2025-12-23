@@ -94,9 +94,28 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_step_user(self, user_input: dict[str, Any] | None = None):
         """Handle the initial step."""
+        errors = {}
+
         if user_input is not None:
-            self.config.update(user_input)
-            return await self.async_step_entities()
+            controller = ModbusController(
+                self.hass,
+                user_input["host"],
+                user_input["port"],
+                device_id=user_input.get("device_id", 2),
+            )
+
+            if await controller.async_check_connection():
+                read_result = await controller.async_read_input_registers(0, count=1)
+                await controller.async_close()
+
+                if read_result is None:
+                    errors["base"] = "invalid_device_id"
+                else:
+                    self.config.update(user_input)
+                    return await self.async_step_entities()
+            else:
+                await controller.async_close()
+                errors["base"] = "cannot_connect"
 
         return self.async_show_form(
             step_id="user",
@@ -105,6 +124,7 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     vol.Required("name", default="Froeling"): str,
                     vol.Required("host"): str,
                     vol.Required("port", default=502): int,
+                    vol.Required("device_id", default=2): int,
                     vol.Required("update_interval", default=60): int,
                     vol.Required(
                         "categories", default=list(ENTITY_DEFINITIONS.keys())
@@ -117,6 +137,7 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     ),
                 }
             ),
+            errors=errors,
         )
 
     async def async_step_entities(self, user_input: dict[str, Any] | None = None):
@@ -127,8 +148,15 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         schema = {}
         controller = ModbusController(
-            self.hass, self.config["host"], self.config["port"]
+            self.hass,
+            self.config["host"],
+            self.config["port"],
+            device_id=self.config.get("device_id", 2),
         )
+
+        if not await controller.async_check_connection():
+            await controller.async_close()
+            return self.async_abort(reason="cannot_connect")
 
         translations = await async_get_translations(
             self.hass, self.hass.config.language, "entity"
@@ -195,7 +223,16 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
         )
 
         schema = {}
-        controller = ModbusController(self.hass, config["host"], config["port"])
+        controller = ModbusController(
+            self.hass,
+            config["host"],
+            config["port"],
+            device_id=config.get("device_id", 2),
+        )
+
+        if not await controller.async_check_connection():
+            await controller.async_close()
+            return self.async_abort(reason="cannot_connect")
 
         current_entities = config.get("entities", {})
 

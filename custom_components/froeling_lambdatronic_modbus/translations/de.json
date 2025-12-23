@@ -8,6 +8,7 @@
           "name": "Eindeutiger Name (Standard: Froeling)",
           "host": "Hostname/IP",
           "port": "Port (Standard: 502)",
+          "device_id": "Device ID (Standard: 2)",
           "update_interval": "Update intervall (Standard: 60 Sekunden)",
           "kessel": "Kessel",
           "fehlerpuffer": "Fehlerpuffer",
@@ -21,6 +22,10 @@
           "solarthermie": "Solarthermie"
         }
       }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum Gerät fehlgeschlagen. Bitte überprüfen Sie Host & Port.",
+      "invalid_device_id": "Verbindung hergestellt, aber keine Antwort vom Gerät. Bitte überprüfen Sie die Device ID."
     }
   },
   "entity": {
