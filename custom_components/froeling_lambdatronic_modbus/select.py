@@ -7,7 +7,6 @@ from homeassistant.components.select import SelectEntity
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-from homeassistant.helpers.translation import async_get_translations
 
 from .const import DOMAIN
 from .coordinator import FroelingDataUpdateCoordinator
@@ -23,7 +22,6 @@ async def async_setup_entry(hass: HomeAssistant, config_entry, async_add_entitie
     config = entry["config"]
 
     enabled_entities = config.get("entities", {})
-    translations = await async_get_translations(hass, hass.config.language, "entity")
 
     selects = []
     for category, entities in enabled_entities.items():
@@ -33,7 +31,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry, async_add_entitie
                     definition = ENTITY_DEFINITIONS[category][entity_id]
                     if definition.get("type") == "select":
                         selects.append(
-                            FroelingSelect(coordinator, config, entity_id, translations)
+                            FroelingSelect(coordinator, config, entity_id)
                         )
 
     async_add_entities(selects)
@@ -47,7 +45,6 @@ class FroelingSelect(CoordinatorEntity[FroelingDataUpdateCoordinator], SelectEnt
         coordinator: FroelingDataUpdateCoordinator,
         config: dict[str, Any],
         entity_id: str,
-        translations: dict[str, Any],
     ):
         """Initialize the select entity."""
         super().__init__(coordinator)
@@ -56,12 +53,8 @@ class FroelingSelect(CoordinatorEntity[FroelingDataUpdateCoordinator], SelectEnt
         self.entity_definition = coordinator._entity_definitions[entity_id]
 
         self._attr_unique_id = f"{self._device_name}_{self._entity_id}"
-        
-        translated_name = translations.get(
-            f"component.froeling_lambdatronic_modbus.entity.select.{self._entity_id}.name",
-            self._entity_id.replace("_", " ").title(),
-        )
-        self._attr_name = f"{self._device_name} {translated_name}"
+        self._attr_has_entity_name = True
+        self._attr_translation_key = self._entity_id
         self._attr_options = self.entity_definition.get("options", [])
 
     @property
