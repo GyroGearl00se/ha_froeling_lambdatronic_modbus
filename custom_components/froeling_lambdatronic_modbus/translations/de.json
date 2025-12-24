@@ -222,6 +222,9 @@
       "stunden_im_heizen": {
         "name": "Stunden im Heizen"
       },
+      "stunden_im_scheitholzbetrieb": {
+        "name": "Stunden im Scheitholzbetrieb"
+      },
       "kollektor_ruecklauftemperatur": {
         "name": "Kollektor Rücklauftemperatur"
       },

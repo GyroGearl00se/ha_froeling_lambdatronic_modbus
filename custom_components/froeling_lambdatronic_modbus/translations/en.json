@@ -222,6 +222,9 @@
       "stunden_im_heizen": {
         "name": "Hours in Heating"
       },
+      "stunden_im_scheitholzbetrieb": {
+        "name": "Hours in Log Operation"
+      },
       "kollektor_ruecklauftemperatur": {
         "name": "Collector Return Temperature"
       },

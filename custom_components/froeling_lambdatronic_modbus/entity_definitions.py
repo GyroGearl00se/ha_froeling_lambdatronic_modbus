@@ -563,6 +563,12 @@ ENTITY_DEFINITIONS = {
             "scaling": 1,
             "type": "sensor",
         },
+        "stunden_im_scheitholzbetrieb": {
+            "register": 30077,
+            "unit": "h",
+            "scaling": 1,
+            "type": "sensor",
+        },
     },
     "kessel": {
         "kesseltemperatur": {
