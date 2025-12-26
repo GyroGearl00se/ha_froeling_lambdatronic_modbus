@@ -10,23 +10,13 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
+from homeassistant.helpers.translation import async_get_translations
+
 from .const import DOMAIN
-from .entity_definitions import (
-    ANLAGENZUSTAND_MAPPING,
-    ENTITY_DEFINITIONS,
-    KESSEL_FEHLER_MAPPING,
-    KESSELZUSTAND_MAPPING,
-)
+from .entity_definitions import ENTITY_DEFINITIONS
 from .modbus_controller import ModbusController
 
 _LOGGER = logging.getLogger(__name__)
-
-MAPPINGS = {
-    "ANLAGENZUSTAND_MAPPING": ANLAGENZUSTAND_MAPPING,
-    "KESSELZUSTAND_MAPPING": KESSELZUSTAND_MAPPING,
-    "KESSEL_FEHLER_MAPPING": KESSEL_FEHLER_MAPPING,
-}
-
 
 class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     """Class to manage fetching data from the Fröling Modbus interface."""
@@ -42,6 +32,7 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         self.controller = controller
         self._enabled_entities = config.get("entities", {})
         self._entity_definitions = self._get_active_entity_definitions()
+        self.translations = None
 
         self._read_blocks = self._group_registers()
 
@@ -198,6 +189,11 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         if not await self.controller.async_check_connection():
             raise UpdateFailed("Could not connect to Modbus device")
 
+        if self.translations is None:
+            self.translations = await async_get_translations(
+                self.hass, self.hass.config.language, "entity"
+            )
+
         data = {}
 
         try:
@@ -275,9 +271,14 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             return raw_value
 
         if entity_type == "text":
-            mapping_name = definition.get("mapping")
-            if mapping_name and mapping_name in MAPPINGS:
-                return MAPPINGS[mapping_name].get(raw_value, f"Unknown ({raw_value})")
+            translation_key = definition.get("translation_key")
+            if translation_key:
+                lookup_key = (
+                    f"component.{DOMAIN}.entity.sensor.{translation_key}.state.{raw_value}"
+                )
+                translated = self.translations.get(lookup_key)
+                if translated:
+                    return translated
             return f"Unknown ({raw_value})"
 
         reg_type = definition.get("register_type", "input")

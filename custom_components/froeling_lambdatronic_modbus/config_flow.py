@@ -11,22 +11,10 @@ from homeassistant.helpers import selector
 from homeassistant.helpers.translation import async_get_translations
 
 from .const import DOMAIN
-from .entity_definitions import (
-    ANLAGENZUSTAND_MAPPING,
-    ENTITY_DEFINITIONS,
-    KESSEL_FEHLER_MAPPING,
-    KESSELZUSTAND_MAPPING,
-)
+from .entity_definitions import ENTITY_DEFINITIONS
 from .modbus_controller import ModbusController
 
 _LOGGER = logging.getLogger(__name__)
-
-MAPPINGS = {
-    "ANLAGENZUSTAND_MAPPING": ANLAGENZUSTAND_MAPPING,
-    "KESSELZUSTAND_MAPPING": KESSELZUSTAND_MAPPING,
-    "KESSEL_FEHLER_MAPPING": KESSEL_FEHLER_MAPPING,
-}
-
 
 async def _read_value_helper(
     controller: ModbusController, definition: dict[str, Any]
