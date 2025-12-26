@@ -899,10 +899,26 @@
     },
     "select": {
       "hk1_betriebsart": {
-        "name": "HK1 Betriebsart"
+        "name": "HK1 Betriebsart",
+        "state": {
+          "Aus": "Aus",
+          "Automatik": "Automatik",
+          "Extraheizen": "Extraheizen",
+          "Absenken": "Absenken",
+          "Dauerabsenken": "Dauerabsenken",
+          "Partybetrieb": "Partybetrieb"
+        }
       },
       "hk2_betriebsart": {
-        "name": "HK2 Betriebsart"
+        "name": "HK2 Betriebsart",
+        "state": {
+          "Aus": "Aus",
+          "Automatik": "Automatik",
+          "Extraheizen": "Extraheizen",
+          "Absenken": "Absenken",
+          "Dauerabsenken": "Dauerabsenken",
+          "Partybetrieb": "Partybetrieb"
+        }
       }
     }
   }
