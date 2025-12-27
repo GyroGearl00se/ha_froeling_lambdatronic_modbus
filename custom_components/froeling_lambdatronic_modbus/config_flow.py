@@ -17,7 +17,11 @@ from .modbus_controller import ModbusController
 _LOGGER = logging.getLogger(__name__)
 
 async def _read_value_helper(
-    controller: ModbusController, definition: dict[str, Any]
+    controller: ModbusController,
+    definition: dict[str, Any],
+    entity_id: str,
+    platform: str,
+    translations: dict,
 ) -> Any:
     """Read a value from the controller for preview purposes."""
     try:
@@ -44,12 +48,13 @@ async def _read_value_helper(
                 raw_value = result.registers[0]
 
                 if definition.get("type") == "text":
-                    mapping_name = definition.get("mapping")
-                    if mapping_name and mapping_name in MAPPINGS:
-                        return MAPPINGS[mapping_name].get(
-                            raw_value, f"Unknown ({raw_value})"
-                        )
-                    return raw_value
+                    if entity_id.startswith("kessel_fehlerpuffer_"):
+                        state_translation_key = f"component.froeling_lambdatronic_modbus.entity.sensor.kessel_fehler.state.{raw_value}"
+                    else:
+                        state_translation_key = f"component.froeling_lambdatronic_modbus.entity.{platform}.{entity_id}.state.{raw_value}"
+                    return translations.get(
+                        state_translation_key, f"Unknown ({raw_value})"
+                    )
 
                 if (
                     raw_value > 32767
@@ -121,6 +126,7 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                             options=list(ENTITY_DEFINITIONS.keys()),
                             multiple=True,
                             mode=selector.SelectSelectorMode.LIST,
+                            translation_key="categories",
                         ),
                     ),
                 }
@@ -147,7 +153,7 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_abort(reason="cannot_connect")
 
         translations = await async_get_translations(
-            self.hass, self.hass.config.language, "entity"
+            self.hass, self.hass.config.language, "entity", integrations=[DOMAIN]
         )
 
         for category in self.config.get("categories", []):
@@ -162,7 +168,9 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     translation_key = f"component.froeling_lambdatronic_modbus.entity.{platform}.{entity_id}.name"
                     translated_name = translations.get(translation_key, entity_id)
 
-                    value = await _read_value_helper(controller, definition)
+                    value = await _read_value_helper(
+                        controller, definition, entity_id, platform, translations
+                    )
 
                     options.append(
                         {"label": f"{translated_name}: {value}", "value": entity_id}
@@ -207,7 +215,7 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
         config = {**self.config_entry.data, **self.config_entry.options}
 
         translations = await async_get_translations(
-            self.hass, self.hass.config.language, "entity"
+            self.hass, self.hass.config.language, "entity", integrations=[DOMAIN]
         )
 
         schema = {}
@@ -238,7 +246,9 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
                     translation_key = f"component.froeling_lambdatronic_modbus.entity.{platform}.{entity_id}.name"
                     translated_name = translations.get(translation_key, entity_id)
 
-                    value = await _read_value_helper(controller, definition)
+                    value = await _read_value_helper(
+                        controller, definition, entity_id, platform, translations
+                    )
 
                     options.append(
                         {"label": f"{translated_name}: {value}", "value": entity_id}

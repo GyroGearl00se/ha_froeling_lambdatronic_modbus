@@ -10,6 +10,14 @@
           "port": "Port (Standard: 502)",
           "device_id": "Device ID (Standard: 2)",
           "update_interval": "Update intervall (Standard: 60 Sekunden)",
+          "categories": "Kategorien"
+        }
+      },
+      "entities": {
+        "title": "Entitäten auswählen",
+        "description": "Die folgenden Entitäten wurden gefunden. Bitte wählen Sie aus, welche Sie zu Home Assistant hinzufügen möchten.",
+        "data": {
+          "sensor": "Allgemeine Sensoren",
           "kessel": "Kessel",
           "fehlerpuffer": "Fehlerpuffer",
           "boiler01": "Boiler 01",
@@ -26,6 +34,44 @@
     "error": {
       "cannot_connect": "Verbindung zum Gerät fehlgeschlagen. Bitte überprüfen Sie Host & Port.",
       "invalid_device_id": "Verbindung hergestellt, aber keine Antwort vom Gerät. Bitte überprüfen Sie die Device ID."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Entitäten auswählen",
+        "description": "Die folgenden Entitäten wurden gefunden. Bitte wählen Sie aus, welche Sie zu Home Assistant hinzufügen möchten.",
+        "data": {
+          "sensor": "Allgemeine Sensoren",
+          "kessel": "Kessel",
+          "fehlerpuffer": "Fehlerpuffer",
+          "boiler01": "Boiler 01",
+          "hk1": "Heizkreis 01",
+          "hk2": "Heizkreis 02",
+          "austragung": "Austragung",
+          "puffer01": "Puffer 01",
+          "zirkulationspumpe": "Zirkulationspumpe",
+          "zweitkessel": "Zweitkessel",
+          "solarthermie": "Solarthermie"
+        }
+      }
+    }
+  },
+  "selector": {
+    "categories": {
+      "options": {
+        "sensor": "Allgemeine Sensoren",
+        "kessel": "Kessel",
+        "fehlerpuffer": "Fehlerpuffer",
+        "boiler01": "Boiler 01",
+        "hk1": "Heizkreis 01",
+        "hk2": "Heizkreis 02",
+        "austragung": "Austragung",
+        "puffer01": "Puffer 01",
+        "zirkulationspumpe": "Zirkulationspumpe",
+        "zweitkessel": "Zweitkessel",
+        "solarthermie": "Solarthermie"
+      }
     }
   },
   "entity": {
@@ -295,7 +341,7 @@
         "name": "Kessel Fehlerpuffer 20"
       },
       "kessel_fehler": {
-        "name": "Kessel Fehler",
+        "name": "Kessel Fehler {number}",
         "state": {
           "0": "STB gefallen oder NOT-AUS betätigt",
           "1": "Kesseltemperaturfühler fehlerhaft",

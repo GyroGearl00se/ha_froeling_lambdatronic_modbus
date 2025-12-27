@@ -10,6 +10,14 @@
           "port": "Port (Default: 502)",
           "device_id": "Device ID (Default: 2)",
           "update_interval": "Update interval (Default: 60 seconds)",
+          "categories": "Categories"
+        }
+      },
+      "entities": {
+        "title": "Select entities",
+        "description": "The following entities were found. Please select which ones you want to add to Home Assistant.",
+        "data": {
+          "sensor": "General Sensors",
           "kessel": "Boiler",
           "fehlerpuffer": "Error Buffer",
           "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
@@ -26,6 +34,44 @@
     "error": {
       "cannot_connect": "Failed to connect to the device. Please check Host and Port.",
       "invalid_device_id": "Connection established, but no response from the device. Please check the Device ID."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Select entities",
+        "description": "The following entities were found. Please select which ones you want to add to Home Assistant.",
+        "data": {
+          "sensor": "General Sensors",
+          "kessel": "Boiler",
+          "fehlerpuffer": "Error Buffer",
+          "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
+          "hk1": "Heating Circuit 01",
+          "hk2": "Heating Circuit 02",
+          "austragung": "Feed System",
+          "puffer01": "Buffer 01",
+          "zirkulationspumpe": "Circulation Pump",
+          "zweitkessel": "Second Boiler",
+          "solarthermie": "Solar"
+        }
+      }
+    }
+  },
+  "selector": {
+    "categories": {
+      "options": {
+        "sensor": "General Sensors",
+        "kessel": "Boiler",
+        "fehlerpuffer": "Error Buffer",
+        "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
+        "hk1": "Heating Circuit 01",
+        "hk2": "Heating Circuit 02",
+        "austragung": "Feed System",
+        "puffer01": "Buffer 01",
+        "zirkulationspumpe": "Circulation Pump",
+        "zweitkessel": "Second Boiler",
+        "solarthermie": "Solar"
+      }
     }
   },
   "entity": {
@@ -654,6 +700,19 @@
           "354": "Room sensor heating circuit 1 faulty",
           "355": "Room sensor heating circuit 2 faulty",
           "356": "Room sensor heating circuit 3 faulty",
+          "357": "Room sensor heating circuit 4 faulty",
+          "358": "Room sensor heating circuit 5 faulty",
+          "359": "Room sensor heating circuit 6 faulty",
+          "360": "Room sensor heating circuit 7 faulty",
+          "361": "Room sensor heating circuit 8 faulty",
+          "362": "Room sensor heating circuit 9 faulty",
+          "363": "Room sensor heating circuit 10 faulty",
+          "364": "Room sensor heating circuit 11 faulty",
+          "365": "Room sensor heating circuit 12 faulty",
+          "366": "Room sensor heating circuit 13 faulty",
+          "367": "Room sensor heating circuit 14 faulty",
+          "368": "Room sensor heating circuit 15 faulty",
+          "369": "Room sensor heating circuit 16 faulty",
           "370": "Room sensor heating circuit 17 faulty",
           "371": "Room sensor heating circuit 18 faulty",
           "372": "011 EEPROM checksum 2 wrong",
