@@ -947,23 +947,23 @@
       "hk1_betriebsart": {
         "name": "HK1 Operating Mode",
         "state": {
-          "Aus": "Off",
-          "Automatik": "Automatic",
-          "Extraheizen": "Extra heating",
-          "Absenken": "Setback",
-          "Dauerabsenken": "Permanent Setback",
-          "Partybetrieb": "Party Mode"
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Setback",
+          "dauerabsenken": "Permanent Setback",
+          "partybetrieb": "Party Mode"
         }
       },
       "hk2_betriebsart": {
         "name": "HK2 Operating Mode",
         "state": {
-          "Aus": "Off",
-          "Automatik": "Automatic",
-          "Extraheizen": "Extra heating",
-          "Absenken": "Setback",
-          "Dauerabsenken": "Permanent Setback",
-          "Partybetrieb": "Party Mode"
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Setback",
+          "dauerabsenken": "Permanent Setback",
+          "partybetrieb": "Party Mode"
         }
       }
     }

@@ -947,23 +947,23 @@
       "hk1_betriebsart": {
         "name": "HK1 Betriebsart",
         "state": {
-          "Aus": "Aus",
-          "Automatik": "Automatik",
-          "Extraheizen": "Extraheizen",
-          "Absenken": "Absenken",
-          "Dauerabsenken": "Dauerabsenken",
-          "Partybetrieb": "Partybetrieb"
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "Dauerabsenken",
+          "partybetrieb": "Partybetrieb"
         }
       },
       "hk2_betriebsart": {
         "name": "HK2 Betriebsart",
         "state": {
-          "Aus": "Aus",
-          "Automatik": "Automatik",
-          "Extraheizen": "Extraheizen",
-          "Absenken": "Absenken",
-          "Dauerabsenken": "Dauerabsenken",
-          "Partybetrieb": "Partybetrieb"
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "Dauerabsenken",
+          "partybetrieb": "Partybetrieb"
         }
       }
     }
