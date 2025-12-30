@@ -46,7 +46,7 @@ If you're looking for a way to power your Serial Ethernet converter directly fro
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=GyroGearl00se&repository=ha_froeling_lambdatronic_modbus&category=Dashboard)
 
 - Ensure [HACS](https://hacs.xyz/) is installed.
-- Search for “Fröling Lambdatronic Modbus” and install.
+- Search for “Froeling Lambdatronic Modbus” and install.
 - Restart Home Assistant.
 
 ### Manual
