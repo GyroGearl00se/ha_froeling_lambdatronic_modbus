@@ -29,10 +29,17 @@ To enable Modbus RTU on your Fröling boiler:
 ## 🛠️ Hardware Setup
 Use a Serial-to-Ethernet converter between the boiler’s COM2 and your network.
 
-- Example: Waveshare RS232/RS485 to Ethernet Converter connected via RS232 to COM2 on the boiler.
+### Example 1: Waveshare RS232/RS485 to Ethernet Converter
+- Converter connected via RS232 to COM2 on the boiler.
 - Example configuration screenshot:
 
-  ![Waveshare configuration](docs/image.png)
+  ![Waveshare RS232/RS485 to Ethernet Converter configuration](docs/image.png)
+
+### Example 2: Waveshare RS232/485/422 TO POE ETH (B) Converter
+- Converter connected via RS232 to COM2 on the boiler.
+- Example configuration screenshot:
+
+  ![Waveshare RS232/485/422 TO POE ETH (B) configuration](docs/Waveshare_RS232_485_422_TO_POE_ETH_B.png)
 
 Other Serial-to-Ethernet converters should also work.
 
