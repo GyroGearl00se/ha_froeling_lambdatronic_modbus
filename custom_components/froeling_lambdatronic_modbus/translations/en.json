@@ -23,6 +23,8 @@
           "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
           "hk1": "Heating Circuit 01",
           "hk2": "Heating Circuit 02",
+          "hk3": "Heating Circuit 03",
+          "hk4": "Heating Circuit 04",
           "austragung": "Feed System",
           "puffer01": "Buffer 01",
           "zirkulationspumpe": "Circulation Pump",
@@ -48,6 +50,8 @@
           "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
           "hk1": "Heating Circuit 01",
           "hk2": "Heating Circuit 02",
+          "hk3": "Heating Circuit 03",
+          "hk4": "Heating Circuit 04",
           "austragung": "Feed System",
           "puffer01": "Buffer 01",
           "zirkulationspumpe": "Circulation Pump",
@@ -66,6 +70,8 @@
         "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
         "hk1": "Heating Circuit 01",
         "hk2": "Heating Circuit 02",
+        "hk3": "Heating Circuit 03",
+        "hk4": "Heating Circuit 04",
         "austragung": "Feed System",
         "puffer01": "Buffer 01",
         "zirkulationspumpe": "Circulation Pump",
@@ -232,6 +238,18 @@
       "hk2_vorlauf_solltemperatur": {
         "name": "HK2 Flow Target Temperature"
       },
+      "hk3_vorlauf_isttemperatur": {
+        "name": "HK3 Flow Actual Temperature"
+      },
+      "hk3_vorlauf_solltemperatur": {
+        "name": "HK3 Flow Target Temperature"
+      },
+      "hk4_vorlauf_isttemperatur": {
+        "name": "HK4 Flow Actual Temperature"
+      },
+      "hk4_vorlauf_solltemperatur": {
+        "name": "HK4 Flow Target Temperature"
+      },
       "puffer_1_temperatur_oben": {
         "name": "Buffer 1 Top Temperature"
       },
@@ -241,7 +259,7 @@
       "puffer_1_temperatur_unten": {
         "name": "Buffer 1 Bottom Temperature"
       },
-            "puffer_1_temperatur_fuehler_2": {
+      "puffer_1_temperatur_fuehler_2": {
         "name": "Buffer 1 Temperature Sensor 2"
       },
       "puffer_1_temperatur_fuehler_3": {
@@ -895,6 +913,54 @@
       "hk2_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK2 Temperature at Buffer Top Where Overheat Protection Activates"
       },
+      "hk3_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK3 Flow Temperature at 10°C Outside Temperature"
+      },
+      "hk3_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK3 Flow Temperature at -10°C Outside Temperature"
+      },
+      "hk3_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK3 Heating Circuit Pump Off When Flow Target is Less Than"
+      },
+      "hk3_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK3 Reduction of Flow Temperature in Setback Mode"
+      },
+      "hk3_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK3 Outside Temperature Below Which Heating Circuit Pump Turns On in Heating Mode"
+      },
+      "hk3_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK3 Outside Temperature Below Which Heating Circuit Pump Turns On in Setback Mode"
+      },
+      "hk3_frostschutztemperatur": {
+        "name": "HK3 Frost Protection Temperature"
+      },
+      "hk3_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK3 Temperature at Buffer Top Where Overheat Protection Activates"
+      },
+      "hk4_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK4 Flow Temperature at 10°C Outside Temperature"
+      },
+      "hk4_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK4 Flow Temperature at -10°C Outside Temperature"
+      },
+      "hk4_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK4 Heating Circuit Pump Off When Flow Target is Less Than"
+      },
+      "hk4_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK4 Reduction of Flow Temperature in Setback Mode"
+      },
+      "hk4_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK4 Outside Temperature Below Which Heating Circuit Pump Turns On in Heating Mode"
+      },
+      "hk4_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK4 Outside Temperature Below Which Heating Circuit Pump Turns On in Setback Mode"
+      },
+      "hk4_frostschutztemperatur": {
+        "name": "HK4 Frost Protection Temperature"
+      },
+      "hk4_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK4 Temperature at Buffer Top Where Overheat Protection Activates"
+      },
       "boiler_1_gewuenschte_boilertemperatur": {
         "name": "Boiler 1 Desired Temperature"
       },
@@ -933,6 +999,12 @@
       "hk2_pumpe_an_aus": {
         "name": "HK2 Pump ON/OFF"
       },
+      "hk3_pumpe_an_aus": {
+        "name": "HK3 Pump ON/OFF"
+      },
+      "hk4_pumpe_an_aus": {
+        "name": "HK4 Pump ON/OFF"
+      },
       "puffer_1_pufferpumpe_an_aus": {
         "name": "Buffer 1 Pump ON/OFF"
       },
@@ -957,6 +1029,28 @@
       },
       "hk2_betriebsart": {
         "name": "HK2 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Setback",
+          "dauerabsenken": "Permanent Setback",
+          "partybetrieb": "Party Mode"
+        }
+      },
+      "hk3_betriebsart": {
+        "name": "HK3 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Setback",
+          "dauerabsenken": "Permanent Setback",
+          "partybetrieb": "Party Mode"
+        }
+      },
+      "hk4_betriebsart": {
+        "name": "HK4 Operating Mode",
         "state": {
           "aus": "Off",
           "automatik": "Automatic",

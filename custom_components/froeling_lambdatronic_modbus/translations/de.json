@@ -23,6 +23,8 @@
           "boiler01": "Boiler 01",
           "hk1": "Heizkreis 01",
           "hk2": "Heizkreis 02",
+          "hk3": "Heizkreis 03",
+          "hk4": "Heizkreis 04",
           "austragung": "Austragung",
           "puffer01": "Puffer 01",
           "zirkulationspumpe": "Zirkulationspumpe",
@@ -48,6 +50,8 @@
           "boiler01": "Boiler 01",
           "hk1": "Heizkreis 01",
           "hk2": "Heizkreis 02",
+          "hk3": "Heizkreis 03",
+          "hk4": "Heizkreis 04",
           "austragung": "Austragung",
           "puffer01": "Puffer 01",
           "zirkulationspumpe": "Zirkulationspumpe",
@@ -66,6 +70,8 @@
         "boiler01": "Boiler 01",
         "hk1": "Heizkreis 01",
         "hk2": "Heizkreis 02",
+        "hk3": "Heizkreis 03",
+        "hk4": "Heizkreis 04",
         "austragung": "Austragung",
         "puffer01": "Puffer 01",
         "zirkulationspumpe": "Zirkulationspumpe",
@@ -231,6 +237,18 @@
       },
       "hk2_vorlauf_solltemperatur": {
         "name": "HK2 - Vorlauf-Solltemperatur"
+      },
+      "hk3_vorlauf_isttemperatur": {
+        "name": "HK3 - Vorlauf-Isttemperatur"
+      },
+      "hk3_vorlauf_solltemperatur": {
+        "name": "HK3 - Vorlauf-Solltemperatur"
+      },
+      "hk4_vorlauf_isttemperatur": {
+        "name": "HK4 - Vorlauf-Isttemperatur"
+      },
+      "hk4_vorlauf_solltemperatur": {
+        "name": "HK4 - Vorlauf-Solltemperatur"
       },
       "puffer_1_temperatur_oben": {
         "name": "Puffer 1 Temperatur oben"
@@ -895,6 +913,54 @@
       "hk2_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK2 Temperatur am Puffer oben ab der der Überhitzungsschutz aktiv wird"
       },
+      "hk3_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK3 Vorlauf Temperatur bei 10°C Außentemperatur"
+      },
+      "hk3_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK3 Vorlauf Temperatur bei -10°C Außentemperatur"
+      },
+      "hk3_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK3 Heizkreispumpe ausschalten wenn Vorlauf Soll kleiner ist als"
+      },
+      "hk3_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK3 Absenkung der Vorlauftemperatur im Absenkbetrieb"
+      },
+      "hk3_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK3 Außentemperatur unter der die Heizkreispumpe im Heizbetrieb einschaltet"
+      },
+      "hk3_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK3 Außentemperatur unter der die Heizkreispumpe im Absenkbetrieb einschaltet"
+      },
+      "hk3_frostschutztemperatur": {
+        "name": "HK3 Frostschutztemperatur"
+      },
+      "hk3_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK3 Temperatur am Puffer oben ab der der Überhitzungsschutz aktiv wird"
+      },
+      "hk4_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK4 Vorlauf Temperatur bei 10°C Außentemperatur"
+      },
+      "hk4_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK4 Vorlauf Temperatur bei -10°C Außentemperatur"
+      },
+      "hk4_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK4 Heizkreispumpe ausschalten wenn Vorlauf Soll kleiner ist als"
+      },
+      "hk4_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK4 Absenkung der Vorlauftemperatur im Absenkbetrieb"
+      },
+      "hk4_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK4 Außentemperatur unter der die Heizkreispumpe im Heizbetrieb einschaltet"
+      },
+      "hk4_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK4 Außentemperatur unter der die Heizkreispumpe im Absenkbetrieb einschaltet"
+      },
+      "hk4_frostschutztemperatur": {
+        "name": "HK4 Frostschutztemperatur"
+      },
+      "hk4_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK4 Temperatur am Puffer oben ab der der Überhitzungsschutz aktiv wird"
+      },
       "boiler_1_gewuenschte_boilertemperatur": {
         "name": "Boiler 1 Gewünschte Boilertemperatur"
       },
@@ -933,6 +999,12 @@
       "hk2_pumpe_an_aus": {
         "name": "HK2 Pumpe AN/AUS"
       },
+      "hk3_pumpe_an_aus": {
+        "name": "HK3 Pumpe AN/AUS"
+      },
+      "hk4_pumpe_an_aus": {
+        "name": "HK4 Pumpe AN/AUS"
+      },
       "puffer_1_pufferpumpe_an_aus": {
         "name": "Puffer 1 Pumpe AN/AUS"
       },
@@ -957,6 +1029,28 @@
       },
       "hk2_betriebsart": {
         "name": "HK2 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "Dauerabsenken",
+          "partybetrieb": "Partybetrieb"
+        }
+      },
+      "hk3_betriebsart": {
+        "name": "HK3 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "Dauerabsenken",
+          "partybetrieb": "Partybetrieb"
+        }
+      },
+      "hk4_betriebsart": {
+        "name": "HK4 Betriebsart",
         "state": {
           "aus": "Aus",
           "automatik": "Automatik",
