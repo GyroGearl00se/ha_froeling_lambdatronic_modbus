@@ -17,6 +17,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "stunden_im_pelletsbetrieb": {
@@ -44,6 +45,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "abgastemperatur": {
@@ -51,6 +53,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 1,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "verbleibende_heizstunden_bis_zur_asche_entleeren_warnung": {
@@ -89,6 +92,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "primaerluft": {
@@ -152,6 +156,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "boiler_1_pumpe_ansteuerung": {
@@ -187,6 +192,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "hk1_vorlauf_solltemperatur": {
@@ -282,6 +288,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "hk2_vorlauf_solltemperatur": {
@@ -377,6 +384,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "hk3_vorlauf_solltemperatur": {
@@ -472,6 +480,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "hk4_vorlauf_solltemperatur": {
@@ -589,6 +598,7 @@ ENTITY_DEFINITIONS = {
             "scaling": 10,
             "decimals": 1,
             "device_class": "weight",
+            "state_class": "total",
             "type": "sensor",
         },
         "pelletlager_restbestand": {
@@ -607,6 +617,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "puffer_1_temperatur_mitte": {
@@ -614,6 +625,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "puffer_1_temperatur_unten": {
@@ -621,6 +633,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "puffer_1_temperatur_fuehler_2": {
@@ -628,6 +641,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "puffer_1_temperatur_fuehler_3": {
@@ -635,6 +649,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "puffer_1_pufferpumpen_ansteuerung": {
@@ -660,6 +675,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "stoemungsschalter_an_der_brauchwasser_leitung": {
@@ -698,6 +714,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "umschaltventil_zweitkessel": {
@@ -757,6 +774,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "kollektor_vorlauftemperatur": {
@@ -764,6 +782,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "kollektortemperatur": {
@@ -771,6 +790,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "solarfuehler_puffer_oben": {
@@ -778,6 +798,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "solarfuehler_puffer_unten": {
@@ -785,6 +806,7 @@ ENTITY_DEFINITIONS = {
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
+            "state_class": "measurement",
             "type": "sensor",
         },
         "laufzeit_kollektorpumpe": {
@@ -832,6 +854,7 @@ ENTITY_DEFINITIONS = {
             "unit": "kWh",
             "scaling": 1,
             "device_class": "energy",
+            "state_class": "total",
             "type": "sensor",
         },
         "maximale_puffertemperatur_unten_bei_solarladung": {

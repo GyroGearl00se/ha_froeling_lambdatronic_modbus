@@ -67,6 +67,10 @@ class FroelingSensor(CoordinatorEntity[FroelingDataUpdateCoordinator], SensorEnt
         return self.entity_definition.get("device_class")
 
     @property
+    def state_class(self):
+        return self.entity_definition.get("state_class")
+
+    @property
     def device_info(self) -> DeviceInfo:
         """Return the device info."""
         return DeviceInfo(
