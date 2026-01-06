@@ -30,9 +30,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry, async_add_entitie
                 if entity_id in ENTITY_DEFINITIONS[category]:
                     definition = ENTITY_DEFINITIONS[category][entity_id]
                     if definition.get("type") in ["sensor", "text"]:
-                        sensors.append(
-                            FroelingSensor(coordinator, config, entity_id)
-                        )
+                        sensors.append(FroelingSensor(coordinator, config, entity_id))
 
     async_add_entities(sensors)
 
@@ -63,6 +61,10 @@ class FroelingSensor(CoordinatorEntity[FroelingDataUpdateCoordinator], SensorEnt
     def native_value(self) -> Any:
         """Return the state of the sensor."""
         return self.coordinator.data.get(self._entity_id)
+
+    @property
+    def device_class(self):
+        return self.entity_definition.get("device_class")
 
     @property
     def device_info(self) -> DeviceInfo:
