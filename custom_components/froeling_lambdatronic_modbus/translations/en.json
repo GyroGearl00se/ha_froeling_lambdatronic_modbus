@@ -21,6 +21,7 @@
           "kessel": "Boiler",
           "fehlerpuffer": "Error Buffer",
           "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
+          "boiler02": "DHW Boiler 02 (Domestic Hot Water)",
           "hk1": "Heating Circuit 01",
           "hk2": "Heating Circuit 02",
           "hk3": "Heating Circuit 03",
@@ -48,6 +49,7 @@
           "kessel": "Boiler",
           "fehlerpuffer": "Error Buffer",
           "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
+          "boiler02": "DHW Boiler 02 (Domestic Hot Water)",
           "hk1": "Heating Circuit 01",
           "hk2": "Heating Circuit 02",
           "hk3": "Heating Circuit 03",
@@ -68,6 +70,7 @@
         "kessel": "Boiler",
         "fehlerpuffer": "Error Buffer",
         "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
+        "boiler02": "DHW Boiler 02 (Domestic Hot Water)",
         "hk1": "Heating Circuit 01",
         "hk2": "Heating Circuit 02",
         "hk3": "Heating Circuit 03",
@@ -276,6 +279,12 @@
       },
       "boiler_1_pumpe_ansteuerung": {
         "name": "Boiler 1 Pump Control"
+      },
+      "boiler_2_temperatur_oben": {
+        "name": "Boiler 2 Top Temperature"
+      },
+      "boiler_2_pumpe_ansteuerung": {
+        "name": "Boiler 2 Pump Control"
       },
       "fuellstand_im_pelletsbehaelter": {
         "name": "Pellet Container Level"
@@ -967,6 +976,12 @@
       "boiler_1_nachladen_wenn_boilertemperatur_unter": {
         "name": "Boiler 1 Recharge When Temperature is Below"
       },
+      "boiler_2_gewuenschte_boilertemperatur": {
+        "name": "Boiler 2 Desired Temperature"
+      },
+      "boiler_2_nachladen_wenn_boilertemperatur_unter": {
+        "name": "Boiler 2 Recharge When Temperature is Below"
+      },
       "pelletlager_restbestand": {
         "name": "Pellet Storage Remaining Stock"
       },
@@ -1013,6 +1028,9 @@
       },
       "boiler_1_pumpe_an_aus": {
         "name": "Boiler 1 Pump ON/OFF"
+      },
+      "boiler_2_pumpe_an_aus": {
+        "name": "Boiler 2 Pump ON/OFF"
       }
     },
     "select": {

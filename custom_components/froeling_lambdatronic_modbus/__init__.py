@@ -31,6 +31,7 @@ CONFIG_SCHEMA = vol.Schema(
                 vol.Required("update_interval", default=60): cv.positive_int,
                 vol.Optional("kessel", default=True): cv.boolean,
                 vol.Optional("boiler01", default=True): cv.boolean,
+                vol.Optional("boiler02", default=True): cv.boolean,
                 vol.Optional("hk01", default=True): cv.boolean,
                 vol.Optional("hk02", default=True): cv.boolean,
                 vol.Optional("hk03", default=True): cv.boolean,

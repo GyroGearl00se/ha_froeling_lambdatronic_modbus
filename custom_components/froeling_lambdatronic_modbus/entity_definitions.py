@@ -186,6 +186,42 @@ ENTITY_DEFINITIONS = {
             "type": "number",
         },
     },
+    "boiler02": {
+        "boiler_2_temperatur_oben": {
+            "register": 31661,
+            "unit": "°C",
+            "scaling": 2,
+            "device_class": "temperature",
+            "state_class": "measurement",
+            "type": "sensor",
+        },
+        "boiler_2_pumpe_ansteuerung": {
+            "register": 31663,
+            "unit": "%",
+            "scaling": 1,
+            "type": "sensor",
+        },
+        "boiler_2_pumpe_an_aus": {
+            "register": 31663,
+            "type": "binary_sensor_from_register",
+        },
+        "boiler_2_gewuenschte_boilertemperatur": {
+            "register": 41662,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 10,
+            "max": 100,
+            "type": "number",
+        },
+        "boiler_2_nachladen_wenn_boilertemperatur_unter": {
+            "register": 41663,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 1,
+            "max": 90,
+            "type": "number",
+        },
+    },
     "hk1": {
         "hk1_vorlauf_isttemperatur": {
             "register": 31031,
