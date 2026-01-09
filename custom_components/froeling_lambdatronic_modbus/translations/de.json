@@ -21,6 +21,7 @@
           "kessel": "Kessel",
           "fehlerpuffer": "Fehlerpuffer",
           "boiler01": "Boiler 01",
+          "boiler02": "Boiler 02",
           "hk1": "Heizkreis 01",
           "hk2": "Heizkreis 02",
           "hk3": "Heizkreis 03",
@@ -48,6 +49,7 @@
           "kessel": "Kessel",
           "fehlerpuffer": "Fehlerpuffer",
           "boiler01": "Boiler 01",
+          "boiler02": "Boiler 02",
           "hk1": "Heizkreis 01",
           "hk2": "Heizkreis 02",
           "hk3": "Heizkreis 03",
@@ -68,6 +70,7 @@
         "kessel": "Kessel",
         "fehlerpuffer": "Fehlerpuffer",
         "boiler01": "Boiler 01",
+        "boiler02": "Boiler 02",
         "hk1": "Heizkreis 01",
         "hk2": "Heizkreis 02",
         "hk3": "Heizkreis 03",
@@ -276,6 +279,12 @@
       },
       "boiler_1_pumpe_ansteuerung": {
         "name": "Boiler 1 Pumpe Ansteuerung"
+      },
+      "boiler_2_temperatur_oben": {
+        "name": "Boiler 2 Temperatur oben"
+      },
+      "boiler_2_pumpe_ansteuerung": {
+        "name": "Boiler 2 Pumpe Ansteuerung"
       },
       "fuellstand_im_pelletsbehaelter": {
         "name": "Füllstand_im_Pelletsbehälter"
@@ -967,6 +976,12 @@
       "boiler_1_nachladen_wenn_boilertemperatur_unter": {
         "name": "Boiler 1 Nachladen wenn Boilertemperatur unter"
       },
+      "boiler_2_gewuenschte_boilertemperatur": {
+        "name": "Boiler 2 Gewünschte Boilertemperatur"
+      },
+      "boiler_2_nachladen_wenn_boilertemperatur_unter": {
+        "name": "Boiler 2 Nachladen wenn Boilertemperatur unter"
+      },
       "pelletlager_restbestand": {
         "name": "Pelletlager Restbestand"
       },
@@ -1013,6 +1028,9 @@
       },
       "boiler_1_pumpe_an_aus": {
         "name": "Boiler 1 Pumpe AN/AUS"
+      },
+      "boiler_2_pumpe_an_aus": {
+        "name": "Boiler 2 Pumpe AN/AUS"
       }
     },
     "select": {
