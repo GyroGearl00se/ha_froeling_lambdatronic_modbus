@@ -235,11 +235,17 @@
       "hk1_vorlauf_solltemperatur": {
         "name": "HK1 Flow Target Temperature"
       },
+      "hk1_raumtemperatur": {
+        "name": "HK1 Room Temperature"
+      },
       "hk2_vorlauf_isttemperatur": {
         "name": "HK2 Flow Actual Temperature"
       },
       "hk2_vorlauf_solltemperatur": {
         "name": "HK2 Flow Target Temperature"
+      },
+      "hk2_raumtemperatur": {
+        "name": "HK2 Room Temperature"
       },
       "hk3_vorlauf_isttemperatur": {
         "name": "HK3 Flow Actual Temperature"
@@ -247,11 +253,17 @@
       "hk3_vorlauf_solltemperatur": {
         "name": "HK3 Flow Target Temperature"
       },
+      "hk3_raumtemperatur": {
+        "name": "HK3 Room Temperature"
+      },
       "hk4_vorlauf_isttemperatur": {
         "name": "HK4 Flow Actual Temperature"
       },
       "hk4_vorlauf_solltemperatur": {
         "name": "HK4 Flow Target Temperature"
+      },
+      "hk4_raumtemperatur": {
+        "name": "HK4 Room Temperature"
       },
       "puffer_1_temperatur_oben": {
         "name": "Buffer 1 Top Temperature"

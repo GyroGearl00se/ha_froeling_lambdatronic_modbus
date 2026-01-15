@@ -235,11 +235,17 @@
       "hk1_vorlauf_solltemperatur": {
         "name": "HK1 - Vorlauf-Solltemperatur"
       },
+      "hk1_raumtemperatur": {
+        "name": "HK1 - Raumtemperatur"
+      },
       "hk2_vorlauf_isttemperatur": {
         "name": "HK2 - Vorlauf-Isttemperatur"
       },
       "hk2_vorlauf_solltemperatur": {
         "name": "HK2 - Vorlauf-Solltemperatur"
+      },
+      "hk2_raumtemperatur": {
+        "name": "HK2 - Raumtemperatur"
       },
       "hk3_vorlauf_isttemperatur": {
         "name": "HK3 - Vorlauf-Isttemperatur"
@@ -247,11 +253,17 @@
       "hk3_vorlauf_solltemperatur": {
         "name": "HK3 - Vorlauf-Solltemperatur"
       },
+      "hk3_raumtemperatur": {
+        "name": "HK3 - Raumtemperatur"
+      },
       "hk4_vorlauf_isttemperatur": {
         "name": "HK4 - Vorlauf-Isttemperatur"
       },
       "hk4_vorlauf_solltemperatur": {
         "name": "HK4 - Vorlauf-Solltemperatur"
+      },
+      "hk4_raumtemperatur": {
+        "name": "HK4 - Raumtemperatur"
       },
       "puffer_1_temperatur_oben": {
         "name": "Puffer 1 Temperatur oben"

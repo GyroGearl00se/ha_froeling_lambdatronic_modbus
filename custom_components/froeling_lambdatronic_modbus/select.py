@@ -5,7 +5,7 @@ from typing import Any
 
 from homeassistant.components.select import SelectEntity
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
@@ -30,9 +30,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry, async_add_entitie
                 if entity_id in ENTITY_DEFINITIONS[category]:
                     definition = ENTITY_DEFINITIONS[category][entity_id]
                     if definition.get("type") == "select":
-                        selects.append(
-                            FroelingSelect(coordinator, config, entity_id)
-                        )
+                        selects.append(FroelingSelect(coordinator, config, entity_id))
 
     async_add_entities(selects)
 

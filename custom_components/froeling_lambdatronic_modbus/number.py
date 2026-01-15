@@ -2,10 +2,10 @@
 
 import logging
 from typing import Any
-
+from decimal import Decimal, ROUND_HALF_UP
 from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
@@ -30,9 +30,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry, async_add_entitie
                 if entity_id in ENTITY_DEFINITIONS[category]:
                     definition = ENTITY_DEFINITIONS[category][entity_id]
                     if definition.get("type") == "number":
-                        numbers.append(
-                            FroelingNumber(coordinator, config, entity_id)
-                        )
+                        numbers.append(FroelingNumber(coordinator, config, entity_id))
 
     async_add_entities(numbers)
 
@@ -61,22 +59,20 @@ class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEnt
         self._attr_native_max_value = self.entity_definition.get("max", 100)
         self._attr_mode = self.entity_definition.get("mode", NumberMode.BOX)
 
-        scaling = self.entity_definition.get("scaling", 1)
-        if scaling != 0:
-            self._attr_native_step = 1.0 / scaling
-        else:
-            self._attr_native_step = 1.0
+        scaling = int(self.entity_definition.get("scaling", 1))
+        decimals = self.entity_definition.get("decimals")
+
+        if scaling <= 0:
+            scaling = 1
+
+        if decimals is None:
+            decimals = max(0, len(str(scaling)) - 1)
+
+        self._attr_native_step = 10 ** (-decimals)
 
     @property
     def native_value(self) -> float | None:
-        """Return the state of the sensor."""
-        value = self.coordinator.data.get(self._entity_id)
-        if value is None:
-            return None
-        try:
-            return float(value)
-        except (ValueError, TypeError):
-            return None
+        return self.coordinator.data.get(self._entity_id)
 
     async def async_set_native_value(self, value: float) -> None:
         """Update the current value."""
@@ -87,8 +83,12 @@ class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEnt
             _LOGGER.error("Invalid entity definition for %s", self.entity_id)
             return
 
-        scaled_value = int(round(value * scaling_factor))
-        
+        scaled_value = int(
+            (Decimal(str(value)) * Decimal(scaling_factor)).to_integral_value(
+                rounding=ROUND_HALF_UP
+            )
+        )
+
         await self.coordinator.controller.async_write_register(
             register - 40001, scaled_value
         )
@@ -104,4 +104,3 @@ class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEnt
             model="Lambdatronic Modbus",
             sw_version="1.0",
         )
-

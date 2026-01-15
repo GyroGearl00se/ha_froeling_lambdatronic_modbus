@@ -238,6 +238,13 @@ ENTITY_DEFINITIONS = {
             "device_class": "temperature",
             "type": "sensor",
         },
+        "hk1_raumtemperatur": {
+            "register": 31033,
+            "unit": "°C",
+            "scaling": 2,
+            "device_class": "temperature",
+            "type": "sensor",
+        },
         "hk1_pumpe_an_aus": {"coil": 1030, "type": "binary_sensor"},
         "hk1_vorlauf_temperatur_10c_aussentemperatur": {
             "register": 41032,
@@ -329,6 +336,13 @@ ENTITY_DEFINITIONS = {
         },
         "hk2_vorlauf_solltemperatur": {
             "register": 31062,
+            "unit": "°C",
+            "scaling": 2,
+            "device_class": "temperature",
+            "type": "sensor",
+        },
+        "hk2_raumtemperatur": {
+            "register": 31063,
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",
@@ -430,6 +444,13 @@ ENTITY_DEFINITIONS = {
             "device_class": "temperature",
             "type": "sensor",
         },
+        "hk3_raumtemperatur": {
+            "register": 31093,
+            "unit": "°C",
+            "scaling": 2,
+            "device_class": "temperature",
+            "type": "sensor",
+        },
         "hk3_pumpe_an_aus": {"coil": 1090, "type": "binary_sensor"},
         "hk3_vorlauf_temperatur_10c_aussentemperatur": {
             "register": 41092,
@@ -521,6 +542,13 @@ ENTITY_DEFINITIONS = {
         },
         "hk4_vorlauf_solltemperatur": {
             "register": 31122,
+            "unit": "°C",
+            "scaling": 2,
+            "device_class": "temperature",
+            "type": "sensor",
+        },
+        "hk4_raumtemperatur": {
+            "register": 31123,
             "unit": "°C",
             "scaling": 2,
             "device_class": "temperature",

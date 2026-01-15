@@ -5,7 +5,7 @@ from typing import Any
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
@@ -69,6 +69,12 @@ class FroelingSensor(CoordinatorEntity[FroelingDataUpdateCoordinator], SensorEnt
     @property
     def state_class(self):
         return self.entity_definition.get("state_class")
+
+    @property
+    def suggested_display_precision(self):
+        if self.device_class is not None or self.state_class is not None:
+            return self.entity_definition.get("decimals", 0)
+        return None
 
     @property
     def device_info(self) -> DeviceInfo:
