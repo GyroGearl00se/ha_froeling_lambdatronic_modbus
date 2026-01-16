@@ -1,9 +1,11 @@
 # Froeling Lambdatronic Modbus
+
 Home Assistant integration for Fröling Lambdatronic heating systems via Modbus. Currently supports Modbus TCP via a Serial‑to‑Ethernet bridge.
 
-
 ## 🚀 Features
+
 With this integration, you can:
+
 - Read real-time sensor data from your Fröling system (temperatures, states, pump speeds, consumption, etc.).
 - Monitor boiler operation (e.g., Kesselzustand, Anlagenzustand).
 - Configure parameters via writable Number entities, using input boxes.
@@ -13,29 +15,41 @@ With this integration, you can:
 ---
 
 ## 💻 Requirements
+
 You need a Modbus-to-TCP device. This integration has been tested with the Waveshare RS232/RS485 to Ethernet Converter; other Serial-to-Ethernet adapters should work.
 
+> ⚠️ **Important – RS232 required**
+>
+> Fröling Lambdatronic systems communicate via **Modbus RTU over RS232** on **COM2**.
+>
+> ❌ **RS485-only adapters will NOT work**
+> ✔ You must use an **RS232-capable Serial-to-Ethernet converter**
+
 ### 🔧 Enabling Modbus RTU on the Boiler
+
 To enable Modbus RTU on your Fröling boiler:
 
 1. Click the user icon and enter code `-7`.
-2. Adjust the following settings:  
-    - **Settings > General Settings > MODBUS Settings > Modbus Protokoll RTU** → `Set to 1`  
-    - **Settings > General Settings > MODBUS Settings > Use Modbus Protokoll 2014** → `Yes`  
-    - **Settings > General Settings > MODBUS Settings > Use COM2 as MODBUS Interface** → `Yes`  
+2. Adjust the following settings:
+   - **Settings > General Settings > MODBUS Settings > Modbus Protokoll RTU** → `Set to 1`
+   - **Settings > General Settings > MODBUS Settings > Use Modbus Protokoll 2014** → `Yes`
+   - **Settings > General Settings > MODBUS Settings > Use COM2 as MODBUS Interface** → `Yes`
 
 ---
 
 ## 🛠️ Hardware Setup
+
 Use a Serial-to-Ethernet converter between the boiler’s COM2 and your network.
 
 ### Example 1: Waveshare RS232/RS485 to Ethernet Converter
+
 - Converter connected via RS232 to COM2 on the boiler.
 - Example configuration screenshot:
 
   ![Waveshare RS232/RS485 to Ethernet Converter configuration](docs/image.png)
 
 ### Example 2: Waveshare RS232/485/422 TO POE ETH (B) Converter
+
 - Converter connected via RS232 to COM2 on the boiler.
 - Example configuration screenshot:
 
@@ -49,7 +63,9 @@ If you're looking for a way to power your Serial Ethernet converter directly fro
 ---
 
 ## 📦 Installation
+
 ### HACS (recommended)
+
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=GyroGearl00se&repository=ha_froeling_lambdatronic_modbus&category=Dashboard)
 
 - Ensure [HACS](https://hacs.xyz/) is installed.
@@ -57,6 +73,7 @@ If you're looking for a way to power your Serial Ethernet converter directly fro
 - Restart Home Assistant.
 
 ### Manual
+
 - Download the latest release from: https://github.com/GyroGearl00se/ha_froeling_lambdatronic_modbus/releases
 - Copy custom_components/froeling_lambdatronic_modbus into your Home Assistant custom_components folder.
 - Restart Home Assistant.
@@ -65,6 +82,7 @@ If you're looking for a way to power your Serial Ethernet converter directly fro
 ---
 
 ## 🛠️ Setup
+
 1. Settings → Integrations → “+ Add Integration”.
 2. Select “Froeling Lambdatronic Modbus”.
 3. Fill out the form:
@@ -100,21 +118,23 @@ If you're looking for a way to power your Serial Ethernet converter directly fro
   - Betriebsart for heating circuits (e.g., HK01/HK02), options: Aus, Automatik, Extraheizen, Absenken, Dauerabsenken, Partybetrieb.
 
 ## 🧩 Visualization
+
 - Lovelace: Checkout the Fröling Card (HACS): https://github.com/GyroGearl00se/lovelace-froeling-card
 - Example:
   ![image](https://github.com/user-attachments/assets/077fbc1d-9ca0-475b-b266-77067cb2650f)
 
-
 ## 🧡 Contributing
-Contributions are welcome!  
 
-1. **[Fork this repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo).**  
-2. Make changes within your fork.  
-3. **[Create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).**  
+Contributions are welcome!
+
+1. **[Fork this repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo).**
+2. Make changes within your fork.
+3. **[Create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).**
 
 I’ll do my best to review and merge contributions.
 
 ---
+
 ## Disclaimer
 
 This project is not affiliated with or endorsed by Fröling. All trademarks are property of their respective owners.
