@@ -18,12 +18,13 @@ With this integration, you can:
 
 You need a Modbus-to-TCP device. This integration has been tested with the Waveshare RS232/RS485 to Ethernet Converter; other Serial-to-Ethernet adapters should work.
 
-> ⚠️ **Important – RS232 required**
+> ⚠️ **Important – RS232 & Nullmodem cable required**
 >
 > Fröling Lambdatronic systems communicate via **Modbus RTU over RS232** on **COM2**.
 >
-> ❌ **RS485-only adapters will NOT work**
-> ✔ You must use an **RS232-capable Serial-to-Ethernet converter**
+> - ❌ **RS485-only adapters will NOT work**
+> - ✔ You must use an **RS232-capable Serial-to-Ethernet converter**
+> - 🔁 A **nullmodem (crossed) RS232 cable** is required (direct / straight RS232 cables will not work)
 
 ### 🔧 Enabling Modbus RTU on the Boiler
 
