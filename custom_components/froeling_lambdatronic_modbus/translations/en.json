@@ -238,6 +238,9 @@
       "hk1_raumtemperatur": {
         "name": "HK1 Room Temperature"
       },
+      "hk1_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK1 Desired Room Temperature in Heating Mode"
+      },
       "hk2_vorlauf_isttemperatur": {
         "name": "HK2 Flow Actual Temperature"
       },
@@ -246,6 +249,9 @@
       },
       "hk2_raumtemperatur": {
         "name": "HK2 Room Temperature"
+      },
+      "hk2_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK2 Desired Room Temperature in Heating Mode"
       },
       "hk3_vorlauf_isttemperatur": {
         "name": "HK3 Flow Actual Temperature"
@@ -256,6 +262,9 @@
       "hk3_raumtemperatur": {
         "name": "HK3 Room Temperature"
       },
+      "hk3_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK3 Desired Room Temperature in Heating Mode"
+      },
       "hk4_vorlauf_isttemperatur": {
         "name": "HK4 Flow Actual Temperature"
       },
@@ -264,6 +273,9 @@
       },
       "hk4_raumtemperatur": {
         "name": "HK4 Room Temperature"
+      },
+      "hk4_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK4 Desired Room Temperature in Heating Mode"
       },
       "puffer_1_temperatur_oben": {
         "name": "Buffer 1 Top Temperature"

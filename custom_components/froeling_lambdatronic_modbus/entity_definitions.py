@@ -245,6 +245,14 @@ ENTITY_DEFINITIONS = {
             "device_class": "temperature",
             "type": "sensor",
         },
+        "hk1_gewuenschte_raumtemperatur_heizbetrieb": {
+            "register": 41036,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 10,
+            "max": 30,
+            "type": "number",
+        },
         "hk1_pumpe_an_aus": {"coil": 1030, "type": "binary_sensor"},
         "hk1_vorlauf_temperatur_10c_aussentemperatur": {
             "register": 41032,
@@ -347,6 +355,14 @@ ENTITY_DEFINITIONS = {
             "scaling": 2,
             "device_class": "temperature",
             "type": "sensor",
+        },
+        "hk2_gewuenschte_raumtemperatur_heizbetrieb": {
+            "register": 41066,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 10,
+            "max": 30,
+            "type": "number",
         },
         "hk2_pumpe_an_aus": {"coil": 1060, "type": "binary_sensor"},
         "hk2_vorlauf_temperatur_10c_aussentemperatur": {
@@ -451,6 +467,14 @@ ENTITY_DEFINITIONS = {
             "device_class": "temperature",
             "type": "sensor",
         },
+        "hk3_gewuenschte_raumtemperatur_heizbetrieb": {
+            "register": 41096,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 10,
+            "max": 30,
+            "type": "number",
+        },
         "hk3_pumpe_an_aus": {"coil": 1090, "type": "binary_sensor"},
         "hk3_vorlauf_temperatur_10c_aussentemperatur": {
             "register": 41092,
@@ -553,6 +577,14 @@ ENTITY_DEFINITIONS = {
             "scaling": 2,
             "device_class": "temperature",
             "type": "sensor",
+        },
+        "hk4_gewuenschte_raumtemperatur_heizbetrieb": {
+            "register": 41126,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 10,
+            "max": 30,
+            "type": "number",
         },
         "hk4_pumpe_an_aus": {"coil": 1120, "type": "binary_sensor"},
         "hk4_vorlauf_temperatur_10c_aussentemperatur": {

@@ -238,6 +238,9 @@
       "hk1_raumtemperatur": {
         "name": "HK1 - Raumtemperatur"
       },
+      "hk1_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK1 - Gewünschte Raumtemperatur Heizbetrieb"
+      },
       "hk2_vorlauf_isttemperatur": {
         "name": "HK2 - Vorlauf-Isttemperatur"
       },
@@ -246,6 +249,9 @@
       },
       "hk2_raumtemperatur": {
         "name": "HK2 - Raumtemperatur"
+      },
+      "hk2_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK2 - Gewünschte Raumtemperatur Heizbetrieb"
       },
       "hk3_vorlauf_isttemperatur": {
         "name": "HK3 - Vorlauf-Isttemperatur"
@@ -256,6 +262,9 @@
       "hk3_raumtemperatur": {
         "name": "HK3 - Raumtemperatur"
       },
+      "hk3_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK3 - Gewünschte Raumtemperatur Heizbetrieb"
+      },
       "hk4_vorlauf_isttemperatur": {
         "name": "HK4 - Vorlauf-Isttemperatur"
       },
@@ -264,6 +273,9 @@
       },
       "hk4_raumtemperatur": {
         "name": "HK4 - Raumtemperatur"
+      },
+      "hk4_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK4 - Gewünschte Raumtemperatur Heizbetrieb"
       },
       "puffer_1_temperatur_oben": {
         "name": "Puffer 1 Temperatur oben"
