@@ -922,6 +922,9 @@
       "hk1_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK1 Temperatur am Puffer oben ab der der Überhitzungsschutz aktiv wird"
       },
+      "hk1_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK1 Vorlauf Temperatur Externe Vorgabe"
+      },
       "hk2_vorlauf_temperatur_10c_aussentemperatur": {
         "name": "HK2 Vorlauf Temperatur bei 10°C Außentemperatur"
       },
@@ -945,6 +948,9 @@
       },
       "hk2_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK2 Temperatur am Puffer oben ab der der Überhitzungsschutz aktiv wird"
+      },
+      "hk2_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK2 Vorlauf Temperatur Externe Vorgabe"
       },
       "hk3_vorlauf_temperatur_10c_aussentemperatur": {
         "name": "HK3 Vorlauf Temperatur bei 10°C Außentemperatur"
@@ -970,6 +976,9 @@
       "hk3_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK3 Temperatur am Puffer oben ab der der Überhitzungsschutz aktiv wird"
       },
+      "hk3_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK3 Vorlauf Temperatur Externe Vorgabe"
+      },
       "hk4_vorlauf_temperatur_10c_aussentemperatur": {
         "name": "HK4 Vorlauf Temperatur bei 10°C Außentemperatur"
       },
@@ -993,6 +1002,9 @@
       },
       "hk4_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK4 Temperatur am Puffer oben ab der der Überhitzungsschutz aktiv wird"
+      },
+      "hk4_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK4 Vorlauf Temperatur Externe Vorgabe"
       },
       "boiler_1_gewuenschte_boilertemperatur": {
         "name": "Boiler 1 Gewünschte Boilertemperatur"
@@ -1069,6 +1081,13 @@
           "partybetrieb": "Partybetrieb"
         }
       },
+      "hk1_freigabe_externe_vorgabe": {
+        "name": "HK1 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
       "hk2_betriebsart": {
         "name": "HK2 Betriebsart",
         "state": {
@@ -1078,6 +1097,13 @@
           "absenken": "Absenken",
           "dauerabsenken": "Dauerabsenken",
           "partybetrieb": "Partybetrieb"
+        }
+      },
+      "hk2_freigabe_externe_vorgabe": {
+        "name": "HK2 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
         }
       },
       "hk3_betriebsart": {
@@ -1091,6 +1117,13 @@
           "partybetrieb": "Partybetrieb"
         }
       },
+      "hk3_freigabe_externe_vorgabe": {
+        "name": "HK3 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
       "hk4_betriebsart": {
         "name": "HK4 Betriebsart",
         "state": {
@@ -1101,7 +1134,13 @@
           "dauerabsenken": "Dauerabsenken",
           "partybetrieb": "Partybetrieb"
         }
-      }
+      },
+      "hk4_freigabe_externe_vorgabe": {
+        "name": "HK4 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
     }
   }
 }

@@ -253,6 +253,14 @@ ENTITY_DEFINITIONS = {
             "max": 30,
             "type": "number",
         },
+        "hk1_vorlauf_temperatur_externe_vorgabe": {
+            "register": 48001,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 0,
+            "max": 75,
+            "type": "number",
+        },
         "hk1_pumpe_an_aus": {"coil": 1030, "type": "binary_sensor"},
         "hk1_vorlauf_temperatur_10c_aussentemperatur": {
             "register": 41032,
@@ -332,6 +340,16 @@ ENTITY_DEFINITIONS = {
             "max": 5,
             "type": "select",
         },
+        "hk1_freigabe_externe_vorgabe": {
+            "register": 48029,
+            "options": [
+                "aus",
+                "ein",
+            ],
+            "min": 0,
+            "max": 1,
+            "type": "select",
+        },
     },
     "hk2": {
         "hk2_vorlauf_isttemperatur": {
@@ -362,6 +380,14 @@ ENTITY_DEFINITIONS = {
             "scaling": 2,
             "min": 10,
             "max": 30,
+            "type": "number",
+        },
+        "hk2_vorlauf_temperatur_externe_vorgabe": {
+            "register": 48002,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 0,
+            "max": 75,
             "type": "number",
         },
         "hk2_pumpe_an_aus": {"coil": 1060, "type": "binary_sensor"},
@@ -443,6 +469,16 @@ ENTITY_DEFINITIONS = {
             "max": 5,
             "type": "select",
         },
+        "hk2_freigabe_externe_vorgabe": {
+            "register": 48030,
+            "options": [
+                "aus",
+                "ein",
+            ],
+            "min": 0,
+            "max": 1,
+            "type": "select",
+        },
     },
     "hk3": {
         "hk3_vorlauf_isttemperatur": {
@@ -473,6 +509,14 @@ ENTITY_DEFINITIONS = {
             "scaling": 2,
             "min": 10,
             "max": 30,
+            "type": "number",
+        },
+        "hk3_vorlauf_temperatur_externe_vorgabe": {
+            "register": 48003,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 0,
+            "max": 75,
             "type": "number",
         },
         "hk3_pumpe_an_aus": {"coil": 1090, "type": "binary_sensor"},
@@ -554,6 +598,16 @@ ENTITY_DEFINITIONS = {
             "max": 5,
             "type": "select",
         },
+        "hk3_freigabe_externe_vorgabe": {
+            "register": 48031,
+            "options": [
+                "aus",
+                "ein",
+            ],
+            "min": 0,
+            "max": 1,
+            "type": "select",
+        },
     },
     "hk4": {
         "hk4_vorlauf_isttemperatur": {
@@ -584,6 +638,14 @@ ENTITY_DEFINITIONS = {
             "scaling": 2,
             "min": 10,
             "max": 30,
+            "type": "number",
+        },
+        "hk4_vorlauf_temperatur_externe_vorgabe": {
+            "register": 48004,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 0,
+            "max": 75,
             "type": "number",
         },
         "hk4_pumpe_an_aus": {"coil": 1120, "type": "binary_sensor"},
@@ -663,6 +725,16 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "type": "select",
+        },
+        "hk4_freigabe_externe_vorgabe": {
+            "register": 48032,
+            "options": [
+                "aus",
+                "ein",
+            ],
+            "min": 0,
+            "max": 1,
             "type": "select",
         },
     },

@@ -922,6 +922,9 @@
       "hk1_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK1 Temperature at Buffer Top Where Overheat Protection Activates"
       },
+      "hk1_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK1 Flow Temperature External Specification"
+      },
       "hk2_vorlauf_temperatur_10c_aussentemperatur": {
         "name": "HK2 Flow Temperature at 10°C Outside Temperature"
       },
@@ -945,6 +948,9 @@
       },
       "hk2_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK2 Temperature at Buffer Top Where Overheat Protection Activates"
+      },
+      "hk2_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK2 Flow Temperature External Specification"
       },
       "hk3_vorlauf_temperatur_10c_aussentemperatur": {
         "name": "HK3 Flow Temperature at 10°C Outside Temperature"
@@ -970,6 +976,9 @@
       "hk3_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK3 Temperature at Buffer Top Where Overheat Protection Activates"
       },
+      "hk3_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK3 Flow Temperature External Specification"
+      },
       "hk4_vorlauf_temperatur_10c_aussentemperatur": {
         "name": "HK4 Flow Temperature at 10°C Outside Temperature"
       },
@@ -993,6 +1002,9 @@
       },
       "hk4_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
         "name": "HK4 Temperature at Buffer Top Where Overheat Protection Activates"
+      },
+      "hk4_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK4 Flow Temperature External Specification"
       },
       "boiler_1_gewuenschte_boilertemperatur": {
         "name": "Boiler 1 Desired Temperature"
@@ -1069,6 +1081,13 @@
           "partybetrieb": "Party Mode"
         }
       },
+      "hk1_freigabe_externe_vorgabe": {
+        "name": "HK1 Clearance External Specification",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
       "hk2_betriebsart": {
         "name": "HK2 Operating Mode",
         "state": {
@@ -1078,6 +1097,13 @@
           "absenken": "Setback",
           "dauerabsenken": "Permanent Setback",
           "partybetrieb": "Party Mode"
+        }
+      },
+      "hk2_freigabe_externe_vorgabe": {
+        "name": "HK2 Clearance External Specification",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
         }
       },
       "hk3_betriebsart": {
@@ -1091,6 +1117,13 @@
           "partybetrieb": "Party Mode"
         }
       },
+      "hk3_freigabe_externe_vorgabe": {
+        "name": "HK3 Clearance External Specification",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
       "hk4_betriebsart": {
         "name": "HK4 Operating Mode",
         "state": {
@@ -1100,6 +1133,13 @@
           "absenken": "Setback",
           "dauerabsenken": "Permanent Setback",
           "partybetrieb": "Party Mode"
+        }
+      },
+      "hk4_freigabe_externe_vorgabe": {
+        "name": "HK4 Clearance External Specification",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
         }
       }
     }
