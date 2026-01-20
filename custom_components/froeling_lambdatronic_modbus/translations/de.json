@@ -238,9 +238,6 @@
       "hk1_raumtemperatur": {
         "name": "HK1 - Raumtemperatur"
       },
-      "hk1_gewuenschte_raumtemperatur_heizbetrieb": {
-        "name": "HK1 - Gewünschte Raumtemperatur Heizbetrieb"
-      },
       "hk2_vorlauf_isttemperatur": {
         "name": "HK2 - Vorlauf-Isttemperatur"
       },
@@ -249,9 +246,6 @@
       },
       "hk2_raumtemperatur": {
         "name": "HK2 - Raumtemperatur"
-      },
-      "hk2_gewuenschte_raumtemperatur_heizbetrieb": {
-        "name": "HK2 - Gewünschte Raumtemperatur Heizbetrieb"
       },
       "hk3_vorlauf_isttemperatur": {
         "name": "HK3 - Vorlauf-Isttemperatur"
@@ -262,9 +256,6 @@
       "hk3_raumtemperatur": {
         "name": "HK3 - Raumtemperatur"
       },
-      "hk3_gewuenschte_raumtemperatur_heizbetrieb": {
-        "name": "HK3 - Gewünschte Raumtemperatur Heizbetrieb"
-      },
       "hk4_vorlauf_isttemperatur": {
         "name": "HK4 - Vorlauf-Isttemperatur"
       },
@@ -273,9 +264,6 @@
       },
       "hk4_raumtemperatur": {
         "name": "HK4 - Raumtemperatur"
-      },
-      "hk4_gewuenschte_raumtemperatur_heizbetrieb": {
-        "name": "HK4 - Gewünschte Raumtemperatur Heizbetrieb"
       },
       "puffer_1_temperatur_oben": {
         "name": "Puffer 1 Temperatur oben"
@@ -925,6 +913,9 @@
       "hk1_vorlauf_temperatur_externe_vorgabe": {
         "name": "HK1 Vorlauf Temperatur Externe Vorgabe"
       },
+      "hk1_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK1 - Gewünschte Raumtemperatur Heizbetrieb"
+      },
       "hk2_vorlauf_temperatur_10c_aussentemperatur": {
         "name": "HK2 Vorlauf Temperatur bei 10°C Außentemperatur"
       },
@@ -951,6 +942,9 @@
       },
       "hk2_vorlauf_temperatur_externe_vorgabe": {
         "name": "HK2 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk2_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK2 - Gewünschte Raumtemperatur Heizbetrieb"
       },
       "hk3_vorlauf_temperatur_10c_aussentemperatur": {
         "name": "HK3 Vorlauf Temperatur bei 10°C Außentemperatur"
@@ -979,6 +973,9 @@
       "hk3_vorlauf_temperatur_externe_vorgabe": {
         "name": "HK3 Vorlauf Temperatur Externe Vorgabe"
       },
+      "hk3_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK3 - Gewünschte Raumtemperatur Heizbetrieb"
+      },
       "hk4_vorlauf_temperatur_10c_aussentemperatur": {
         "name": "HK4 Vorlauf Temperatur bei 10°C Außentemperatur"
       },
@@ -1005,6 +1002,9 @@
       },
       "hk4_vorlauf_temperatur_externe_vorgabe": {
         "name": "HK4 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk4_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK4 - Gewünschte Raumtemperatur Heizbetrieb"
       },
       "boiler_1_gewuenschte_boilertemperatur": {
         "name": "Boiler 1 Gewünschte Boilertemperatur"
