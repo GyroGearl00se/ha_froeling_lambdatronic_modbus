@@ -28,6 +28,9 @@
           "hk4": "Heating Circuit 04",
           "austragung": "Feed System",
           "puffer01": "Buffer 01",
+          "puffer02": "Buffer 02",
+          "puffer03": "Buffer 03",
+          "puffer04": "Buffer 04",
           "zirkulationspumpe": "Circulation Pump",
           "zweitkessel": "Second Boiler",
           "solarthermie": "Solar"
@@ -56,6 +59,9 @@
           "hk4": "Heating Circuit 04",
           "austragung": "Feed System",
           "puffer01": "Buffer 01",
+          "puffer02": "Buffer 02",
+          "puffer03": "Buffer 03",
+          "puffer04": "Buffer 04",
           "zirkulationspumpe": "Circulation Pump",
           "zweitkessel": "Second Boiler",
           "solarthermie": "Solar"
@@ -77,6 +83,9 @@
         "hk4": "Heating Circuit 04",
         "austragung": "Feed System",
         "puffer01": "Buffer 01",
+        "puffer02": "Buffer 02",
+        "puffer03": "Buffer 03",
+        "puffer04": "Buffer 04",
         "zirkulationspumpe": "Circulation Pump",
         "zweitkessel": "Second Boiler",
         "solarthermie": "Solar"
@@ -285,6 +294,51 @@
       },
       "puffer_1_ladezustand": {
         "name": "Buffer 1 Charge State"
+      },
+      "puffer_2_temperatur_oben": {
+        "name": "Buffer 2 Top Temperature"
+      },
+      "puffer_2_temperatur_mitte": {
+        "name": "Buffer 2 Middle Temperature"
+      },
+      "puffer_2_temperatur_unten": {
+        "name": "Buffer 2 Bottom Temperature"
+      },
+      "puffer_2_pufferpumpen_ansteuerung": {
+        "name": "Buffer 2 Pump Control"
+      },
+      "puffer_2_ladezustand": {
+        "name": "Buffer 2 Charge State"
+      },
+      "puffer_3_temperatur_oben": {
+        "name": "Buffer 3 Top Temperature"
+      },
+      "puffer_3_temperatur_mitte": {
+        "name": "Buffer 3 Middle Temperature"
+      },
+      "puffer_3_temperatur_unten": {
+        "name": "Buffer 3 Bottom Temperature"
+      },
+      "puffer_3_pufferpumpen_ansteuerung": {
+        "name": "Buffer 3 Pump Control"
+      },
+      "puffer_3_ladezustand": {
+        "name": "Buffer 3 Charge State"
+      },
+      "puffer_4_temperatur_oben": {
+        "name": "Buffer 4 Top Temperature"
+      },
+      "puffer_4_temperatur_mitte": {
+        "name": "Buffer 4 Middle Temperature"
+      },
+      "puffer_4_temperatur_unten": {
+        "name": "Buffer 4 Bottom Temperature"
+      },
+      "puffer_4_pufferpumpen_ansteuerung": {
+        "name": "Buffer 4 Pump Control"
+      },
+      "puffer_4_ladezustand": {
+        "name": "Buffer 4 Charge State"
       },
       "boiler_1_temperatur_oben": {
         "name": "Boiler 1 Top Temperature"
@@ -1058,6 +1112,15 @@
       },
       "puffer_1_pufferpumpe_an_aus": {
         "name": "Buffer 1 Pump ON/OFF"
+      },
+      "puffer_2_pufferpumpe_an_aus": {
+        "name": "Buffer 2 Pump ON/OFF"
+      },
+      "puffer_3_pufferpumpe_an_aus": {
+        "name": "Buffer 3 Pump ON/OFF"
+      },
+      "puffer_4_pufferpumpe_an_aus": {
+        "name": "Buffer 4 Pump ON/OFF"
       },
       "zirkulationspumpe_an_aus": {
         "name": "Circulation Pump ON/OFF"

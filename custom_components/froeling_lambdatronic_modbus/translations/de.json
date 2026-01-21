@@ -28,6 +28,9 @@
           "hk4": "Heizkreis 04",
           "austragung": "Austragung",
           "puffer01": "Puffer 01",
+          "puffer02": "Puffer 02",
+          "puffer03": "Puffer 03",
+          "puffer04": "Puffer 04",
           "zirkulationspumpe": "Zirkulationspumpe",
           "zweitkessel": "Zweitkessel",
           "solarthermie": "Solarthermie"
@@ -56,6 +59,9 @@
           "hk4": "Heizkreis 04",
           "austragung": "Austragung",
           "puffer01": "Puffer 01",
+          "puffer02": "Puffer 02",
+          "puffer03": "Puffer 03",
+          "puffer04": "Puffer 04",
           "zirkulationspumpe": "Zirkulationspumpe",
           "zweitkessel": "Zweitkessel",
           "solarthermie": "Solarthermie"
@@ -77,6 +83,9 @@
         "hk4": "Heizkreis 04",
         "austragung": "Austragung",
         "puffer01": "Puffer 01",
+        "puffer02": "Puffer 02",
+        "puffer03": "Puffer 03",
+        "puffer04": "Puffer 04",
         "zirkulationspumpe": "Zirkulationspumpe",
         "zweitkessel": "Zweitkessel",
         "solarthermie": "Solarthermie"
@@ -285,6 +294,51 @@
       },
       "puffer_1_ladezustand": {
         "name": "Puffer 1 Ladezustand"
+      },
+      "puffer_2_temperatur_oben": {
+        "name": "Puffer 2 Temperatur oben"
+      },
+      "puffer_2_temperatur_mitte": {
+        "name": "Puffer 2 Temperatur mitte"
+      },
+      "puffer_2_temperatur_unten": {
+        "name": "Puffer 2 Temperatur unten"
+      },
+      "puffer_2_pufferpumpen_ansteuerung": {
+        "name": "Puffer 2 Pufferpumpen Ansteuerung"
+      },
+      "puffer_2_ladezustand": {
+        "name": "Puffer 2 Ladezustand"
+      },
+      "puffer_3_temperatur_oben": {
+        "name": "Puffer 3 Temperatur oben"
+      },
+      "puffer_3_temperatur_mitte": {
+        "name": "Puffer 3 Temperatur mitte"
+      },
+      "puffer_3_temperatur_unten": {
+        "name": "Puffer 3 Temperatur unten"
+      },
+      "puffer_3_pufferpumpen_ansteuerung": {
+        "name": "Puffer 3 Pufferpumpen Ansteuerung"
+      },
+      "puffer_3_ladezustand": {
+        "name": "Puffer 3 Ladezustand"
+      },
+      "puffer_4_temperatur_oben": {
+        "name": "Puffer 4 Temperatur oben"
+      },
+      "puffer_4_temperatur_mitte": {
+        "name": "Puffer 4 Temperatur mitte"
+      },
+      "puffer_4_temperatur_unten": {
+        "name": "Puffer 4 Temperatur unten"
+      },
+      "puffer_4_pufferpumpen_ansteuerung": {
+        "name": "Puffer 4 Pufferpumpen Ansteuerung"
+      },
+      "puffer_4_ladezustand": {
+        "name": "Puffer 4 Ladezustand"
       },
       "boiler_1_temperatur_oben": {
         "name": "Boiler 1 Temperatur oben"
@@ -1058,6 +1112,15 @@
       },
       "puffer_1_pufferpumpe_an_aus": {
         "name": "Puffer 1 Pumpe AN/AUS"
+      },
+      "puffer_2_pufferpumpe_an_aus": {
+        "name": "Puffer 2 Pumpe AN/AUS"
+      },
+      "puffer_3_pufferpumpe_an_aus": {
+        "name": "Puffer 3 Pumpe AN/AUS"
+      },
+      "puffer_4_pufferpumpe_an_aus": {
+        "name": "Puffer 4 Pumpe AN/AUS"
       },
       "zirkulationspumpe_an_aus": {
         "name": "Zirkulationspumpe AN/AUS"
