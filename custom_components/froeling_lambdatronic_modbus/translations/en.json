@@ -1066,6 +1066,9 @@
       "boiler_1_nachladen_wenn_boilertemperatur_unter": {
         "name": "Boiler 1 Recharge When Temperature is Below"
       },
+      "boiler_1_solltemperatur_externe_vorgabe": {
+        "name": "Boiler 1 Target Temperature External Specification"
+      },
       "boiler_2_gewuenschte_boilertemperatur": {
         "name": "Boiler 2 Desired Temperature"
       },
