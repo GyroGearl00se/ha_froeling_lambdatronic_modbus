@@ -185,6 +185,14 @@ ENTITY_DEFINITIONS = {
             "max": 90,
             "type": "number",
         },
+        "boiler_1_solltemperatur_externe_vorgabe": {
+            "register": 48019,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 1,
+            "max": 90,
+            "type": "number",
+        },
     },
     "boiler02": {
         "boiler_2_temperatur_oben": {
@@ -215,6 +223,14 @@ ENTITY_DEFINITIONS = {
         },
         "boiler_2_nachladen_wenn_boilertemperatur_unter": {
             "register": 41663,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 1,
+            "max": 90,
+            "type": "number",
+        },
+        "boiler_2_solltemperatur_externe_vorgabe": {
+            "register": 48020,
             "unit": "°C",
             "scaling": 2,
             "min": 1,
