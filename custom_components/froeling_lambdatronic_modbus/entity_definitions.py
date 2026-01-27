@@ -229,6 +229,14 @@ ENTITY_DEFINITIONS = {
             "max": 90,
             "type": "number",
         },
+        "boiler_2_solltemperatur_externe_vorgabe": {
+            "register": 48020,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 1,
+            "max": 90,
+            "type": "number",
+        },
     },
     "hk1": {
         "hk1_vorlauf_isttemperatur": {
