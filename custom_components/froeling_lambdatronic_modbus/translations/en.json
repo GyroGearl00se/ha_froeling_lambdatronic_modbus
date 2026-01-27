@@ -1075,6 +1075,9 @@
       "boiler_2_nachladen_wenn_boilertemperatur_unter": {
         "name": "Boiler 2 Recharge When Temperature is Below"
       },
+      "boiler_2_solltemperatur_externe_vorgabe": {
+        "name": "Boiler 2 Target Temperature External Specification"
+      },
       "pelletlager_restbestand": {
         "name": "Pellet Storage Remaining Stock"
       },
