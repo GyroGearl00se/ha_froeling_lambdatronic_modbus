@@ -185,6 +185,14 @@ ENTITY_DEFINITIONS = {
             "max": 90,
             "type": "number",
         },
+        "boiler_1_solltemperatur_externe_vorgabe": {
+            "register": 48019,
+            "unit": "°C",
+            "scaling": 2,
+            "min": 1,
+            "max": 90,
+            "type": "number",
+        },
     },
     "boiler02": {
         "boiler_2_temperatur_oben": {
