@@ -1066,6 +1066,9 @@
       "boiler_1_nachladen_wenn_boilertemperatur_unter": {
         "name": "Boiler 1 Nachladen wenn Boilertemperatur unter"
       },
+      "boiler_1_solltemperatur_externe_vorgabe": {
+        "name": "Boiler 1 Solltemperatur Externe Vorgabe"
+      },
       "boiler_2_gewuenschte_boilertemperatur": {
         "name": "Boiler 2 Gewünschte Boilertemperatur"
       },
