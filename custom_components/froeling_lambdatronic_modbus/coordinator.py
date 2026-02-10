@@ -60,6 +60,7 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         """Group registers into blocks for efficient reading."""
         registers_by_type: dict[str, list[tuple[int, str]]] = {
             "input": [],
+            "discrete_input": [],
             "holding": [],
             "coil": [],
         }
@@ -71,6 +72,9 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             if "coil" in definition:
                 reg_type = "coil"
                 address = definition["coil"]
+            elif "discrete_input" in definition:
+                reg_type = "discrete_input"
+                address = definition["discrete_input"]
             elif address is not None:
                 entity_type = definition.get("type")
 
@@ -143,12 +147,20 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
         address = definition.get("register")
         coil_address = definition.get("coil")
+        discrete_input_address = definition.get("discrete_input")
 
         value = None
         read_success = False
 
         if coil_address is not None:
             result = await self.controller.async_read_coils(coil_address, 1)
+            if result and not result.isError():
+                value = result.bits[0]
+                read_success = True
+        elif discrete_input_address is not None:
+            result = await self.controller.async_read_discrete_inputs(
+                discrete_input_address - 10001, 1
+            )
             if result and not result.isError():
                 value = result.bits[0]
                 read_success = True
@@ -200,7 +212,11 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             for block_type, start_addr, count, entities_in_block in self._read_blocks:
                 read_success = False
 
-                if block_type == "input":
+                if block_type == "discrete_input":
+                    result = await self.controller.async_read_discrete_inputs(
+                        start_addr - 10001, count
+                    )
+                elif block_type == "input":
                     result = await self.controller.async_read_input_registers(
                         start_addr - 30001, count
                     )
@@ -223,6 +239,13 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                     continue
 
                 for entity_id in entities_in_block:
+                    if block_type == "discrete_input":
+                        if offset < len(result.bits):
+                            data[entity_id] = result.bits[offset]
+                        else:
+                            data[entity_id] = None
+                        continue
+
                     definition = self._entity_definitions[entity_id]
                     reg_addr = definition.get("register", definition.get("coil"))
 
