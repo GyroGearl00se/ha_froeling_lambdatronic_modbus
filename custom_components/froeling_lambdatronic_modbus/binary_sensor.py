@@ -55,15 +55,21 @@ class FroelingBinarySensor(
         super().__init__(coordinator)
         self._entity_id = entity_id
         self._device_name = config["name"]
+        self.entity_definition = coordinator._entity_definitions[entity_id]
 
         self._attr_unique_id = f"{self._device_name}_{self._entity_id}"
         self._attr_has_entity_name = True
         self._attr_translation_key = self._entity_id
+        self._attr_device_class = self.entity_definition.get("device_class")
 
     @property
     def is_on(self) -> bool | None:
         """Return the state of the binary sensor."""
         return self.coordinator.data.get(self._entity_id)
+
+    @property
+    def device_class(self):
+        return self.entity_definition.get("device_class")
 
     @property
     def device_info(self) -> DeviceInfo:
