@@ -239,17 +239,17 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                     continue
 
                 for entity_id in entities_in_block:
+                    definition = self._entity_definitions[entity_id]
+                    
+                    reg_addr = definition.get("register", definition.get("coil", definition.get("discrete_input")))
+                    offset = reg_addr - start_addr
+
                     if block_type == "discrete_input":
                         if offset < len(result.bits):
                             data[entity_id] = result.bits[offset]
                         else:
                             data[entity_id] = None
                         continue
-
-                    definition = self._entity_definitions[entity_id]
-                    reg_addr = definition.get("register", definition.get("coil"))
-
-                    offset = reg_addr - start_addr
 
                     if block_type == "coil":
                         if offset < len(result.bits):
