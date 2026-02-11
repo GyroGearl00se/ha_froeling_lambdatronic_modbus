@@ -98,6 +98,31 @@ class ModbusController:
                 _LOGGER.debug("Exception reading input registers: %s", exc)
                 return None
 
+    async def async_read_discrete_inputs(
+        self, address: int, count: int = 1, device_id: int | None = None
+    ) -> Any:
+        """Read discrete inputs (async)."""
+
+        if device_id is None:
+            device_id = self.device_id
+
+        async with self._lock:
+            if not await self._ensure_client_connected():
+                return None
+            try:
+                _LOGGER.debug(
+                    "async_read_discrete_inputs address: %s, count: %s, device_id: %s",
+                    address,
+                    count,
+                    device_id,
+                )
+                return await self._client.read_discrete_inputs(
+                    address=address, count=count, device_id=device_id
+                )
+            except (ModbusIOException, ConnectionException) as exc:
+                _LOGGER.debug("Exception reading discrete inputs: %s", exc)
+                return None
+
     async def async_read_holding_registers(
         self, address: int, count: int = 1, device_id: int | None = None
     ) -> Any:

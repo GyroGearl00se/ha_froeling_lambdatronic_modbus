@@ -29,6 +29,10 @@ async def _read_value_helper(
             result = await controller.async_read_coils(definition["coil"], count=1)
             if result and not result.isError():
                 return result.bits[0]
+        elif "discrete_input" in definition:
+            result = await controller.async_read_discrete_inputs(definition["discrete_input"] - 10001, count=1)
+            if result and not result.isError():
+                return int(result.bits[0])
         elif "register" in definition:
             offset = (
                 40001

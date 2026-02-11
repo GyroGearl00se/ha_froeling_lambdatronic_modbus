@@ -38,6 +38,23 @@ ENTITY_DEFINITIONS = {
             "scaling": 1,
             "type": "sensor",
         },
+        "tuerkontakt": {
+            "discrete_input": 10001,
+            "type": "binary_sensor",
+            "device_class": "door"
+        },
+        "stb": {
+            "discrete_input": 10002,
+            "type": "binary_sensor"
+        },
+        "notaus": {
+            "discrete_input": 10003,
+            "type": "binary_sensor"
+        },
+        "kesselfreigabe": {
+            "discrete_input": 10004,
+            "type": "binary_sensor"
+        },
     },
     "kessel": {
         "kesseltemperatur": {
@@ -56,6 +73,14 @@ ENTITY_DEFINITIONS = {
             "state_class": "measurement",
             "type": "sensor",
         },
+        "boardtemperatur": {
+            "register": 30003,
+            "unit": "°C",
+            "scaling":2,
+            "device_class": "temperature",
+            "state_class": "measurement",
+            "type": "sensor",
+        },
         "verbleibende_heizstunden_bis_zur_asche_entleeren_warnung": {
             "register": 30087,
             "unit": "h",
@@ -67,6 +92,7 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "type": "sensor",
+            "device_class": "power_factor",
         },
         "saugzugdrehzahl": {
             "register": 30007,
@@ -132,6 +158,7 @@ ENTITY_DEFINITIONS = {
             "min": 70,
             "max": 90,
             "type": "number",
+            "device_class": "temperature",
         },
         "bei_welcher_rl_temperatur_an_der_zirkulationsleitung_soll_die_pumpe_ausschalten": {
             "register": 40601,
@@ -140,6 +167,7 @@ ENTITY_DEFINITIONS = {
             "min": 20,
             "max": 120,
             "type": "number",
+            "device_class": "temperature",
         },
     },
     "fehlerpuffer": {
@@ -164,6 +192,7 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "type": "sensor",
+            "device_class": "power_factor",
         },
         "boiler_1_pumpe_an_aus": {
             "register": 31633,
@@ -176,6 +205,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 100,
             "type": "number",
+            "device_class": "temperature",
         },
         "boiler_1_nachladen_wenn_boilertemperatur_unter": {
             "register": 41633,
@@ -184,6 +214,7 @@ ENTITY_DEFINITIONS = {
             "min": 1,
             "max": 90,
             "type": "number",
+            "device_class": "temperature",
         },
         "boiler_1_solltemperatur_externe_vorgabe": {
             "register": 48019,
@@ -192,6 +223,7 @@ ENTITY_DEFINITIONS = {
             "min": 1,
             "max": 90,
             "type": "number",
+            "device_class": "temperature",
         },
     },
     "boiler02": {
@@ -208,6 +240,7 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "type": "sensor",
+            "device_class": "power_factor",
         },
         "boiler_2_pumpe_an_aus": {
             "register": 31663,
@@ -220,6 +253,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 100,
             "type": "number",
+            "device_class": "temperature",
         },
         "boiler_2_nachladen_wenn_boilertemperatur_unter": {
             "register": 41663,
@@ -228,6 +262,7 @@ ENTITY_DEFINITIONS = {
             "min": 1,
             "max": 90,
             "type": "number",
+            "device_class": "temperature",
         },
         "boiler_2_solltemperatur_externe_vorgabe": {
             "register": 48020,
@@ -236,6 +271,7 @@ ENTITY_DEFINITIONS = {
             "min": 1,
             "max": 90,
             "type": "number",
+            "device_class": "temperature",
         },
     },
     "hk1": {
@@ -276,6 +312,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 75,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk1_pumpe_an_aus": {"coil": 1030, "type": "binary_sensor"},
         "hk1_vorlauf_temperatur_10c_aussentemperatur": {
@@ -293,6 +330,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 110,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk1_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
             "register": 41040,
@@ -301,6 +339,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 30,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk1_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
             "register": 41034,
@@ -309,6 +348,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 70,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk1_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
             "register": 41037,
@@ -317,6 +357,7 @@ ENTITY_DEFINITIONS = {
             "min": -20,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk1_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
             "register": 41038,
@@ -325,6 +366,7 @@ ENTITY_DEFINITIONS = {
             "min": -20,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk1_frostschutztemperatur": {
             "register": 41039,
@@ -333,6 +375,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 20,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk1_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
             "register": 41048,
@@ -341,6 +384,7 @@ ENTITY_DEFINITIONS = {
             "min": 60,
             "max": 120,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk1_betriebsart": {
             "register": 48047,
@@ -397,6 +441,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 30,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_vorlauf_temperatur_externe_vorgabe": {
             "register": 48002,
@@ -405,6 +450,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 75,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_pumpe_an_aus": {"coil": 1060, "type": "binary_sensor"},
         "hk2_vorlauf_temperatur_10c_aussentemperatur": {
@@ -414,6 +460,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 110,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_vorlauf_temperatur_minus_10c_aussentemperatur": {
             "register": 41063,
@@ -422,6 +469,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 110,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
             "register": 41070,
@@ -430,6 +478,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 30,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
             "register": 41064,
@@ -438,6 +487,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 70,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
             "register": 41067,
@@ -446,6 +496,7 @@ ENTITY_DEFINITIONS = {
             "min": -20,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
             "register": 41068,
@@ -454,6 +505,7 @@ ENTITY_DEFINITIONS = {
             "min": -20,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_frostschutztemperatur": {
             "register": 41069,
@@ -462,6 +514,7 @@ ENTITY_DEFINITIONS = {
             "min": -10,
             "max": 20,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
             "register": 41079,
@@ -470,6 +523,7 @@ ENTITY_DEFINITIONS = {
             "min": 60,
             "max": 120,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk2_betriebsart": {
             "register": 48048,
@@ -526,6 +580,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 30,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_vorlauf_temperatur_externe_vorgabe": {
             "register": 48003,
@@ -534,6 +589,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 75,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_pumpe_an_aus": {"coil": 1090, "type": "binary_sensor"},
         "hk3_vorlauf_temperatur_10c_aussentemperatur": {
@@ -543,6 +599,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 110,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_vorlauf_temperatur_minus_10c_aussentemperatur": {
             "register": 41093,
@@ -551,6 +608,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 110,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
             "register": 41100,
@@ -559,6 +617,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 30,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
             "register": 41094,
@@ -567,6 +626,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 70,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
             "register": 41097,
@@ -575,6 +635,7 @@ ENTITY_DEFINITIONS = {
             "min": -20,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
             "register": 41098,
@@ -583,6 +644,7 @@ ENTITY_DEFINITIONS = {
             "min": -20,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_frostschutztemperatur": {
             "register": 41099,
@@ -591,6 +653,7 @@ ENTITY_DEFINITIONS = {
             "min": -10,
             "max": 20,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
             "register": 41106,
@@ -599,6 +662,7 @@ ENTITY_DEFINITIONS = {
             "min": 60,
             "max": 120,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk3_betriebsart": {
             "register": 48049,
@@ -655,6 +719,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 30,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_vorlauf_temperatur_externe_vorgabe": {
             "register": 48004,
@@ -663,6 +728,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 75,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_pumpe_an_aus": {"coil": 1120, "type": "binary_sensor"},
         "hk4_vorlauf_temperatur_10c_aussentemperatur": {
@@ -672,6 +738,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 110,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_vorlauf_temperatur_minus_10c_aussentemperatur": {
             "register": 41123,
@@ -680,6 +747,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 110,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
             "register": 41130,
@@ -688,6 +756,7 @@ ENTITY_DEFINITIONS = {
             "min": 10,
             "max": 30,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
             "register": 41124,
@@ -696,6 +765,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 70,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
             "register": 41127,
@@ -704,6 +774,7 @@ ENTITY_DEFINITIONS = {
             "min": -20,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
             "register": 41128,
@@ -712,6 +783,7 @@ ENTITY_DEFINITIONS = {
             "min": -20,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_frostschutztemperatur": {
             "register": 41129,
@@ -720,6 +792,7 @@ ENTITY_DEFINITIONS = {
             "min": -10,
             "max": 20,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
             "register": 41136,
@@ -728,6 +801,7 @@ ENTITY_DEFINITIONS = {
             "min": 60,
             "max": 120,
             "type": "number",
+            "device_class": "temperature",
         },
         "hk4_betriebsart": {
             "register": 48050,
@@ -841,6 +915,7 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "type": "sensor",
+            "device_class": "power_factor",
         },
         "puffer_1_ladezustand": {
             "register": 32007,
@@ -883,6 +958,7 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "type": "sensor",
+            "device_class": "power_factor",
         },
         "puffer_2_ladezustand": {
             "register": 32045,
@@ -925,6 +1001,7 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "type": "sensor",
+            "device_class": "power_factor",
         },
         "puffer_3_ladezustand": {
             "register": 32045,
@@ -967,6 +1044,7 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "type": "sensor",
+            "device_class": "power_factor",
         },
         "puffer_4_ladezustand": {
             "register": 32125,
@@ -1052,6 +1130,7 @@ ENTITY_DEFINITIONS = {
             "min": 20,
             "max": 95,
             "type": "number",
+            "device_class": "temperature",
         },
         "temperaturdifferenz_zweitkessel_puffer": {
             "register": 40508,
@@ -1060,6 +1139,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "minimale_laufzeit_zweitkessel": {
             "register": 40505,
@@ -1138,12 +1218,14 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "type": "sensor",
+            "device_class": "power_factor",
         },
         "aktuelle_ansteuerung_der_kollektor_boiler_pumpe": {
             "register": 32623,
             "unit": "%",
             "scaling": 1,
             "type": "sensor",
+            "device_class": "power_factor",
         },
         "solarthermie_dfl_sensor": {
             "register": 32610,
@@ -1174,6 +1256,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 90,
             "type": "number",
+            "device_class": "temperature",
         },
         "kollektor_einschalt_differenz": {
             "register": 42601,
@@ -1182,6 +1265,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
         "kollektor_ausschalt_differenz": {
             "register": 42602,
@@ -1190,6 +1274,7 @@ ENTITY_DEFINITIONS = {
             "min": 0,
             "max": 50,
             "type": "number",
+            "device_class": "temperature",
         },
     },
 }

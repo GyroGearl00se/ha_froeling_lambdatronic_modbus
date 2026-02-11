@@ -205,6 +205,9 @@
       "abgastemperatur": {
         "name": "Exhaust Temperature"
       },
+      "boardtemperatur": {
+        "name": "Board Temperature"
+      },
       "verbleibende_heizstunden_bis_zur_asche_entleeren_warnung": {
         "name": "Remaining Heating Hours Until Ash Emptying Warning"
       },
@@ -1136,6 +1139,18 @@
       },
       "boiler_2_pumpe_an_aus": {
         "name": "Boiler 2 Pump ON/OFF"
+      },
+      "tuerkontakt": {
+        "name": "Door contact switch"
+      },
+      "stb": {
+        "name": "Hi-limit stat ON/OFF"
+      },
+      "notaus": {
+        "name": "EMERGENCY STOP ON/OFF"
+      },
+      "kesselfreigabe": {
+        "name": "Boiler release ON/OFF"
       }
     },
     "select": {

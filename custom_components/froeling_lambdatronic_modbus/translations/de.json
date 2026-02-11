@@ -205,6 +205,9 @@
       "abgastemperatur": {
         "name": "Abgastemperatur"
       },
+      "boardtemperatur": {
+        "name": "Boardtemperatur"
+      },
       "verbleibende_heizstunden_bis_zur_asche_entleeren_warnung": {
         "name": "Verbleibende Heizstunden bis zur Asche entleeren Warnung"
       },
@@ -1136,6 +1139,18 @@
       },
       "boiler_2_pumpe_an_aus": {
         "name": "Boiler 2 Pumpe AN/AUS"
+      },
+      "tuerkontakt": {
+        "name": "Türkontaktschalter"
+      },
+      "stb": {
+        "name": "STB AN/AUS"
+      },
+      "notaus": {
+        "name": "NOTAUS AN/AUS"
+      },
+      "kesselfreigabe": {
+        "name": "Kesselfreigabe AN/AUS"
       }
     },
     "select": {
