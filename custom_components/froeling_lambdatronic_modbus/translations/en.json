@@ -1140,16 +1140,16 @@
       "boiler_2_pumpe_an_aus": {
         "name": "Boiler 2 Pump ON/OFF"
       },
-      "tuerkontakt_an_aus": {
-        "name": "Door"
+      "tuerkontakt": {
+        "name": "Door contact switch"
       },
-      "stb_an_aus": {
+      "stb": {
         "name": "Hi-limit stat ON/OFF"
       },
-      "notaus_an_aus": {
+      "notaus": {
         "name": "EMERGENCY STOP ON/OFF"
       },
-      "kesselfreigabe_an_aus": {
+      "kesselfreigabe": {
         "name": "Boiler release ON/OFF"
       }
     },
