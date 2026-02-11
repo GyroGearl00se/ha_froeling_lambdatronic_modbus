@@ -38,20 +38,20 @@ ENTITY_DEFINITIONS = {
             "scaling": 1,
             "type": "sensor",
         },
-        "tuerkontakt_an_aus": {
+        "tuerkontakt": {
             "discrete_input": 10001,
             "type": "binary_sensor",
             "device_class": "door"
         },
-        "stb_an_aus": {
+        "stb": {
             "discrete_input": 10002,
             "type": "binary_sensor"
         },
-        "notaus_an_aus": {
+        "notaus": {
             "discrete_input": 10003,
             "type": "binary_sensor"
         },
-        "kesselfreigabe_an_aus": {
+        "kesselfreigabe": {
             "discrete_input": 10004,
             "type": "binary_sensor"
         },
