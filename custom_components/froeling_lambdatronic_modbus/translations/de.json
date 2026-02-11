@@ -1140,16 +1140,16 @@
       "boiler_2_pumpe_an_aus": {
         "name": "Boiler 2 Pumpe AN/AUS"
       },
-      "tuerkontakt_an_aus": {
-        "name": "Türkontakt"
+      "tuerkontakt": {
+        "name": "Türkontaktschalter"
       },
-      "stb_an_aus": {
+      "stb": {
         "name": "STB AN/AUS"
       },
-      "notaus_an_aus": {
+      "notaus": {
         "name": "NOTAUS AN/AUS"
       },
-      "kesselfreigabe_an_aus": {
+      "kesselfreigabe": {
         "name": "Kesselfreigabe AN/AUS"
       }
     },
