@@ -186,7 +186,6 @@ ENTITY_DEFINITIONS = {
             "device_class": "temperature",
             "state_class": "measurement",
             "type": "sensor",
-            "device_class": "temperature",
         },
         "boiler_1_pumpe_ansteuerung": {
             "register": 31633,
@@ -235,7 +234,6 @@ ENTITY_DEFINITIONS = {
             "device_class": "temperature",
             "state_class": "measurement",
             "type": "sensor",
-            "device_class": "temperature",
         },
         "boiler_2_pumpe_ansteuerung": {
             "register": 31663,
