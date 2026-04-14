@@ -349,11 +349,17 @@
       "boiler_1_pumpe_ansteuerung": {
         "name": "Boiler 1 Pumpe Ansteuerung"
       },
+      "boiler_1_temperatur_solarreferenz": {
+        "name": "Boiler 1 Temperatur Solarreferenz"
+      },
       "boiler_2_temperatur_oben": {
         "name": "Boiler 2 Temperatur oben"
       },
       "boiler_2_pumpe_ansteuerung": {
         "name": "Boiler 2 Pumpe Ansteuerung"
+      },
+      "boiler_2_temperatur_solarreferenz": {
+        "name": "Boiler 2 Temperatur Solarreferenz"
       },
       "fuellstand_im_pelletsbehaelter": {
         "name": "Füllstand_im_Pelletsbehälter"

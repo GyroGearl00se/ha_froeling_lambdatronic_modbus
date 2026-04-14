@@ -225,6 +225,14 @@ ENTITY_DEFINITIONS = {
             "type": "number",
             "device_class": "temperature",
         },
+        "boiler_1_temperatur_solarreferenz": {
+            "register": 31632,
+            "unit": "°C",
+            "scaling": 2,
+            "device_class": "temperature",
+            "state_class": "measurement",
+            "type": "sensor",
+        },
     },
     "boiler02": {
         "boiler_2_temperatur_oben": {
@@ -272,6 +280,14 @@ ENTITY_DEFINITIONS = {
             "max": 90,
             "type": "number",
             "device_class": "temperature",
+        },
+        "boiler_2_temperatur_solarreferenz": {
+            "register": 31662,
+            "unit": "°C",
+            "scaling": 2,
+            "device_class": "temperature",
+            "state_class": "measurement",
+            "type": "sensor",
         },
     },
     "hk1": {
