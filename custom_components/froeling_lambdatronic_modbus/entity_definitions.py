@@ -169,6 +169,16 @@ ENTITY_DEFINITIONS = {
             "type": "number",
             "device_class": "temperature",
         },
+        "automatisch_zuenden": {
+            "register": 40136,
+            "options": [
+                "aus",
+                "ein",
+            ],
+            "min": 0,
+            "max": 1,
+            "type": "select",
+        },
     },
     "fehlerpuffer": {
         f"kessel_fehlerpuffer_{i + 1}": {

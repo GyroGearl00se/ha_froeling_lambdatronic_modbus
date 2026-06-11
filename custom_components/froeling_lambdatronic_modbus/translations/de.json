@@ -1231,6 +1231,13 @@
           "aus": "Aus",
           "ein": "Ein"
         }
+      },
+      "automatisch_zuenden": {
+        "name": "Automatisch Zuenden",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
       }
     }
   }

@@ -1231,6 +1231,13 @@
           "aus": "Off",
           "ein": "On"
         }
+      },
+      "automatisch_zuenden": {
+        "name": "Automatic Ignition",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
       }
     }
   }
