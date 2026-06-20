@@ -142,7 +142,13 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         """Handle the entities step."""
         if user_input is not None:
             self.config["entities"] = user_input
-            return self.async_create_entry(title=self.config["name"], data=self.config)
+            entry_data = {k: v for k, v in self.config.items() if k != "entities"}
+            entry_options = {"entities": user_input}
+            return self.async_create_entry(
+                title=self.config["name"],
+                data=entry_data,
+                options=entry_options,
+            )
 
         schema = {}
         controller = ModbusController(
@@ -209,14 +215,55 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
     """Handle options flow for Fröling Lambdatronic Modbus."""
 
+    def __init__(self) -> None:
+        """Initialize the options flow."""
+        self.config: dict[str, Any] = {}
+
     async def async_step_init(self, user_input: dict[str, Any] | None = None):
         """Handle the initial options step."""
+        config = {**self.config_entry.data, **self.config_entry.options}
+
+        if user_input is not None:
+            self.config = config
+            self.config.update(user_input)
+
+            controller = ModbusController(
+                self.hass,
+                self.config["host"],
+                self.config["port"],
+                device_id=self.config.get("device_id", 2),
+            )
+
+            if not await controller.async_check_connection():
+                await controller.async_close()
+                return self.async_show_form(
+                    step_id="init",
+                    data_schema=self._build_init_schema(config),
+                    errors={"base": "cannot_connect"},
+                )
+
+            await controller.async_close()
+            return await self.async_step_entities()
+
+        return self.async_show_form(
+            step_id="init",
+            data_schema=self._build_init_schema(config),
+        )
+
+    async def async_step_entities(self, user_input: dict[str, Any] | None = None):
+        """Handle the entity selection options step."""
+        if not self.config:
+            self.config = {**self.config_entry.data, **self.config_entry.options}
+
         if user_input is not None:
             new_options = dict(self.config_entry.options)
             new_options["entities"] = user_input
-            return self.async_create_entry(title="", data=new_options)
 
-        config = {**self.config_entry.data, **self.config_entry.options}
+            new_data = {k: v for k, v in self.config.items() if k != "entities"}
+            self.hass.config_entries.async_update_entry(
+                self.config_entry, data=new_data
+            )
+            return self.async_create_entry(title="", data=new_options)
 
         translations = await async_get_translations(
             self.hass, self.hass.config.language, "entity", integrations=[DOMAIN]
@@ -225,18 +272,18 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
         schema = {}
         controller = ModbusController(
             self.hass,
-            config["host"],
-            config["port"],
-            device_id=config.get("device_id", 2),
+            self.config["host"],
+            self.config["port"],
+            device_id=self.config.get("device_id", 2),
         )
 
         if not await controller.async_check_connection():
             await controller.async_close()
             return self.async_abort(reason="cannot_connect")
 
-        current_entities = config.get("entities", {})
+        current_entities = self.config.get("entities", {})
 
-        for category in config.get("categories", []):
+        for category in self.config.get("categories", []):
             if category in ENTITY_DEFINITIONS:
                 options = []
                 default_values = []
@@ -276,4 +323,27 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
 
         await controller.async_close()
 
-        return self.async_show_form(step_id="init", data_schema=vol.Schema(schema))
+        return self.async_show_form(step_id="entities", data_schema=vol.Schema(schema))
+
+    def _build_init_schema(self, config: dict[str, Any]) -> vol.Schema:
+        """Build the initial options schema."""
+        return vol.Schema(
+            {
+                vol.Required("name", default=config.get("name", "Froeling")): str,
+                vol.Required("host", default=config.get("host", "")): str,
+                vol.Required("port", default=config.get("port", 502)): int,
+                vol.Required("device_id", default=config.get("device_id", 2)): int,
+                vol.Required("update_interval", default=config.get("update_interval", 60)): int,
+                vol.Required(
+                    "categories",
+                    default=config.get("categories", list(ENTITY_DEFINITIONS.keys())),
+                ): selector.SelectSelector(
+                    selector.SelectSelectorConfig(
+                        options=list(ENTITY_DEFINITIONS.keys()),
+                        multiple=True,
+                        mode=selector.SelectSelectorMode.LIST,
+                        translation_key="categories",
+                    ),
+                ),
+            }
+        )
