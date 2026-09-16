@@ -22,10 +22,25 @@
           "fehlerpuffer": "Fehlerpuffer",
           "boiler01": "Boiler 01",
           "boiler02": "Boiler 02",
+          "diff-regler": "Differenzregler",
           "hk1": "Heizkreis 01",
           "hk2": "Heizkreis 02",
           "hk3": "Heizkreis 03",
           "hk4": "Heizkreis 04",
+          "hk5": "Heizkreis 05",
+          "hk6": "Heizkreis 06",
+          "hk7": "Heizkreis 07",
+          "hk8": "Heizkreis 08",
+          "hk9": "Heizkreis 09",
+          "hk10": "Heizkreis 10",
+          "hk11": "Heizkreis 11",
+          "hk12": "Heizkreis 12",
+          "hk13": "Heizkreis 13",
+          "hk14": "Heizkreis 14",
+          "hk15": "Heizkreis 15",
+          "hk16": "Heizkreis 16",
+          "hk17": "Heizkreis 17",
+          "hk18": "Heizkreis 18",
           "austragung": "Austragung",
           "puffer01": "Puffer 01",
           "puffer02": "Puffer 02",
@@ -53,10 +68,25 @@
           "fehlerpuffer": "Fehlerpuffer",
           "boiler01": "Boiler 01",
           "boiler02": "Boiler 02",
+          "diff-regler": "Differenzregler",
           "hk1": "Heizkreis 01",
           "hk2": "Heizkreis 02",
           "hk3": "Heizkreis 03",
           "hk4": "Heizkreis 04",
+          "hk5": "Heizkreis 05",
+          "hk6": "Heizkreis 06",
+          "hk7": "Heizkreis 07",
+          "hk8": "Heizkreis 08",
+          "hk9": "Heizkreis 09",
+          "hk10": "Heizkreis 10",
+          "hk11": "Heizkreis 11",
+          "hk12": "Heizkreis 12",
+          "hk13": "Heizkreis 13",
+          "hk14": "Heizkreis 14",
+          "hk15": "Heizkreis 15",
+          "hk16": "Heizkreis 16",
+          "hk17": "Heizkreis 17",
+          "hk18": "Heizkreis 18",
           "austragung": "Austragung",
           "puffer01": "Puffer 01",
           "puffer02": "Puffer 02",
@@ -77,10 +107,25 @@
         "fehlerpuffer": "Fehlerpuffer",
         "boiler01": "Boiler 01",
         "boiler02": "Boiler 02",
+        "diff-regler": "Differenzregler",
         "hk1": "Heizkreis 01",
         "hk2": "Heizkreis 02",
         "hk3": "Heizkreis 03",
         "hk4": "Heizkreis 04",
+        "hk5": "Heizkreis 05",
+        "hk6": "Heizkreis 06",
+        "hk7": "Heizkreis 07",
+        "hk8": "Heizkreis 08",
+        "hk9": "Heizkreis 09",
+        "hk10": "Heizkreis 10",
+        "hk11": "Heizkreis 11",
+        "hk12": "Heizkreis 12",
+        "hk13": "Heizkreis 13",
+        "hk14": "Heizkreis 14",
+        "hk15": "Heizkreis 15",
+        "hk16": "Heizkreis 16",
+        "hk17": "Heizkreis 17",
+        "hk18": "Heizkreis 18",
         "austragung": "Austragung",
         "puffer01": "Puffer 01",
         "puffer02": "Puffer 02",
@@ -940,6 +985,141 @@
       },
       "solarthermie_gesamtertrag": {
         "name": "Solarthermie Gesamtertrag"
+      },
+      "diff-regler_temperatur_der_waermequelle": {
+        "name": "Diff Regler Temperatur Der W?rmequelle"
+      },
+      "diff-regler_temperatur_der_waermesenke": {
+        "name": "Diff Regler Temperatur Der W?rmesenke"
+      },
+      "diff-regler_drehzahl_der_pumpe": {
+        "name": "Diff Regler Drehzahl Der Pumpe"
+      },
+      "hk5_vorlauf_isttemperatur": {
+        "name": "HK5 Vorlauf Isttemperatur"
+      },
+      "hk5_vorlauf_solltemperatur": {
+        "name": "HK5 Vorlauf Solltemperatur"
+      },
+      "hk5_raumtemperatur": {
+        "name": "HK5 Raumtemperatur"
+      },
+      "hk6_vorlauf_isttemperatur": {
+        "name": "HK6 Vorlauf Isttemperatur"
+      },
+      "hk6_vorlauf_solltemperatur": {
+        "name": "HK6 Vorlauf Solltemperatur"
+      },
+      "hk6_raumtemperatur": {
+        "name": "HK6 Raumtemperatur"
+      },
+      "hk7_vorlauf_isttemperatur": {
+        "name": "HK7 Vorlauf Isttemperatur"
+      },
+      "hk7_vorlauf_solltemperatur": {
+        "name": "HK7 Vorlauf Solltemperatur"
+      },
+      "hk7_raumtemperatur": {
+        "name": "HK7 Raumtemperatur"
+      },
+      "hk8_vorlauf_isttemperatur": {
+        "name": "HK8 Vorlauf Isttemperatur"
+      },
+      "hk8_vorlauf_solltemperatur": {
+        "name": "HK8 Vorlauf Solltemperatur"
+      },
+      "hk8_raumtemperatur": {
+        "name": "HK8 Raumtemperatur"
+      },
+      "hk9_vorlauf_isttemperatur": {
+        "name": "HK9 Vorlauf Isttemperatur"
+      },
+      "hk9_vorlauf_solltemperatur": {
+        "name": "HK9 Vorlauf Solltemperatur"
+      },
+      "hk9_raumtemperatur": {
+        "name": "HK9 Raumtemperatur"
+      },
+      "hk10_vorlauf_isttemperatur": {
+        "name": "HK10 Vorlauf Isttemperatur"
+      },
+      "hk10_vorlauf_solltemperatur": {
+        "name": "HK10 Vorlauf Solltemperatur"
+      },
+      "hk10_raumtemperatur": {
+        "name": "HK10 Raumtemperatur"
+      },
+      "hk11_vorlauf_isttemperatur": {
+        "name": "HK11 Vorlauf Isttemperatur"
+      },
+      "hk11_vorlauf_solltemperatur": {
+        "name": "HK11 Vorlauf Solltemperatur"
+      },
+      "hk11_raumtemperatur": {
+        "name": "HK11 Raumtemperatur"
+      },
+      "hk12_vorlauf_isttemperatur": {
+        "name": "HK12 Vorlauf Isttemperatur"
+      },
+      "hk12_vorlauf_solltemperatur": {
+        "name": "HK12 Vorlauf Solltemperatur"
+      },
+      "hk12_raumtemperatur": {
+        "name": "HK12 Raumtemperatur"
+      },
+      "hk13_vorlauf_isttemperatur": {
+        "name": "HK13 Vorlauf Isttemperatur"
+      },
+      "hk13_vorlauf_solltemperatur": {
+        "name": "HK13 Vorlauf Solltemperatur"
+      },
+      "hk13_raumtemperatur": {
+        "name": "HK13 Raumtemperatur"
+      },
+      "hk14_vorlauf_isttemperatur": {
+        "name": "HK14 Vorlauf Isttemperatur"
+      },
+      "hk14_vorlauf_solltemperatur": {
+        "name": "HK14 Vorlauf Solltemperatur"
+      },
+      "hk14_raumtemperatur": {
+        "name": "HK14 Raumtemperatur"
+      },
+      "hk15_vorlauf_isttemperatur": {
+        "name": "HK15 Vorlauf Isttemperatur"
+      },
+      "hk15_vorlauf_solltemperatur": {
+        "name": "HK15 Vorlauf Solltemperatur"
+      },
+      "hk15_raumtemperatur": {
+        "name": "HK15 Raumtemperatur"
+      },
+      "hk16_vorlauf_isttemperatur": {
+        "name": "HK16 Vorlauf Isttemperatur"
+      },
+      "hk16_vorlauf_solltemperatur": {
+        "name": "HK16 Vorlauf Solltemperatur"
+      },
+      "hk16_raumtemperatur": {
+        "name": "HK16 Raumtemperatur"
+      },
+      "hk17_vorlauf_isttemperatur": {
+        "name": "HK17 Vorlauf Isttemperatur"
+      },
+      "hk17_vorlauf_solltemperatur": {
+        "name": "HK17 Vorlauf Solltemperatur"
+      },
+      "hk17_raumtemperatur": {
+        "name": "HK17 Raumtemperatur"
+      },
+      "hk18_vorlauf_isttemperatur": {
+        "name": "HK18 Vorlauf Isttemperatur"
+      },
+      "hk18_vorlauf_solltemperatur": {
+        "name": "HK18 Vorlauf Solltemperatur"
+      },
+      "hk18_raumtemperatur": {
+        "name": "HK18 Raumtemperatur"
       }
     },
     "number": {
@@ -1110,6 +1290,426 @@
       },
       "kollektor_ausschalt_differenz": {
         "name": "Kollektor Ausschalt-Differenz"
+      },
+      "hk5_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK5 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk5_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK5 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk5_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK5 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk5_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK5 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk5_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK5 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk5_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK5 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk5_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK5 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk5_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK5 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk5_frostschutztemperatur": {
+        "name": "HK5 Frostschutztemperatur"
+      },
+      "hk5_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK5 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk6_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK6 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk6_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK6 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk6_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK6 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk6_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK6 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk6_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK6 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk6_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK6 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk6_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK6 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk6_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK6 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk6_frostschutztemperatur": {
+        "name": "HK6 Frostschutztemperatur"
+      },
+      "hk6_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK6 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk7_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK7 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk7_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK7 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk7_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK7 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk7_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK7 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk7_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK7 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk7_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK7 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk7_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK7 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk7_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK7 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk7_frostschutztemperatur": {
+        "name": "HK7 Frostschutztemperatur"
+      },
+      "hk7_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK7 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk8_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK8 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk8_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK8 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk8_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK8 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk8_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK8 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk8_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK8 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk8_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK8 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk8_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK8 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk8_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK8 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk8_frostschutztemperatur": {
+        "name": "HK8 Frostschutztemperatur"
+      },
+      "hk8_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK8 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk9_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK9 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk9_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK9 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk9_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK9 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk9_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK9 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk9_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK9 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk9_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK9 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk9_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK9 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk9_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK9 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk9_frostschutztemperatur": {
+        "name": "HK9 Frostschutztemperatur"
+      },
+      "hk9_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK9 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk10_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK10 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk10_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK10 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk10_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK10 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk10_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK10 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk10_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK10 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk10_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK10 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk10_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK10 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk10_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK10 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk10_frostschutztemperatur": {
+        "name": "HK10 Frostschutztemperatur"
+      },
+      "hk10_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK10 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk11_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK11 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk11_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK11 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk11_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK11 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk11_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK11 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk11_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK11 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk11_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK11 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk11_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK11 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk11_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK11 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk11_frostschutztemperatur": {
+        "name": "HK11 Frostschutztemperatur"
+      },
+      "hk11_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK11 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk12_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK12 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk12_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK12 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk12_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK12 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk12_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK12 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk12_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK12 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk12_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK12 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk12_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK12 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk12_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK12 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk12_frostschutztemperatur": {
+        "name": "HK12 Frostschutztemperatur"
+      },
+      "hk12_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK12 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk13_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK13 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk13_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK13 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk13_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK13 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk13_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK13 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk13_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK13 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk13_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK13 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk13_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK13 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk13_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK13 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk13_frostschutztemperatur": {
+        "name": "HK13 Frostschutztemperatur"
+      },
+      "hk13_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK13 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk14_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK14 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk14_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK14 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk14_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK14 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk14_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK14 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk14_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK14 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk14_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK14 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk14_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK14 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk14_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK14 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk14_frostschutztemperatur": {
+        "name": "HK14 Frostschutztemperatur"
+      },
+      "hk14_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK14 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk15_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK15 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk15_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK15 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk15_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK15 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk15_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK15 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk15_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK15 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk15_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK15 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk15_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK15 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk15_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK15 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk15_frostschutztemperatur": {
+        "name": "HK15 Frostschutztemperatur"
+      },
+      "hk15_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK15 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk16_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK16 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk16_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK16 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk16_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK16 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk16_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK16 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk16_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK16 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk16_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK16 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk16_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK16 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk16_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK16 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk16_frostschutztemperatur": {
+        "name": "HK16 Frostschutztemperatur"
+      },
+      "hk16_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK16 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk17_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK17 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk17_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK17 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk17_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK17 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk17_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK17 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk17_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK17 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk17_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK17 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk17_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK17 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk17_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK17 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk17_frostschutztemperatur": {
+        "name": "HK17 Frostschutztemperatur"
+      },
+      "hk17_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK17 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk18_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK18 Gew?nschte Raumtemperatur Heizbetrieb"
+      },
+      "hk18_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK18 Vorlauf Temperatur Externe Vorgabe"
+      },
+      "hk18_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK18 Vorlauf Temperatur 10c Au?entemperatur"
+      },
+      "hk18_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK18 Vorlauf Temperatur Minus 10c Au?entemperatur"
+      },
+      "hk18_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK18 Heizkreispumpe Ausschalten Wenn Vorlauf Soll Kleiner Ist Als"
+      },
+      "hk18_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK18 Absenkung Der Vorlauftemperatur Im Absenkbetrieb"
+      },
+      "hk18_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK18 Au?entemperatur Unter Der Die Heizkreispumpe Im Heizbetrieb Einschaltet"
+      },
+      "hk18_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK18 Au?entemperatur Unter Der Die Heizkreispumpe Im Absenkbetrieb Einschaltet"
+      },
+      "hk18_frostschutztemperatur": {
+        "name": "HK18 Frostschutztemperatur"
+      },
+      "hk18_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK18 Temp Am Puffer Oben Ab Der Der Ueberhitzungsschutz Aktiv Wird"
       }
     },
     "binary_sensor": {
@@ -1157,6 +1757,48 @@
       },
       "kesselfreigabe": {
         "name": "Kesselfreigabe AN/AUS"
+      },
+      "hk5_pumpe_an_aus": {
+        "name": "HK5 Pumpe An Aus"
+      },
+      "hk6_pumpe_an_aus": {
+        "name": "HK6 Pumpe An Aus"
+      },
+      "hk7_pumpe_an_aus": {
+        "name": "HK7 Pumpe An Aus"
+      },
+      "hk8_pumpe_an_aus": {
+        "name": "HK8 Pumpe An Aus"
+      },
+      "hk9_pumpe_an_aus": {
+        "name": "HK9 Pumpe An Aus"
+      },
+      "hk10_pumpe_an_aus": {
+        "name": "HK10 Pumpe An Aus"
+      },
+      "hk11_pumpe_an_aus": {
+        "name": "HK11 Pumpe An Aus"
+      },
+      "hk12_pumpe_an_aus": {
+        "name": "HK12 Pumpe An Aus"
+      },
+      "hk13_pumpe_an_aus": {
+        "name": "HK13 Pumpe An Aus"
+      },
+      "hk14_pumpe_an_aus": {
+        "name": "HK14 Pumpe An Aus"
+      },
+      "hk15_pumpe_an_aus": {
+        "name": "HK15 Pumpe An Aus"
+      },
+      "hk16_pumpe_an_aus": {
+        "name": "HK16 Pumpe An Aus"
+      },
+      "hk17_pumpe_an_aus": {
+        "name": "HK17 Pumpe An Aus"
+      },
+      "hk18_pumpe_an_aus": {
+        "name": "HK18 Pumpe An Aus"
       }
     },
     "select": {
@@ -1234,6 +1876,258 @@
       },
       "automatisch_zuenden": {
         "name": "Automatisch Zuenden",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk5_betriebsart": {
+        "name": "HK5 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk5_freigabe_externe_vorgabe": {
+        "name": "HK5 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk6_betriebsart": {
+        "name": "HK6 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk6_freigabe_externe_vorgabe": {
+        "name": "HK6 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk7_betriebsart": {
+        "name": "HK7 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk7_freigabe_externe_vorgabe": {
+        "name": "HK7 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk8_betriebsart": {
+        "name": "HK8 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk8_freigabe_externe_vorgabe": {
+        "name": "HK8 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk9_betriebsart": {
+        "name": "HK9 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk9_freigabe_externe_vorgabe": {
+        "name": "HK9 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk10_betriebsart": {
+        "name": "HK10 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk10_freigabe_externe_vorgabe": {
+        "name": "HK10 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk11_betriebsart": {
+        "name": "HK11 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk11_freigabe_externe_vorgabe": {
+        "name": "HK11 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk12_betriebsart": {
+        "name": "HK12 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk12_freigabe_externe_vorgabe": {
+        "name": "HK12 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk13_betriebsart": {
+        "name": "HK13 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk13_freigabe_externe_vorgabe": {
+        "name": "HK13 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk14_betriebsart": {
+        "name": "HK14 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk14_freigabe_externe_vorgabe": {
+        "name": "HK14 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk15_betriebsart": {
+        "name": "HK15 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk15_freigabe_externe_vorgabe": {
+        "name": "HK15 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk16_betriebsart": {
+        "name": "HK16 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk16_freigabe_externe_vorgabe": {
+        "name": "HK16 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk17_betriebsart": {
+        "name": "HK17 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk17_freigabe_externe_vorgabe": {
+        "name": "HK17 Freigabe Externe Vorgabe",
+        "state": {
+          "aus": "Aus",
+          "ein": "Ein"
+        }
+      },
+      "hk18_betriebsart": {
+        "name": "HK18 Betriebsart",
+        "state": {
+          "aus": "Aus",
+          "automatik": "Automatik",
+          "extraheizen": "Extraheizen",
+          "absenken": "Absenken",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk18_freigabe_externe_vorgabe": {
+        "name": "HK18 Freigabe Externe Vorgabe",
         "state": {
           "aus": "Aus",
           "ein": "Ein"
