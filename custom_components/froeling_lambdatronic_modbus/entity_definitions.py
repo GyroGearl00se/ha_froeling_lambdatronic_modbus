@@ -300,6 +300,30 @@ ENTITY_DEFINITIONS = {
             "type": "sensor",
         },
     },
+    "diff-regler":{
+        "diff-regler_temperatur_der_waermequelle":{
+            "register": 30801,
+            "unit": "°C",
+            "scaling": 2,
+            "device_class": "temperature",
+            "state_class": "measurement",
+            "type": "sensor",
+        },
+        "diff-regler_temperatur_der_waermesenke":{
+            "register": 30802,
+            "unit": "°C",
+            "scaling": 2,
+            "device_class": "temperature",
+            "state_class": "measurement",
+            "type": "sensor",
+        },
+        "diff-regler_drehzahl_der_pumpe": {
+            "register": 30803,
+            "unit": "%",
+            "scaling": 1,
+            "type": "sensor",
+        },
+    },
     "hk1": {
         "hk1_vorlauf_isttemperatur": {
             "register": 31031,
