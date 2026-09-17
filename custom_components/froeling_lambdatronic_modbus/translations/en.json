@@ -22,10 +22,25 @@
           "fehlerpuffer": "Error Buffer",
           "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
           "boiler02": "DHW Boiler 02 (Domestic Hot Water)",
+          "diff-regler": "Differential Controller",
           "hk1": "Heating Circuit 01",
           "hk2": "Heating Circuit 02",
           "hk3": "Heating Circuit 03",
           "hk4": "Heating Circuit 04",
+          "hk5": "Heating Circuit 05",
+          "hk6": "Heating Circuit 06",
+          "hk7": "Heating Circuit 07",
+          "hk8": "Heating Circuit 08",
+          "hk9": "Heating Circuit 09",
+          "hk10": "Heating Circuit 10",
+          "hk11": "Heating Circuit 11",
+          "hk12": "Heating Circuit 12",
+          "hk13": "Heating Circuit 13",
+          "hk14": "Heating Circuit 14",
+          "hk15": "Heating Circuit 15",
+          "hk16": "Heating Circuit 16",
+          "hk17": "Heating Circuit 17",
+          "hk18": "Heating Circuit 18",
           "austragung": "Feed System",
           "puffer01": "Buffer 01",
           "puffer02": "Buffer 02",
@@ -53,10 +68,25 @@
           "fehlerpuffer": "Error Buffer",
           "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
           "boiler02": "DHW Boiler 02 (Domestic Hot Water)",
+          "diff-regler": "Differential Controller",
           "hk1": "Heating Circuit 01",
           "hk2": "Heating Circuit 02",
           "hk3": "Heating Circuit 03",
           "hk4": "Heating Circuit 04",
+          "hk5": "Heating Circuit 05",
+          "hk6": "Heating Circuit 06",
+          "hk7": "Heating Circuit 07",
+          "hk8": "Heating Circuit 08",
+          "hk9": "Heating Circuit 09",
+          "hk10": "Heating Circuit 10",
+          "hk11": "Heating Circuit 11",
+          "hk12": "Heating Circuit 12",
+          "hk13": "Heating Circuit 13",
+          "hk14": "Heating Circuit 14",
+          "hk15": "Heating Circuit 15",
+          "hk16": "Heating Circuit 16",
+          "hk17": "Heating Circuit 17",
+          "hk18": "Heating Circuit 18",
           "austragung": "Feed System",
           "puffer01": "Buffer 01",
           "puffer02": "Buffer 02",
@@ -77,10 +107,25 @@
         "fehlerpuffer": "Error Buffer",
         "boiler01": "DHW Boiler 01 (Domestic Hot Water)",
         "boiler02": "DHW Boiler 02 (Domestic Hot Water)",
+        "diff-regler": "Differential Controller",
         "hk1": "Heating Circuit 01",
         "hk2": "Heating Circuit 02",
         "hk3": "Heating Circuit 03",
         "hk4": "Heating Circuit 04",
+        "hk5": "Heating Circuit 05",
+        "hk6": "Heating Circuit 06",
+        "hk7": "Heating Circuit 07",
+        "hk8": "Heating Circuit 08",
+        "hk9": "Heating Circuit 09",
+        "hk10": "Heating Circuit 10",
+        "hk11": "Heating Circuit 11",
+        "hk12": "Heating Circuit 12",
+        "hk13": "Heating Circuit 13",
+        "hk14": "Heating Circuit 14",
+        "hk15": "Heating Circuit 15",
+        "hk16": "Heating Circuit 16",
+        "hk17": "Heating Circuit 17",
+        "hk18": "Heating Circuit 18",
         "austragung": "Feed System",
         "puffer01": "Buffer 01",
         "puffer02": "Buffer 02",
@@ -940,6 +985,141 @@
       },
       "solarthermie_gesamtertrag": {
         "name": "Solar Thermal Total Yield"
+      },
+      "diff-regler_temperatur_der_waermequelle": {
+        "name": "Diff Controller Temperature The Heat Source"
+      },
+      "diff-regler_temperatur_der_waermesenke": {
+        "name": "Diff Controller Temperature The Heat Sink"
+      },
+      "diff-regler_drehzahl_der_pumpe": {
+        "name": "Diff Controller Speed The Pump"
+      },
+      "hk5_vorlauf_isttemperatur": {
+        "name": "HK5 Flow Actual Temperature"
+      },
+      "hk5_vorlauf_solltemperatur": {
+        "name": "HK5 Flow Target Temperature"
+      },
+      "hk5_raumtemperatur": {
+        "name": "HK5 Room Temperature"
+      },
+      "hk6_vorlauf_isttemperatur": {
+        "name": "HK6 Flow Actual Temperature"
+      },
+      "hk6_vorlauf_solltemperatur": {
+        "name": "HK6 Flow Target Temperature"
+      },
+      "hk6_raumtemperatur": {
+        "name": "HK6 Room Temperature"
+      },
+      "hk7_vorlauf_isttemperatur": {
+        "name": "HK7 Flow Actual Temperature"
+      },
+      "hk7_vorlauf_solltemperatur": {
+        "name": "HK7 Flow Target Temperature"
+      },
+      "hk7_raumtemperatur": {
+        "name": "HK7 Room Temperature"
+      },
+      "hk8_vorlauf_isttemperatur": {
+        "name": "HK8 Flow Actual Temperature"
+      },
+      "hk8_vorlauf_solltemperatur": {
+        "name": "HK8 Flow Target Temperature"
+      },
+      "hk8_raumtemperatur": {
+        "name": "HK8 Room Temperature"
+      },
+      "hk9_vorlauf_isttemperatur": {
+        "name": "HK9 Flow Actual Temperature"
+      },
+      "hk9_vorlauf_solltemperatur": {
+        "name": "HK9 Flow Target Temperature"
+      },
+      "hk9_raumtemperatur": {
+        "name": "HK9 Room Temperature"
+      },
+      "hk10_vorlauf_isttemperatur": {
+        "name": "HK10 Flow Actual Temperature"
+      },
+      "hk10_vorlauf_solltemperatur": {
+        "name": "HK10 Flow Target Temperature"
+      },
+      "hk10_raumtemperatur": {
+        "name": "HK10 Room Temperature"
+      },
+      "hk11_vorlauf_isttemperatur": {
+        "name": "HK11 Flow Actual Temperature"
+      },
+      "hk11_vorlauf_solltemperatur": {
+        "name": "HK11 Flow Target Temperature"
+      },
+      "hk11_raumtemperatur": {
+        "name": "HK11 Room Temperature"
+      },
+      "hk12_vorlauf_isttemperatur": {
+        "name": "HK12 Flow Actual Temperature"
+      },
+      "hk12_vorlauf_solltemperatur": {
+        "name": "HK12 Flow Target Temperature"
+      },
+      "hk12_raumtemperatur": {
+        "name": "HK12 Room Temperature"
+      },
+      "hk13_vorlauf_isttemperatur": {
+        "name": "HK13 Flow Actual Temperature"
+      },
+      "hk13_vorlauf_solltemperatur": {
+        "name": "HK13 Flow Target Temperature"
+      },
+      "hk13_raumtemperatur": {
+        "name": "HK13 Room Temperature"
+      },
+      "hk14_vorlauf_isttemperatur": {
+        "name": "HK14 Flow Actual Temperature"
+      },
+      "hk14_vorlauf_solltemperatur": {
+        "name": "HK14 Flow Target Temperature"
+      },
+      "hk14_raumtemperatur": {
+        "name": "HK14 Room Temperature"
+      },
+      "hk15_vorlauf_isttemperatur": {
+        "name": "HK15 Flow Actual Temperature"
+      },
+      "hk15_vorlauf_solltemperatur": {
+        "name": "HK15 Flow Target Temperature"
+      },
+      "hk15_raumtemperatur": {
+        "name": "HK15 Room Temperature"
+      },
+      "hk16_vorlauf_isttemperatur": {
+        "name": "HK16 Flow Actual Temperature"
+      },
+      "hk16_vorlauf_solltemperatur": {
+        "name": "HK16 Flow Target Temperature"
+      },
+      "hk16_raumtemperatur": {
+        "name": "HK16 Room Temperature"
+      },
+      "hk17_vorlauf_isttemperatur": {
+        "name": "HK17 Flow Actual Temperature"
+      },
+      "hk17_vorlauf_solltemperatur": {
+        "name": "HK17 Flow Target Temperature"
+      },
+      "hk17_raumtemperatur": {
+        "name": "HK17 Room Temperature"
+      },
+      "hk18_vorlauf_isttemperatur": {
+        "name": "HK18 Flow Actual Temperature"
+      },
+      "hk18_vorlauf_solltemperatur": {
+        "name": "HK18 Flow Target Temperature"
+      },
+      "hk18_raumtemperatur": {
+        "name": "HK18 Room Temperature"
       }
     },
     "number": {
@@ -1110,6 +1290,426 @@
       },
       "kollektor_ausschalt_differenz": {
         "name": "Collector Shutdown Difference"
+      },
+      "hk5_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK5 Desired Room Temperature Heating Mode"
+      },
+      "hk5_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK5 Flow Temperature External Setpoint"
+      },
+      "hk5_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK5 Flow Temperature 10c Outside Temperature"
+      },
+      "hk5_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK5 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk5_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK5 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk5_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK5 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk5_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK5 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk5_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK5 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk5_frostschutztemperatur": {
+        "name": "HK5 Frost Protection Temperature"
+      },
+      "hk5_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK5 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk6_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK6 Desired Room Temperature Heating Mode"
+      },
+      "hk6_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK6 Flow Temperature External Setpoint"
+      },
+      "hk6_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK6 Flow Temperature 10c Outside Temperature"
+      },
+      "hk6_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK6 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk6_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK6 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk6_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK6 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk6_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK6 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk6_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK6 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk6_frostschutztemperatur": {
+        "name": "HK6 Frost Protection Temperature"
+      },
+      "hk6_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK6 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk7_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK7 Desired Room Temperature Heating Mode"
+      },
+      "hk7_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK7 Flow Temperature External Setpoint"
+      },
+      "hk7_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK7 Flow Temperature 10c Outside Temperature"
+      },
+      "hk7_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK7 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk7_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK7 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk7_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK7 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk7_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK7 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk7_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK7 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk7_frostschutztemperatur": {
+        "name": "HK7 Frost Protection Temperature"
+      },
+      "hk7_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK7 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk8_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK8 Desired Room Temperature Heating Mode"
+      },
+      "hk8_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK8 Flow Temperature External Setpoint"
+      },
+      "hk8_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK8 Flow Temperature 10c Outside Temperature"
+      },
+      "hk8_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK8 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk8_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK8 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk8_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK8 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk8_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK8 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk8_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK8 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk8_frostschutztemperatur": {
+        "name": "HK8 Frost Protection Temperature"
+      },
+      "hk8_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK8 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk9_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK9 Desired Room Temperature Heating Mode"
+      },
+      "hk9_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK9 Flow Temperature External Setpoint"
+      },
+      "hk9_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK9 Flow Temperature 10c Outside Temperature"
+      },
+      "hk9_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK9 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk9_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK9 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk9_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK9 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk9_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK9 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk9_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK9 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk9_frostschutztemperatur": {
+        "name": "HK9 Frost Protection Temperature"
+      },
+      "hk9_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK9 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk10_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK10 Desired Room Temperature Heating Mode"
+      },
+      "hk10_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK10 Flow Temperature External Setpoint"
+      },
+      "hk10_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK10 Flow Temperature 10c Outside Temperature"
+      },
+      "hk10_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK10 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk10_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK10 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk10_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK10 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk10_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK10 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk10_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK10 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk10_frostschutztemperatur": {
+        "name": "HK10 Frost Protection Temperature"
+      },
+      "hk10_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK10 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk11_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK11 Desired Room Temperature Heating Mode"
+      },
+      "hk11_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK11 Flow Temperature External Setpoint"
+      },
+      "hk11_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK11 Flow Temperature 10c Outside Temperature"
+      },
+      "hk11_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK11 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk11_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK11 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk11_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK11 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk11_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK11 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk11_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK11 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk11_frostschutztemperatur": {
+        "name": "HK11 Frost Protection Temperature"
+      },
+      "hk11_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK11 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk12_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK12 Desired Room Temperature Heating Mode"
+      },
+      "hk12_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK12 Flow Temperature External Setpoint"
+      },
+      "hk12_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK12 Flow Temperature 10c Outside Temperature"
+      },
+      "hk12_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK12 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk12_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK12 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk12_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK12 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk12_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK12 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk12_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK12 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk12_frostschutztemperatur": {
+        "name": "HK12 Frost Protection Temperature"
+      },
+      "hk12_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK12 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk13_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK13 Desired Room Temperature Heating Mode"
+      },
+      "hk13_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK13 Flow Temperature External Setpoint"
+      },
+      "hk13_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK13 Flow Temperature 10c Outside Temperature"
+      },
+      "hk13_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK13 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk13_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK13 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk13_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK13 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk13_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK13 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk13_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK13 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk13_frostschutztemperatur": {
+        "name": "HK13 Frost Protection Temperature"
+      },
+      "hk13_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK13 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk14_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK14 Desired Room Temperature Heating Mode"
+      },
+      "hk14_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK14 Flow Temperature External Setpoint"
+      },
+      "hk14_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK14 Flow Temperature 10c Outside Temperature"
+      },
+      "hk14_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK14 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk14_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK14 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk14_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK14 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk14_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK14 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk14_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK14 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk14_frostschutztemperatur": {
+        "name": "HK14 Frost Protection Temperature"
+      },
+      "hk14_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK14 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk15_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK15 Desired Room Temperature Heating Mode"
+      },
+      "hk15_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK15 Flow Temperature External Setpoint"
+      },
+      "hk15_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK15 Flow Temperature 10c Outside Temperature"
+      },
+      "hk15_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK15 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk15_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK15 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk15_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK15 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk15_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK15 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk15_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK15 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk15_frostschutztemperatur": {
+        "name": "HK15 Frost Protection Temperature"
+      },
+      "hk15_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK15 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk16_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK16 Desired Room Temperature Heating Mode"
+      },
+      "hk16_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK16 Flow Temperature External Setpoint"
+      },
+      "hk16_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK16 Flow Temperature 10c Outside Temperature"
+      },
+      "hk16_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK16 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk16_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK16 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk16_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK16 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk16_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK16 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk16_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK16 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk16_frostschutztemperatur": {
+        "name": "HK16 Frost Protection Temperature"
+      },
+      "hk16_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK16 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk17_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK17 Desired Room Temperature Heating Mode"
+      },
+      "hk17_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK17 Flow Temperature External Setpoint"
+      },
+      "hk17_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK17 Flow Temperature 10c Outside Temperature"
+      },
+      "hk17_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK17 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk17_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK17 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk17_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK17 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk17_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK17 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk17_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK17 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk17_frostschutztemperatur": {
+        "name": "HK17 Frost Protection Temperature"
+      },
+      "hk17_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK17 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
+      },
+      "hk18_gewuenschte_raumtemperatur_heizbetrieb": {
+        "name": "HK18 Desired Room Temperature Heating Mode"
+      },
+      "hk18_vorlauf_temperatur_externe_vorgabe": {
+        "name": "HK18 Flow Temperature External Setpoint"
+      },
+      "hk18_vorlauf_temperatur_10c_aussentemperatur": {
+        "name": "HK18 Flow Temperature 10c Outside Temperature"
+      },
+      "hk18_vorlauf_temperatur_minus_10c_aussentemperatur": {
+        "name": "HK18 Flow Temperature Minus 10c Outside Temperature"
+      },
+      "hk18_heizkreispumpe_ausschalten_wenn_vorlauf_soll_kleiner_ist_als": {
+        "name": "HK18 Heizkreispumpe Switch Off Wenn Flow Target Lower Is Than"
+      },
+      "hk18_absenkung_der_vorlauftemperatur_im_absenkbetrieb": {
+        "name": "HK18 Absenkung The Vorlauftemperatur In Reduced Mode"
+      },
+      "hk18_aussentemperatur_unter_der_die_heizkreispumpe_im_heizbetrieb_einschaltet": {
+        "name": "HK18 Outside Temperature Below The Die Heizkreispumpe In Heating Mode Switches On"
+      },
+      "hk18_aussentemperatur_unter_der_die_heizkreispumpe_im_absenkbetrieb_einschaltet": {
+        "name": "HK18 Outside Temperature Below The Die Heizkreispumpe In Reduced Mode Switches On"
+      },
+      "hk18_frostschutztemperatur": {
+        "name": "HK18 Frost Protection Temperature"
+      },
+      "hk18_temp_am_puffer_oben_ab_der_der_ueberhitzungsschutz_aktiv_wird": {
+        "name": "HK18 Temp Am Buffer Oben Off The The Ueberhitzungsschutz Aktiv Wird"
       }
     },
     "binary_sensor": {
@@ -1157,6 +1757,48 @@
       },
       "kesselfreigabe": {
         "name": "Boiler release ON/OFF"
+      },
+      "hk5_pumpe_an_aus": {
+        "name": "HK5 Pump An Off"
+      },
+      "hk6_pumpe_an_aus": {
+        "name": "HK6 Pump An Off"
+      },
+      "hk7_pumpe_an_aus": {
+        "name": "HK7 Pump An Off"
+      },
+      "hk8_pumpe_an_aus": {
+        "name": "HK8 Pump An Off"
+      },
+      "hk9_pumpe_an_aus": {
+        "name": "HK9 Pump An Off"
+      },
+      "hk10_pumpe_an_aus": {
+        "name": "HK10 Pump An Off"
+      },
+      "hk11_pumpe_an_aus": {
+        "name": "HK11 Pump An Off"
+      },
+      "hk12_pumpe_an_aus": {
+        "name": "HK12 Pump An Off"
+      },
+      "hk13_pumpe_an_aus": {
+        "name": "HK13 Pump An Off"
+      },
+      "hk14_pumpe_an_aus": {
+        "name": "HK14 Pump An Off"
+      },
+      "hk15_pumpe_an_aus": {
+        "name": "HK15 Pump An Off"
+      },
+      "hk16_pumpe_an_aus": {
+        "name": "HK16 Pump An Off"
+      },
+      "hk17_pumpe_an_aus": {
+        "name": "HK17 Pump An Off"
+      },
+      "hk18_pumpe_an_aus": {
+        "name": "HK18 Pump An Off"
       }
     },
     "select": {
@@ -1234,6 +1876,258 @@
       },
       "automatisch_zuenden": {
         "name": "Automatic Ignition",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk5_betriebsart": {
+        "name": "HK5 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk5_freigabe_externe_vorgabe": {
+        "name": "HK5 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk6_betriebsart": {
+        "name": "HK6 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk6_freigabe_externe_vorgabe": {
+        "name": "HK6 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk7_betriebsart": {
+        "name": "HK7 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk7_freigabe_externe_vorgabe": {
+        "name": "HK7 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk8_betriebsart": {
+        "name": "HK8 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk8_freigabe_externe_vorgabe": {
+        "name": "HK8 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk9_betriebsart": {
+        "name": "HK9 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk9_freigabe_externe_vorgabe": {
+        "name": "HK9 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk10_betriebsart": {
+        "name": "HK10 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk10_freigabe_externe_vorgabe": {
+        "name": "HK10 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk11_betriebsart": {
+        "name": "HK11 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk11_freigabe_externe_vorgabe": {
+        "name": "HK11 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk12_betriebsart": {
+        "name": "HK12 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk12_freigabe_externe_vorgabe": {
+        "name": "HK12 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk13_betriebsart": {
+        "name": "HK13 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk13_freigabe_externe_vorgabe": {
+        "name": "HK13 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk14_betriebsart": {
+        "name": "HK14 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk14_freigabe_externe_vorgabe": {
+        "name": "HK14 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk15_betriebsart": {
+        "name": "HK15 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk15_freigabe_externe_vorgabe": {
+        "name": "HK15 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk16_betriebsart": {
+        "name": "HK16 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk16_freigabe_externe_vorgabe": {
+        "name": "HK16 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk17_betriebsart": {
+        "name": "HK17 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk17_freigabe_externe_vorgabe": {
+        "name": "HK17 Release External Setpoint",
+        "state": {
+          "aus": "Off",
+          "ein": "On"
+        }
+      },
+      "hk18_betriebsart": {
+        "name": "HK18 Operating Mode",
+        "state": {
+          "aus": "Off",
+          "automatik": "Automatic",
+          "extraheizen": "Extra heating",
+          "absenken": "Reduce",
+          "dauerabsenken": "dauerabsenken",
+          "partybetrieb": "partybetrieb"
+        }
+      },
+      "hk18_freigabe_externe_vorgabe": {
+        "name": "HK18 Release External Setpoint",
         "state": {
           "aus": "Off",
           "ein": "On"
