@@ -305,7 +305,8 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             return f"Unknown ({raw_value})"
 
         reg_type = definition.get("register_type", "input")
-        if reg_type in ("input", "holding") and raw_value > 32767:
+        is_signed = definition.get("signed", reg_type in ("input", "holding"))
+        if is_signed and raw_value > 32767:
             raw_value -= 65536
 
         scaling_factor = definition.get("scaling", 1)

@@ -60,11 +60,13 @@ async def _read_value_helper(
                         state_translation_key, f"Unknown ({raw_value})"
                     )
 
-                if (
-                    raw_value > 32767
-                    and definition.get("register_type") != "holding"
-                    and definition.get("type") not in ["number", "select"]
-                ):
+                reg_type = definition.get("register_type", "input")
+                is_signed = definition.get(
+                    "signed",
+                    reg_type in ("input", "holding")
+                    and definition.get("type") != "select",
+                )
+                if is_signed and raw_value > 32767:
                     raw_value -= 65536
 
                 scaling = definition.get("scaling", 1)
