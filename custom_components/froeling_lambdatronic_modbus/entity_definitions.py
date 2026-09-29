@@ -3,6 +3,7 @@
 HK_BETRIEBSART_VALUE_ALIASES = {
     6: 5,
     11: 0,
+    12: 4
 }
 
 ENTITY_DEFINITIONS = {
