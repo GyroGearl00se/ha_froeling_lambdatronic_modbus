@@ -101,8 +101,8 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "signed": False,
+            "state_class": "measurement",
             "type": "sensor",
-            "device_class": "power_factor",
         },
         "saugzugdrehzahl": {
             "register": 30007,
@@ -220,8 +220,8 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "signed": False,
+            "state_class": "measurement",
             "type": "sensor",
-            "device_class": "power_factor",
         },
         "boiler_1_pumpe_an_aus": {
             "register": 31633,
@@ -277,8 +277,8 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "signed": False,
+            "state_class": "measurement",
             "type": "sensor",
-            "device_class": "power_factor",
         },
         "boiler_2_pumpe_an_aus": {
             "register": 31663,
@@ -2955,8 +2955,8 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "signed": False,
+            "state_class": "measurement",
             "type": "sensor",
-            "device_class": "power_factor",
         },
         "puffer_1_ladezustand": {
             "register": 32007,
@@ -3000,8 +3000,8 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "signed": False,
+            "state_class": "measurement",
             "type": "sensor",
-            "device_class": "power_factor",
         },
         "puffer_2_ladezustand": {
             "register": 32045,
@@ -3045,8 +3045,8 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "signed": False,
+            "state_class": "measurement",
             "type": "sensor",
-            "device_class": "power_factor",
         },
         "puffer_3_ladezustand": {
             "register": 32045,
@@ -3090,8 +3090,8 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "signed": False,
+            "state_class": "measurement",
             "type": "sensor",
-            "device_class": "power_factor",
         },
         "puffer_4_ladezustand": {
             "register": 32125,
@@ -3274,16 +3274,16 @@ ENTITY_DEFINITIONS = {
             "unit": "%",
             "scaling": 1,
             "signed": False,
+            "state_class": "measurement",
             "type": "sensor",
-            "device_class": "power_factor",
         },
         "aktuelle_ansteuerung_der_kollektor_boiler_pumpe": {
             "register": 32623,
             "unit": "%",
             "scaling": 1,
             "signed": False,
+            "state_class": "measurement",
             "type": "sensor",
-            "device_class": "power_factor",
         },
         "solarthermie_dfl_sensor": {
             "register": 32610,
