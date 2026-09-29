@@ -1,5 +1,10 @@
 """Entity Definitions."""
 
+HK_BETRIEBSART_VALUE_ALIASES = {
+    6: 5,
+    11: 0,
+}
+
 ENTITY_DEFINITIONS = {
     "sensor": {
         "anlagenzustand": {
@@ -448,6 +453,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk1_freigabe_externe_vorgabe": {
@@ -587,6 +593,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk2_freigabe_externe_vorgabe": {
@@ -726,6 +733,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk3_freigabe_externe_vorgabe": {
@@ -865,6 +873,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk4_freigabe_externe_vorgabe": {
@@ -1004,6 +1013,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk5_freigabe_externe_vorgabe": {
@@ -1143,6 +1153,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk6_freigabe_externe_vorgabe": {
@@ -1282,6 +1293,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk7_freigabe_externe_vorgabe": {
@@ -1421,6 +1433,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk8_freigabe_externe_vorgabe": {
@@ -1560,6 +1573,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk9_freigabe_externe_vorgabe": {
@@ -1699,6 +1713,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk10_freigabe_externe_vorgabe": {
@@ -1838,6 +1853,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk11_freigabe_externe_vorgabe": {
@@ -1977,6 +1993,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk12_freigabe_externe_vorgabe": {
@@ -2116,6 +2133,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk13_freigabe_externe_vorgabe": {
@@ -2255,6 +2273,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk14_freigabe_externe_vorgabe": {
@@ -2394,6 +2413,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk15_freigabe_externe_vorgabe": {
@@ -2533,6 +2553,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk16_freigabe_externe_vorgabe": {
@@ -2672,6 +2693,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk17_freigabe_externe_vorgabe": {
@@ -2811,6 +2833,7 @@ ENTITY_DEFINITIONS = {
             ],
             "min": 0,
             "max": 5,
+            "value_aliases": HK_BETRIEBSART_VALUE_ALIASES,
             "type": "select",
         },
         "hk18_freigabe_externe_vorgabe": {

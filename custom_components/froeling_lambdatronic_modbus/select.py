@@ -59,7 +59,8 @@ class FroelingSelect(CoordinatorEntity[FroelingDataUpdateCoordinator], SelectEnt
     def current_option(self) -> str | None:
         """Return the currently selected option."""
         index = self.coordinator.data.get(self._entity_id)
-        if index is not None and 0 <= index < len(self.options):
+        index = self.entity_definition.get("value_aliases", {}).get(index, index)
+        if isinstance(index, int) and 0 <= index < len(self.options):
             return self.options[index]
         return None
 
