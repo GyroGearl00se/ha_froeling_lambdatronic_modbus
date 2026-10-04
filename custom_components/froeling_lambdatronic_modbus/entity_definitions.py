@@ -2889,6 +2889,17 @@ ENTITY_DEFINITIONS = {
             "signed": False,
             "type": "sensor",
         },
+        "pelletverbrauch_resetierbar_gesamt": {
+            "unit": "kg",
+            "device_class": "weight",
+            "state_class": "total_increasing",
+            "signed": False,
+            "type": "sensor",
+            "derived_from": {
+                "resetierbarer_t_zaehler": 1000,
+                "resetierbarer_kg_zaehler": 1,
+            },
+        },
         "pelletverbrauch_gesamt": {
             "register": 30084,
             "unit": "t",
@@ -3302,14 +3313,33 @@ ENTITY_DEFINITIONS = {
             "signed": False,
             "type": "sensor",
         },
-        "solarthermie_gesamtertrag": {
-            "register": 32622,
-            "unit": "kWh",
+        "solarthermie_gesamtertrag_mwh": {
+            "register": 32621,
+            "unit": "MWh",
             "scaling": 1,
             "device_class": "energy",
             "state_class": "total",
             "signed": False,
             "type": "sensor",
+        },
+        "solarthermie_gesamtertrag_kwh": {
+            "register": 32622,
+            "unit": "kWh",
+            "scaling": 1,
+            "device_class": "energy",
+            "signed": False,
+            "type": "sensor",
+        },
+        "solarthermie_gesamtertrag": {
+            "unit": "kWh",
+            "device_class": "energy",
+            "state_class": "total_increasing",
+            "signed": False,
+            "type": "sensor",
+            "derived_from": {
+                "solarthermie_gesamtertrag_mwh": 1000,
+                "solarthermie_gesamtertrag_kwh": 1,
+            },
         },
         "maximale_puffertemperatur_unten_bei_solarladung": {
             "register": 42603,

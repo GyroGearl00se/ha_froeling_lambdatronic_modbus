@@ -25,6 +25,32 @@ async def _read_value_helper(
 ) -> Any:
     """Read a value from the controller for preview purposes."""
     try:
+        if "derived_from" in definition:
+            total = 0
+            for source_id, multiplier in definition["derived_from"].items():
+                source_definition = next(
+                    (
+                        entities[source_id]
+                        for entities in ENTITY_DEFINITIONS.values()
+                        if source_id in entities
+                    ),
+                    None,
+                )
+                if source_definition is None:
+                    return "N/A"
+
+                source_value = await _read_value_helper(
+                    controller,
+                    source_definition,
+                    source_id,
+                    "sensor",
+                    translations,
+                )
+                if not isinstance(source_value, (int, float)):
+                    return source_value
+                total += source_value * multiplier
+            return total
+
         if "coil" in definition:
             result = await controller.async_read_coils(definition["coil"], count=1)
             if result and not result.isError():

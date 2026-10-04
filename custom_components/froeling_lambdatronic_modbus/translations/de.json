@@ -415,6 +415,9 @@
       "resetierbarer_t_zaehler": {
         "name": "Resetierbarer t Zähler"
       },
+      "pelletverbrauch_resetierbar_gesamt": {
+        "name": "Resetierbarer Pellet-Gesamtverbrauch"
+      },
       "pelletverbrauch_gesamt": {
         "name": "Pelletverbrauch Gesamt"
       },
@@ -985,6 +988,12 @@
       },
       "solarthermie_gesamtertrag": {
         "name": "Solarthermie Gesamtertrag"
+      },
+      "solarthermie_gesamtertrag_mwh": {
+        "name": "Solarthermie Gesamtertrag (MWh)"
+      },
+      "solarthermie_gesamtertrag_kwh": {
+        "name": "Solarthermie Gesamtertrag (kWh)"
       },
       "diff-regler_temperatur_der_waermequelle": {
         "name": "Diff Regler Temperatur Der Wärmequelle"

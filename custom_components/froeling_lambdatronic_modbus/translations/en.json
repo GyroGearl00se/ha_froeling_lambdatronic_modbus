@@ -415,6 +415,9 @@
       "resetierbarer_t_zaehler": {
         "name": "Resettable t Counter"
       },
+      "pelletverbrauch_resetierbar_gesamt": {
+        "name": "Resettable Pellet Consumption"
+      },
       "pelletverbrauch_gesamt": {
         "name": "Total Pellet Consumption"
       },
@@ -985,6 +988,12 @@
       },
       "solarthermie_gesamtertrag": {
         "name": "Solar Thermal Total Yield"
+      },
+      "solarthermie_gesamtertrag_mwh": {
+        "name": "Solar Thermal Total Yield (MWh)"
+      },
+      "solarthermie_gesamtertrag_kwh": {
+        "name": "Solar Thermal Total Yield (kWh)"
       },
       "diff-regler_temperatur_der_waermequelle": {
         "name": "Diff Controller Temperature The Heat Source"

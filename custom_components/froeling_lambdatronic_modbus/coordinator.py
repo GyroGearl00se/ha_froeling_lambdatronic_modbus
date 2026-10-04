@@ -46,13 +46,34 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
     def _get_active_entity_definitions(self) -> dict[str, Any]:
         """Get definitions for only the enabled entities."""
-        return {
+        active_definitions = {
             entity_id: ENTITY_DEFINITIONS[category][entity_id]
             for category, entities in self._enabled_entities.items()
             if category in ENTITY_DEFINITIONS
             for entity_id in entities
             if entity_id in ENTITY_DEFINITIONS[category]
         }
+        all_definitions = {
+            entity_id: definition
+            for entities in ENTITY_DEFINITIONS.values()
+            for entity_id, definition in entities.items()
+        }
+        pending_dependencies = [
+            dependency_id
+            for definition in active_definitions.values()
+            for dependency_id in definition.get("derived_from", {})
+        ]
+
+        while pending_dependencies:
+            dependency_id = pending_dependencies.pop()
+            if dependency_id in active_definitions:
+                continue
+            dependency = all_definitions.get(dependency_id)
+            if dependency is not None:
+                active_definitions[dependency_id] = dependency
+                pending_dependencies.extend(dependency.get("derived_from", {}))
+
+        return active_definitions
 
     def _group_registers(
         self, max_gap: int = 5, block_size_limit: int = 122
@@ -280,6 +301,19 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                         data[entity_id] = source_value > 0
                     else:
                         data[entity_id] = None
+
+            for entity_id, definition in self._entity_definitions.items():
+                derived_from = definition.get("derived_from")
+                if derived_from is None:
+                    continue
+
+                if all(data.get(source_id) is not None for source_id in derived_from):
+                    data[entity_id] = sum(
+                        data[source_id] * multiplier
+                        for source_id, multiplier in derived_from.items()
+                    )
+                else:
+                    data[entity_id] = None
 
         except Exception as e:
             raise UpdateFailed(f"Error communicating with device: {e}") from e
