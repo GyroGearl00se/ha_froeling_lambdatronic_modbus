@@ -7,12 +7,14 @@ import logging
 import voluptuous as vol
 
 from homeassistant import config_entries
+from homeassistant.components.modbus import async_get_unit
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import device_registry as dr, entity_registry as er
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.typing import ConfigType
+from modbus_connection import ModbusTcpParams
 
 from .coordinator import FroelingDataUpdateCoordinator
 from .modbus_controller import ModbusController
@@ -144,20 +146,19 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
     config = {**entry.data, **entry.options}
 
-    controller = ModbusController(
+    unit = async_get_unit(
         hass,
-        config.get("host", ""),
-        config.get("port", 502),
-        device_id=config.get("device_id", 2),
-        timeout=config.get("timeout", 10),
-        retries=config.get("retries", 1),
-        reconnect_delay=config.get("reconnect_delay", 30),
+        entry,
+        ModbusTcpParams(host=config.get("host", ""), port=config.get("port", 502)),
+        config.get("device_id", 2),
     )
+    unit.require_timeout(config.get("timeout", 10))
+    controller = ModbusController(unit)
     coordinator = FroelingDataUpdateCoordinator(
         hass, controller=controller, config=config, config_entry=entry
     )
 
-    await coordinator.async_config_entry_first_refresh()
+    await coordinator.async_refresh()
 
     hass.data[DOMAIN][entry.entry_id] = {
         "config": config,
@@ -177,5 +178,5 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         entry_data = hass.data[DOMAIN].pop(entry.entry_id)
         if "coordinator" in entry_data:
             coordinator: FroelingDataUpdateCoordinator = entry_data["coordinator"]
-            await coordinator.controller.async_close()
+            await coordinator.async_shutdown()
     return unload_ok

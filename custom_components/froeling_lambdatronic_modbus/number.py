@@ -3,8 +3,11 @@
 import logging
 from typing import Any
 from decimal import Decimal, ROUND_HALF_UP
+from modbus_connection import ModbusError
+
 from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -89,9 +92,14 @@ class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEnt
             )
         )
 
-        await self.coordinator.controller.async_write_register(
-            register - 40001, scaled_value
-        )
+        try:
+            await self.coordinator.controller.async_write_register(
+                register - 40001, scaled_value
+            )
+        except ModbusError as exc:
+            raise HomeAssistantError(
+                f"Could not write value for {self._entity_id}"
+            ) from exc
         await self.coordinator.async_refresh_entity(self._entity_id)
 
     @property

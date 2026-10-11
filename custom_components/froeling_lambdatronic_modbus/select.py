@@ -3,8 +3,11 @@
 import logging
 from typing import Any
 
+from modbus_connection import ModbusError
+
 from homeassistant.components.select import SelectEntity
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -77,7 +80,14 @@ class FroelingSelect(CoordinatorEntity[FroelingDataUpdateCoordinator], SelectEnt
             _LOGGER.error("No register defined for %s", self.entity_id)
             return
 
-        await self.coordinator.controller.async_write_register(register - 40001, index)
+        try:
+            await self.coordinator.controller.async_write_register(
+                register - 40001, index
+            )
+        except ModbusError as exc:
+            raise HomeAssistantError(
+                f"Could not write selection for {self._entity_id}"
+            ) from exc
         await self.coordinator.async_refresh_entity(self._entity_id)
 
     @property

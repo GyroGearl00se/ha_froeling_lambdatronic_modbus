@@ -6,6 +6,8 @@ from datetime import timedelta
 import logging
 from typing import Any
 
+from modbus_connection import ModbusError
+
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
@@ -43,6 +45,7 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             update_interval=timedelta(seconds=config.get("update_interval", 60)),
             config_entry=config_entry,
         )
+        self.data = {}
 
     def _get_active_entity_definitions(self) -> dict[str, Any]:
         """Get definitions for only the enabled entities."""
@@ -173,41 +176,43 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         value = None
         read_success = False
 
-        if coil_address is not None:
-            result = await self.controller.async_read_coils(coil_address, 1)
-            if result and not result.isError():
-                value = result.bits[0]
-                read_success = True
-        elif discrete_input_address is not None:
-            result = await self.controller.async_read_discrete_inputs(
-                discrete_input_address - 10001, 1
-            )
-            if result and not result.isError():
-                value = result.bits[0]
-                read_success = True
-        elif address is not None:
-            entity_type = definition.get("type")
-            reg_type = definition.get("register_type")
-
-            is_holding = (
-                entity_type in ("number", "select")
-                or (40001 <= address < 50000)
-                or reg_type == "holding"
-            )
-
-            if is_holding:
-                result = await self.controller.async_read_holding_registers(
-                    address - 40001, 1
+        try:
+            if coil_address is not None:
+                result = await self.controller.async_read_coils(coil_address, 1)
+                if result:
+                    value = result[0]
+                    read_success = True
+            elif discrete_input_address is not None:
+                result = await self.controller.async_read_discrete_inputs(
+                    discrete_input_address - 10001, 1
                 )
-            else:
-                result = await self.controller.async_read_input_registers(
-                    address - 30001, 1
+                if result:
+                    value = result[0]
+                    read_success = True
+            elif address is not None:
+                entity_type = definition.get("type")
+                reg_type = definition.get("register_type")
+
+                is_holding = (
+                    entity_type in ("number", "select")
+                    or (40001 <= address < 50000)
+                    or reg_type == "holding"
                 )
 
-            if result and not result.isError():
-                raw_value = result.registers[0]
-                value = self._process_raw_value(raw_value, definition)
-                read_success = True
+                if is_holding:
+                    result = await self.controller.async_read_holding_registers(
+                        address - 40001, 1
+                    )
+                else:
+                    result = await self.controller.async_read_input_registers(
+                        address - 30001, 1
+                    )
+
+                if result:
+                    value = self._process_raw_value(result[0], definition)
+                    read_success = True
+        except ModbusError as exc:
+            _LOGGER.debug("Failed to refresh entity %s: %s", entity_id, exc)
 
         if read_success:
             if self.data is None:
@@ -219,45 +224,45 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
     async def _async_update_data(self) -> dict[str, Any]:
         """Fetch data from the device and process it."""
-        if not await self.controller.async_check_connection():
-            raise UpdateFailed("Could not connect to Modbus device")
-
         if self.translations is None:
             self.translations = await async_get_translations(
                 self.hass, self.hass.config.language, "entity"
             )
 
         data = {}
+        successful_blocks = 0
 
         try:
             for block_type, start_addr, count, entities_in_block in self._read_blocks:
-                read_success = False
-
-                if block_type == "discrete_input":
-                    result = await self.controller.async_read_discrete_inputs(
-                        start_addr - 10001, count
-                    )
-                elif block_type == "input":
-                    result = await self.controller.async_read_input_registers(
-                        start_addr - 30001, count
-                    )
-                elif block_type == "holding":
-                    result = await self.controller.async_read_holding_registers(
-                        start_addr - 40001, count
-                    )
-                elif block_type == "coil":
-                    result = await self.controller.async_read_coils(start_addr, count)
-
-                if result and not result.isError():
-                    read_success = True
-
-                if not read_success:
+                try:
+                    if block_type == "discrete_input":
+                        result = await self.controller.async_read_discrete_inputs(
+                            start_addr - 10001, count
+                        )
+                    elif block_type == "input":
+                        result = await self.controller.async_read_input_registers(
+                            start_addr - 30001, count
+                        )
+                    elif block_type == "holding":
+                        result = await self.controller.async_read_holding_registers(
+                            start_addr - 40001, count
+                        )
+                    else:
+                        result = await self.controller.async_read_coils(
+                            start_addr, count
+                        )
+                except ModbusError as exc:
                     _LOGGER.debug(
-                        "Failed to read %s block at address %s", block_type, start_addr
+                        "Failed to read %s block at address %s: %s",
+                        block_type,
+                        start_addr,
+                        exc,
                     )
                     for entity_id in entities_in_block:
                         data[entity_id] = None
                     continue
+
+                successful_blocks += 1
 
                 for entity_id in entities_in_block:
                     definition = self._entity_definitions[entity_id]
@@ -266,21 +271,21 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                     offset = reg_addr - start_addr
 
                     if block_type == "discrete_input":
-                        if offset < len(result.bits):
-                            data[entity_id] = result.bits[offset]
+                        if offset < len(result):
+                            data[entity_id] = result[offset]
                         else:
                             data[entity_id] = None
                         continue
 
                     if block_type == "coil":
-                        if offset < len(result.bits):
-                            data[entity_id] = result.bits[offset]
+                        if offset < len(result):
+                            data[entity_id] = result[offset]
                         else:
                             data[entity_id] = None
                         continue
 
-                    if offset < len(result.registers):
-                        raw_value = result.registers[offset]
+                    if offset < len(result):
+                        raw_value = result[offset]
                         processed_value = self._process_raw_value(raw_value, definition)
                         data[entity_id] = processed_value
                     else:
@@ -315,7 +320,9 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                 else:
                     data[entity_id] = None
 
-        except Exception as e:
+            if self._read_blocks and not successful_blocks:
+                raise UpdateFailed("Could not read any data from the Modbus device")
+        except ModbusError as e:
             raise UpdateFailed(f"Error communicating with device: {e}") from e
 
         return data
