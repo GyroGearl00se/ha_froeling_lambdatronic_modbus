@@ -5,21 +5,19 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Any
 
-from modbus_connection import (
-    ModbusError,
-    ModbusExceptionError,
-    ModbusTcpParams,
-    ModbusTimeoutError,
-)
-
 import voluptuous as vol
-
 from homeassistant import config_entries
 from homeassistant.components.modbus import async_get_temporary_unit
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import selector
 from homeassistant.helpers.translation import async_get_translations
+from modbus_connection import (
+    ModbusError,
+    ModbusExceptionError,
+    ModbusTcpParams,
+    ModbusTimeoutError,
+)
 
 from .const import DOMAIN
 from .entity_definitions import ENTITY_DEFINITIONS

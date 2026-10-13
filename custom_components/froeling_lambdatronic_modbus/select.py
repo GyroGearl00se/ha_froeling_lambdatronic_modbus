@@ -3,13 +3,12 @@
 import logging
 from typing import Any
 
-from modbus_connection import ModbusError
-
 from homeassistant.components.select import SelectEntity
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from modbus_connection import ModbusError
 
 from .const import DOMAIN
 from .coordinator import FroelingDataUpdateCoordinator

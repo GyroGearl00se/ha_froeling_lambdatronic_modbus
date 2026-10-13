@@ -12,6 +12,11 @@ class ModbusController:
         """Initialize the controller."""
         self._unit = unit
 
+    @property
+    def unit(self) -> ModbusUnit:
+        """Return the shared Modbus unit."""
+        return self._unit
+
     async def async_read_input_registers(
         self, address: int, count: int = 1
     ) -> list[int]:

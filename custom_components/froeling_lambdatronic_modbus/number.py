@@ -1,15 +1,15 @@
 """Number entity for Fröling Lambdatronic Modbus."""
 
 import logging
+from decimal import ROUND_HALF_UP, Decimal
 from typing import Any
-from decimal import Decimal, ROUND_HALF_UP
-from modbus_connection import ModbusError
 
 from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from modbus_connection import ModbusError
 
 from .const import DOMAIN
 from .coordinator import FroelingDataUpdateCoordinator
