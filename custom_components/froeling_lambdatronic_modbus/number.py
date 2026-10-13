@@ -110,5 +110,4 @@ class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEnt
             name=self._device_name,
             manufacturer="Froeling",
             model="Lambdatronic Modbus",
-            sw_version="1.0",
         )
