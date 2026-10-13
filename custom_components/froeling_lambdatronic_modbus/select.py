@@ -80,6 +80,11 @@ class FroelingSelect(CoordinatorEntity[FroelingDataUpdateCoordinator], SelectEnt
             return
 
         try:
+            _LOGGER.debug(
+                "Writing select entity %s to register %s",
+                self._entity_id,
+                register,
+            )
             await self.coordinator.controller.async_write_register(
                 register - 40001, index
             )

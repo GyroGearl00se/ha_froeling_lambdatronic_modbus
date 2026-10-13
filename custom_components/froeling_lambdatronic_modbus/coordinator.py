@@ -147,6 +147,9 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         """Read pooled fields and isolate values in any failed read block."""
         values: dict[str, int | bool | None] = {}
         removed_fields: set[str] = set()
+        _LOGGER.debug(
+            "Starting pooled read for %s Modbus fields", len(self._modbus_fields)
+        )
 
         try:
             while True:
@@ -193,6 +196,14 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                     raise
                 else:
                     values.update(self._modbus_component.values)
+                    successful_fields = sum(
+                        value is not None for value in values.values()
+                    )
+                    _LOGGER.debug(
+                        "Pooled read completed: %s/%s fields returned values",
+                        successful_fields,
+                        len(self._modbus_fields),
+                    )
                     return values
         finally:
             for entity_id in removed_fields:
@@ -289,6 +300,7 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                 data[entity_id] = self._process_raw_value(raw_value, definition)
 
         if self._modbus_fields and not successful_fields:
+            _LOGGER.debug("No Modbus fields could be read successfully")
             raise UpdateFailed("Could not read any data from the Modbus device")
 
         for entity_id, definition in self._entity_definitions.items():
@@ -332,9 +344,7 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         if entity_type == "text":
             translation_key = definition.get("translation_key")
             if translation_key:
-                lookup_key = (
-                    f"component.{DOMAIN}.entity.sensor.{translation_key}.state.{raw_value}"
-                )
+                lookup_key = f"component.{DOMAIN}.entity.sensor.{translation_key}.state.{raw_value}"
                 translated = self.translations.get(lookup_key)
                 if translated:
                     return translated

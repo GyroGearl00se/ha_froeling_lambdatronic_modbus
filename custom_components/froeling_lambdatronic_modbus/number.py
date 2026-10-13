@@ -93,6 +93,11 @@ class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEnt
         )
 
         try:
+            _LOGGER.debug(
+                "Writing number entity %s to register %s",
+                self._entity_id,
+                register,
+            )
             await self.coordinator.controller.async_write_register(
                 register - 40001, scaled_value
             )
