@@ -1,29 +1,72 @@
 """Fröling Lambdatronic Modbus Config Flow."""
 
 import logging
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 from typing import Any
 
 import voluptuous as vol
-
 from homeassistant import config_entries
-from homeassistant.core import callback
+from homeassistant.components.modbus import async_get_temporary_unit
+from homeassistant.core import HomeAssistant, callback
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import selector
 from homeassistant.helpers.translation import async_get_translations
+from modbus_connection import (
+    ModbusError,
+    ModbusExceptionError,
+    ModbusTcpParams,
+    ModbusTimeoutError,
+    ModbusUnit,
+)
 
 from .const import DOMAIN
 from .entity_definitions import ENTITY_DEFINITIONS
-from .modbus_controller import ModbusController
 
 _LOGGER = logging.getLogger(__name__)
 
+
+@asynccontextmanager
+async def _async_temporary_unit(
+    hass: HomeAssistant, config: dict[str, Any]
+) -> AsyncIterator[ModbusUnit]:
+    """Hold a temporary shared Modbus unit while a config flow uses it."""
+    async with async_get_temporary_unit(
+        hass,
+        ModbusTcpParams(host=config["host"], port=config["port"]),
+        config.get("device_id", 2),
+    ) as unit:
+        unit.require_timeout(config.get("timeout", 10))
+        yield unit
+
+
+async def _async_probe_device(
+    hass: HomeAssistant, config: dict[str, Any]
+) -> str | None:
+    """Check that the configured endpoint responds to the selected device ID."""
+    try:
+        async with _async_temporary_unit(hass, config) as unit:
+            try:
+                await unit.read_input_registers(0, 1)
+            except ModbusExceptionError:
+                # A Modbus exception is still a response from the device.
+                pass
+    except ModbusTimeoutError:
+        return "invalid_device_id"
+    except (ModbusError, HomeAssistantError) as exc:
+        _LOGGER.debug("Could not probe Modbus device: %s", exc)
+        return "cannot_connect"
+    return None
+
+
 async def _read_value_helper(
-    controller: ModbusController,
+    unit: ModbusUnit,
     definition: dict[str, Any],
     entity_id: str,
     platform: str,
     translations: dict,
 ) -> Any:
-    """Read a value from the controller for preview purposes."""
+    """Read a value from the Modbus unit for preview purposes."""
     try:
         if "derived_from" in definition:
             total = 0
@@ -40,7 +83,7 @@ async def _read_value_helper(
                     return "N/A"
 
                 source_value = await _read_value_helper(
-                    controller,
+                    unit,
                     source_definition,
                     source_id,
                     "sensor",
@@ -52,13 +95,15 @@ async def _read_value_helper(
             return total
 
         if "coil" in definition:
-            result = await controller.async_read_coils(definition["coil"], count=1)
-            if result and not result.isError():
-                return result.bits[0]
+            result = await unit.read_coils(definition["coil"], 1)
+            if result:
+                return result[0]
         elif "discrete_input" in definition:
-            result = await controller.async_read_discrete_inputs(definition["discrete_input"] - 10001, count=1)
-            if result and not result.isError():
-                return int(result.bits[0])
+            result = await unit.read_discrete_inputs(
+                definition["discrete_input"] - 10001, 1
+            )
+            if result:
+                return int(result[0])
         elif "register" in definition:
             offset = (
                 40001
@@ -67,15 +112,15 @@ async def _read_value_helper(
                 else 30001
             )
             read_method = (
-                controller.async_read_holding_registers
+                unit.read_holding_registers
                 if offset == 40001
-                else controller.async_read_input_registers
+                else unit.read_input_registers
             )
 
-            result = await read_method(definition["register"] - offset, count=1)
+            result = await read_method(definition["register"] - offset, 1)
 
-            if result and not result.isError():
-                raw_value = result.registers[0]
+            if result:
+                raw_value = result[0]
 
                 if definition.get("type") == "text":
                     if entity_id.startswith("kessel_fehlerpuffer_"):
@@ -102,7 +147,7 @@ async def _read_value_helper(
                 if decimals == 0:
                     return int(scaled_value)
                 return round(scaled_value, decimals)
-    except Exception as e:
+    except ModbusError as e:
         _LOGGER.error("Error reading value for preview: %s", e)
         return "Error reading value"
     return "N/A"
@@ -122,25 +167,11 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         errors = {}
 
         if user_input is not None:
-            controller = ModbusController(
-                self.hass,
-                user_input["host"],
-                user_input["port"],
-                device_id=user_input.get("device_id", 2),
-            )
-
-            if await controller.async_check_connection():
-                read_result = await controller.async_read_input_registers(0, count=1)
-                await controller.async_close()
-
-                if read_result is None:
-                    errors["base"] = "invalid_device_id"
-                else:
-                    self.config.update(user_input)
-                    return await self.async_step_entities()
-            else:
-                await controller.async_close()
-                errors["base"] = "cannot_connect"
+            error = await _async_probe_device(self.hass, user_input)
+            if error is None:
+                self.config.update(user_input)
+                return await self.async_step_entities()
+            errors["base"] = error
 
         return self.async_show_form(
             step_id="user",
@@ -179,54 +210,59 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             )
 
         schema = {}
-        controller = ModbusController(
-            self.hass,
-            self.config["host"],
-            self.config["port"],
-            device_id=self.config.get("device_id", 2),
-        )
-
-        if not await controller.async_check_connection():
-            await controller.async_close()
-            return self.async_abort(reason="cannot_connect")
-
-        translations = await async_get_translations(
-            self.hass, self.hass.config.language, "entity", integrations=[DOMAIN]
-        )
-
-        for category in self.config.get("categories", []):
-            if category in ENTITY_DEFINITIONS:
-                options = []
-                for entity_id, definition in ENTITY_DEFINITIONS[category].items():
-                    platform = definition.get("type", "sensor")
-                    if platform == "binary_sensor_from_register":
-                        platform = "binary_sensor"
-                    if platform == "text":
-                        platform = "sensor"
-                    translation_key = f"component.froeling_lambdatronic_modbus.entity.{platform}.{entity_id}.name"
-                    translated_name = translations.get(translation_key, entity_id)
-
-                    value = await _read_value_helper(
-                        controller, definition, entity_id, platform, translations
-                    )
-
-                    options.append(
-                        {"label": f"{translated_name}: {value}", "value": entity_id}
-                    )
-
-                default_values = [opt["value"] for opt in options]
-
-                schema[vol.Required(category, default=default_values)] = (
-                    selector.SelectSelector(
-                        selector.SelectSelectorConfig(
-                            options=options,
-                            multiple=True,
-                            mode=selector.SelectSelectorMode.LIST,
-                        ),
-                    )
+        try:
+            async with _async_temporary_unit(self.hass, self.config) as unit:
+                translations = await async_get_translations(
+                    self.hass,
+                    self.hass.config.language,
+                    "entity",
+                    integrations=[DOMAIN],
                 )
 
-        await controller.async_close()
+                for category in self.config.get("categories", []):
+                    if category in ENTITY_DEFINITIONS:
+                        options = []
+                        for entity_id, definition in ENTITY_DEFINITIONS[
+                            category
+                        ].items():
+                            platform = definition.get("type", "sensor")
+                            if platform == "binary_sensor_from_register":
+                                platform = "binary_sensor"
+                            if platform == "text":
+                                platform = "sensor"
+                            translation_key = f"component.froeling_lambdatronic_modbus.entity.{platform}.{entity_id}.name"
+                            translated_name = translations.get(
+                                translation_key, entity_id
+                            )
+
+                            value = await _read_value_helper(
+                                unit,
+                                definition,
+                                entity_id,
+                                platform,
+                                translations,
+                            )
+
+                            options.append(
+                                {
+                                    "label": f"{translated_name}: {value}",
+                                    "value": entity_id,
+                                }
+                            )
+
+                        default_values = [opt["value"] for opt in options]
+                        schema[vol.Required(category, default=default_values)] = (
+                            selector.SelectSelector(
+                                selector.SelectSelectorConfig(
+                                    options=options,
+                                    multiple=True,
+                                    mode=selector.SelectSelectorMode.LIST,
+                                ),
+                            )
+                        )
+        except HomeAssistantError as exc:
+            _LOGGER.debug("Could not acquire temporary Modbus unit: %s", exc)
+            return self.async_abort(reason="cannot_connect")
 
         return self.async_show_form(
             step_id="entities",
@@ -255,22 +291,14 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
             self.config = config
             self.config.update(user_input)
 
-            controller = ModbusController(
-                self.hass,
-                self.config["host"],
-                self.config["port"],
-                device_id=self.config.get("device_id", 2),
-            )
-
-            if not await controller.async_check_connection():
-                await controller.async_close()
+            error = await _async_probe_device(self.hass, self.config)
+            if error is not None:
                 return self.async_show_form(
                     step_id="init",
                     data_schema=self._build_init_schema(config),
                     errors={"base": "cannot_connect"},
                 )
 
-            await controller.async_close()
             return await self.async_step_entities()
 
         return self.async_show_form(
@@ -293,63 +321,68 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
             )
             return self.async_create_entry(title="", data=new_options)
 
-        translations = await async_get_translations(
-            self.hass, self.hass.config.language, "entity", integrations=[DOMAIN]
-        )
-
         schema = {}
-        controller = ModbusController(
-            self.hass,
-            self.config["host"],
-            self.config["port"],
-            device_id=self.config.get("device_id", 2),
-        )
-
-        if not await controller.async_check_connection():
-            await controller.async_close()
-            return self.async_abort(reason="cannot_connect")
-
         current_entities = self.config.get("entities", {})
 
-        for category in self.config.get("categories", []):
-            if category in ENTITY_DEFINITIONS:
-                options = []
-                default_values = []
-
-                for entity_id, definition in ENTITY_DEFINITIONS[category].items():
-                    platform = definition.get("type", "sensor")
-                    if platform == "binary_sensor_from_register":
-                        platform = "binary_sensor"
-                    if platform == "text":
-                        platform = "sensor"
-                    translation_key = f"component.froeling_lambdatronic_modbus.entity.{platform}.{entity_id}.name"
-                    translated_name = translations.get(translation_key, entity_id)
-
-                    value = await _read_value_helper(
-                        controller, definition, entity_id, platform, translations
-                    )
-
-                    options.append(
-                        {"label": f"{translated_name}: {value}", "value": entity_id}
-                    )
-
-                    if (
-                        category in current_entities
-                        and entity_id in current_entities.get(category, [])
-                    ):
-                        default_values.append(entity_id)
-
-                schema[vol.Required(category, default=default_values)] = (
-                    selector.SelectSelector(
-                        selector.SelectSelectorConfig(
-                            options=options,
-                            multiple=True,
-                            mode=selector.SelectSelectorMode.LIST,
-                        )
-                    )
+        try:
+            async with _async_temporary_unit(self.hass, self.config) as unit:
+                translations = await async_get_translations(
+                    self.hass,
+                    self.hass.config.language,
+                    "entity",
+                    integrations=[DOMAIN],
                 )
+                for category in self.config.get("categories", []):
+                    if category in ENTITY_DEFINITIONS:
+                        options = []
+                        default_values = []
 
-        await controller.async_close()
+                        for entity_id, definition in ENTITY_DEFINITIONS[
+                            category
+                        ].items():
+                            platform = definition.get("type", "sensor")
+                            if platform == "binary_sensor_from_register":
+                                platform = "binary_sensor"
+                            if platform == "text":
+                                platform = "sensor"
+                            translation_key = f"component.froeling_lambdatronic_modbus.entity.{platform}.{entity_id}.name"
+                            translated_name = translations.get(
+                                translation_key, entity_id
+                            )
+
+                            value = await _read_value_helper(
+                                unit,
+                                definition,
+                                entity_id,
+                                platform,
+                                translations,
+                            )
+
+                            options.append(
+                                {
+                                    "label": f"{translated_name}: {value}",
+                                    "value": entity_id,
+                                }
+                            )
+
+                            if (
+                                category in current_entities
+                                and entity_id in current_entities.get(category, [])
+                            ):
+                                default_values.append(entity_id)
+
+                        schema[vol.Required(category, default=default_values)] = (
+                            selector.SelectSelector(
+                                selector.SelectSelectorConfig(
+                                    options=options,
+                                    multiple=True,
+                                    mode=selector.SelectSelectorMode.LIST,
+                                )
+                            )
+                        )
+        except HomeAssistantError as exc:
+            _LOGGER.debug("Could not acquire temporary Modbus unit: %s", exc)
+            return self.async_abort(reason="cannot_connect")
 
         return self.async_show_form(step_id="entities", data_schema=vol.Schema(schema))
 
@@ -361,7 +394,9 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
                 vol.Required("host", default=config.get("host", "")): str,
                 vol.Required("port", default=config.get("port", 502)): int,
                 vol.Required("device_id", default=config.get("device_id", 2)): int,
-                vol.Required("update_interval", default=config.get("update_interval", 60)): int,
+                vol.Required(
+                    "update_interval", default=config.get("update_interval", 60)
+                ): int,
                 vol.Required(
                     "categories",
                     default=config.get("categories", list(ENTITY_DEFINITIONS.keys())),

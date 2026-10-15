@@ -1,12 +1,15 @@
 """Number entity for Fröling Lambdatronic Modbus."""
 
 import logging
+from decimal import ROUND_HALF_UP, Decimal
 from typing import Any
-from decimal import Decimal, ROUND_HALF_UP
+
 from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from modbus_connection import ModbusError
 
 from .const import DOMAIN
 from .coordinator import FroelingDataUpdateCoordinator
@@ -89,9 +92,17 @@ class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEnt
             )
         )
 
-        await self.coordinator.controller.async_write_register(
-            register - 40001, scaled_value
-        )
+        try:
+            _LOGGER.debug(
+                "Writing number entity %s to register %s",
+                self._entity_id,
+                register,
+            )
+            await self.coordinator.unit.write_register(register - 40001, scaled_value)
+        except ModbusError as exc:
+            raise HomeAssistantError(
+                f"Could not write value for {self._entity_id}"
+            ) from exc
         await self.coordinator.async_refresh_entity(self._entity_id)
 
     @property
@@ -102,5 +113,4 @@ class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEnt
             name=self._device_name,
             manufacturer="Froeling",
             model="Lambdatronic Modbus",
-            sw_version="1.0",
         )
