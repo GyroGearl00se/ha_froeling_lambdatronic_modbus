@@ -98,9 +98,7 @@ class FroelingNumber(CoordinatorEntity[FroelingDataUpdateCoordinator], NumberEnt
                 self._entity_id,
                 register,
             )
-            await self.coordinator.controller.async_write_register(
-                register - 40001, scaled_value
-            )
+            await self.coordinator.unit.write_register(register - 40001, scaled_value)
         except ModbusError as exc:
             raise HomeAssistantError(
                 f"Could not write value for {self._entity_id}"

@@ -10,7 +10,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.translation import async_get_translations
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
-from modbus_connection import ModbusError, ModbusExceptionError
+from modbus_connection import ModbusError, ModbusExceptionError, ModbusUnit
 from modbus_connection.model import (
     CoilField,
     DiscreteInputField,
@@ -23,7 +23,6 @@ from modbus_connection.model import (
 
 from .const import DOMAIN
 from .entity_definitions import ENTITY_DEFINITIONS
-from .modbus_controller import ModbusController
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -34,19 +33,17 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     def __init__(
         self,
         hass: HomeAssistant,
-        controller: ModbusController,
+        unit: ModbusUnit,
         config: dict,
         config_entry: ConfigEntry,
     ):
         """Initialize the data update coordinator."""
-        self.controller = controller
+        self.unit = unit
         self._enabled_entities = config.get("entities", {})
         self._entity_definitions = self._get_active_entity_definitions()
         self.translations = None
 
-        self._modbus_component = ManualComponent(
-            controller.unit, max_gap=5, max_span=122
-        )
+        self._modbus_component = ManualComponent(unit, max_gap=5, max_span=122)
         self._modbus_fields: dict[
             str,
             tuple[
@@ -130,7 +127,7 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     async def _async_read_one_field(self, entity_id: str) -> int | bool | None:
         """Read one field independently after its pooled block has failed."""
         field, space, _ = self._modbus_fields[entity_id]
-        component = ManualComponent(self.controller.unit, max_gap=5, max_span=122)
+        component = ManualComponent(self.unit, max_gap=5, max_span=122)
         if space in ("input", "holding"):
             component.add(entity_id, field, space=space)
         else:
@@ -228,12 +225,12 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
         try:
             if coil_address is not None:
-                result = await self.controller.async_read_coils(coil_address, 1)
+                result = await self.unit.read_coils(coil_address, 1)
                 if result:
                     value = result[0]
                     read_success = True
             elif discrete_input_address is not None:
-                result = await self.controller.async_read_discrete_inputs(
+                result = await self.unit.read_discrete_inputs(
                     discrete_input_address - 10001, 1
                 )
                 if result:
@@ -250,13 +247,9 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                 )
 
                 if is_holding:
-                    result = await self.controller.async_read_holding_registers(
-                        address - 40001, 1
-                    )
+                    result = await self.unit.read_holding_registers(address - 40001, 1)
                 else:
-                    result = await self.controller.async_read_input_registers(
-                        address - 30001, 1
-                    )
+                    result = await self.unit.read_input_registers(address - 30001, 1)
 
                 if result:
                     value = self._process_raw_value(result[0], definition)

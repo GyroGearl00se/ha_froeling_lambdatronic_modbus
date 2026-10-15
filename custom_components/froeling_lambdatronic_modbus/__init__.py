@@ -17,7 +17,6 @@ from homeassistant.helpers.typing import ConfigType
 from modbus_connection import ModbusTcpParams
 
 from .coordinator import FroelingDataUpdateCoordinator
-from .modbus_controller import ModbusController
 
 DOMAIN = "froeling_lambdatronic_modbus"
 _LOGGER = logging.getLogger(__name__)
@@ -153,9 +152,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         config.get("device_id", 2),
     )
     unit.require_timeout(config.get("timeout", 10))
-    controller = ModbusController(unit)
     coordinator = FroelingDataUpdateCoordinator(
-        hass, controller=controller, config=config, config_entry=entry
+        hass, unit=unit, config=config, config_entry=entry
     )
 
     await coordinator.async_refresh()

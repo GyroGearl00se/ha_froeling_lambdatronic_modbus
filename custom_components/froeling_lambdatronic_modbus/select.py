@@ -85,9 +85,7 @@ class FroelingSelect(CoordinatorEntity[FroelingDataUpdateCoordinator], SelectEnt
                 self._entity_id,
                 register,
             )
-            await self.coordinator.controller.async_write_register(
-                register - 40001, index
-            )
+            await self.coordinator.unit.write_register(register - 40001, index)
         except ModbusError as exc:
             raise HomeAssistantError(
                 f"Could not write selection for {self._entity_id}"

@@ -17,19 +17,19 @@ from modbus_connection import (
     ModbusExceptionError,
     ModbusTcpParams,
     ModbusTimeoutError,
+    ModbusUnit,
 )
 
 from .const import DOMAIN
 from .entity_definitions import ENTITY_DEFINITIONS
-from .modbus_controller import ModbusController
 
 _LOGGER = logging.getLogger(__name__)
 
 
 @asynccontextmanager
-async def _async_temporary_controller(
+async def _async_temporary_unit(
     hass: HomeAssistant, config: dict[str, Any]
-) -> AsyncIterator[ModbusController]:
+) -> AsyncIterator[ModbusUnit]:
     """Hold a temporary shared Modbus unit while a config flow uses it."""
     async with async_get_temporary_unit(
         hass,
@@ -37,15 +37,17 @@ async def _async_temporary_controller(
         config.get("device_id", 2),
     ) as unit:
         unit.require_timeout(config.get("timeout", 10))
-        yield ModbusController(unit)
+        yield unit
 
 
-async def _async_probe_device(hass: HomeAssistant, config: dict[str, Any]) -> str | None:
+async def _async_probe_device(
+    hass: HomeAssistant, config: dict[str, Any]
+) -> str | None:
     """Check that the configured endpoint responds to the selected device ID."""
     try:
-        async with _async_temporary_controller(hass, config) as controller:
+        async with _async_temporary_unit(hass, config) as unit:
             try:
-                await controller.async_read_input_registers(0, count=1)
+                await unit.read_input_registers(0, 1)
             except ModbusExceptionError:
                 # A Modbus exception is still a response from the device.
                 pass
@@ -58,13 +60,13 @@ async def _async_probe_device(hass: HomeAssistant, config: dict[str, Any]) -> st
 
 
 async def _read_value_helper(
-    controller: ModbusController,
+    unit: ModbusUnit,
     definition: dict[str, Any],
     entity_id: str,
     platform: str,
     translations: dict,
 ) -> Any:
-    """Read a value from the controller for preview purposes."""
+    """Read a value from the Modbus unit for preview purposes."""
     try:
         if "derived_from" in definition:
             total = 0
@@ -81,7 +83,7 @@ async def _read_value_helper(
                     return "N/A"
 
                 source_value = await _read_value_helper(
-                    controller,
+                    unit,
                     source_definition,
                     source_id,
                     "sensor",
@@ -93,11 +95,13 @@ async def _read_value_helper(
             return total
 
         if "coil" in definition:
-            result = await controller.async_read_coils(definition["coil"], count=1)
+            result = await unit.read_coils(definition["coil"], 1)
             if result:
                 return result[0]
         elif "discrete_input" in definition:
-            result = await controller.async_read_discrete_inputs(definition["discrete_input"] - 10001, count=1)
+            result = await unit.read_discrete_inputs(
+                definition["discrete_input"] - 10001, 1
+            )
             if result:
                 return int(result[0])
         elif "register" in definition:
@@ -108,12 +112,12 @@ async def _read_value_helper(
                 else 30001
             )
             read_method = (
-                controller.async_read_holding_registers
+                unit.read_holding_registers
                 if offset == 40001
-                else controller.async_read_input_registers
+                else unit.read_input_registers
             )
 
-            result = await read_method(definition["register"] - offset, count=1)
+            result = await read_method(definition["register"] - offset, 1)
 
             if result:
                 raw_value = result[0]
@@ -207,7 +211,7 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         schema = {}
         try:
-            async with _async_temporary_controller(self.hass, self.config) as controller:
+            async with _async_temporary_unit(self.hass, self.config) as unit:
                 translations = await async_get_translations(
                     self.hass,
                     self.hass.config.language,
@@ -232,7 +236,7 @@ class FroelingModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                             )
 
                             value = await _read_value_helper(
-                                controller,
+                                unit,
                                 definition,
                                 entity_id,
                                 platform,
@@ -321,7 +325,7 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
         current_entities = self.config.get("entities", {})
 
         try:
-            async with _async_temporary_controller(self.hass, self.config) as controller:
+            async with _async_temporary_unit(self.hass, self.config) as unit:
                 translations = await async_get_translations(
                     self.hass,
                     self.hass.config.language,
@@ -347,7 +351,7 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
                             )
 
                             value = await _read_value_helper(
-                                controller,
+                                unit,
                                 definition,
                                 entity_id,
                                 platform,
@@ -390,7 +394,9 @@ class FroelingOptionsFlowHandler(config_entries.OptionsFlow):
                 vol.Required("host", default=config.get("host", "")): str,
                 vol.Required("port", default=config.get("port", 502)): int,
                 vol.Required("device_id", default=config.get("device_id", 2)): int,
-                vol.Required("update_interval", default=config.get("update_interval", 60)): int,
+                vol.Required(
+                    "update_interval", default=config.get("update_interval", 60)
+                ): int,
                 vol.Required(
                     "categories",
                     default=config.get("categories", list(ENTITY_DEFINITIONS.keys())),
