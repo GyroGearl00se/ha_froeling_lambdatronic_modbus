@@ -84,5 +84,4 @@ class FroelingSensor(CoordinatorEntity[FroelingDataUpdateCoordinator], SensorEnt
             name=self._device_name,
             manufacturer="Froeling",
             model="Lambdatronic Modbus",
-            sw_version="1.0",
         )

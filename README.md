@@ -18,6 +18,8 @@ With this integration, you can:
 
 You need a Modbus-to-TCP device. This integration has been tested with the Waveshare RS232/RS485 to Ethernet Converter; other Serial-to-Ethernet adapters should work.
 
+The integration uses Home Assistant's built-in Modbus connection manager, so integrations configured with the same TCP connection can share and serialize access to the device.
+
 > ⚠️ **Important – RS232 & Nullmodem cable required**
 >
 > Fröling Lambdatronic systems communicate via **Modbus RTU over RS232** on **COM2**.
