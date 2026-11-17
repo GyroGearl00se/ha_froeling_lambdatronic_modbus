@@ -238,7 +238,8 @@
           "79": "Anheizassistent",
           "80": "SH Zünden",
           "81": "SH Störung",
-          "82": "Sensorcheck"
+          "82": "Sensorcheck",
+          "89": "Abstellen Warten (SH)"
         }
       },
       "aussentemperatur": {

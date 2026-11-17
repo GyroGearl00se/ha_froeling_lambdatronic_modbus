@@ -238,7 +238,8 @@
           "79": "Heating assistant",
           "80": "SH Ignite",
           "81": "SH Malfunction",
-          "82": "Sensor check"
+          "82": "Sensor check",
+          "89": "Stopping Wait (Log Wood)"
         }
       },
       "aussentemperatur": {
