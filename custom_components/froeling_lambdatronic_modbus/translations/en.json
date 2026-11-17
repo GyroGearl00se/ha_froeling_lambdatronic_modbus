@@ -281,6 +281,27 @@
       "betriebsstunden": {
         "name": "Operating Hours"
       },
+      "kesselstellgroesse": {
+        "name": "Boiler Modulation"
+      },
+      "anzahl_brennerstarts": {
+        "name": "Number of Burner Starts"
+      },
+      "s4_zuendungsstarts": {
+        "name": "S4 Ignition Starts"
+      },
+      "errechnete_kesselsolltemperatur": {
+        "name": "Calculated Boiler Setpoint Temperature"
+      },
+      "betriebsstunden_zuendung": {
+        "name": "Operating Hours of Ignition"
+      },
+      "betriebsstunden_saugturbine": {
+        "name": "Operating Hours of Suction Turbine(s)"
+      },
+      "stunden_in_teillastbetrieb": {
+        "name": "Hours in Partial Load Operation"
+      },
       "stunden_seit_letzter_wartung": {
         "name": "Hours Since Last Maintenance"
       },

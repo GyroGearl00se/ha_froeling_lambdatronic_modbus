@@ -281,6 +281,27 @@
       "betriebsstunden": {
         "name": "Betriebsstunden"
       },
+      "kesselstellgroesse": {
+        "name": "Kesselstellgröße"
+      },
+      "anzahl_brennerstarts": {
+        "name": "Anzahl der Brennerstarts"
+      },
+      "s4_zuendungsstarts": {
+        "name": "S4 Zündungsstarts"
+      },
+      "errechnete_kesselsolltemperatur": {
+        "name": "Errechnete Kesselsolltemperatur"
+      },
+      "betriebsstunden_zuendung": {
+        "name": "Betriebsstunden Zündung"
+      },
+      "betriebsstunden_saugturbine": {
+        "name": "Betriebsstunden Saugturbine(n)"
+      },
+      "stunden_in_teillastbetrieb": {
+        "name": "Stunden in Teillastbetrieb (Kesselstellgröße < 40 %)"
+      },
       "stunden_seit_letzter_wartung": {
         "name": "Stunden seit letzter Wartung"
       },
@@ -1308,7 +1329,7 @@
         "name": "HK5 Vorlauf Temperatur Externe Vorgabe"
       },
       "hk5_vorlauf_temperatur_10c_aussentemperatur": {
-      "name": "HK5 Vorlauf Temperatur bei 10°C Außentemperatur"
+        "name": "HK5 Vorlauf Temperatur bei 10°C Außentemperatur"
       },
       "hk5_vorlauf_temperatur_minus_10c_aussentemperatur": {
         "name": "HK5 Vorlauf Temperatur bei -10°C Außentemperatur"
