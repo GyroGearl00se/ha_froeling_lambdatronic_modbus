@@ -26,6 +26,12 @@ from .entity_definitions import ENTITY_DEFINITIONS
 
 _LOGGER = logging.getLogger(__name__)
 
+# Number of consecutive failed polls that keep the last known values before
+# the entities are marked unavailable. A single Modbus timeout (the
+# Lambdatronic occasionally does not answer a request in time) must not make
+# every entity unavailable for a whole update interval.
+MAX_TOLERATED_FAILURES = 2
+
 
 class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     """Class to manage fetching data from the Fröling Modbus interface."""
@@ -42,6 +48,7 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         self._enabled_entities = config.get("entities", {})
         self._entity_definitions = self._get_active_entity_definitions()
         self.translations = None
+        self._consecutive_failures = 0
 
         self._modbus_component = ManualComponent(unit, max_gap=5, max_span=122)
         self._modbus_fields: dict[
@@ -275,6 +282,15 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         try:
             raw_values = await self._async_read_modbus_fields()
         except ModbusError as exc:
+            self._consecutive_failures += 1
+            if self.data and self._consecutive_failures <= MAX_TOLERATED_FAILURES:
+                _LOGGER.debug(
+                    "Modbus read failed (%s/%s tolerated), keeping last values: %s",
+                    self._consecutive_failures,
+                    MAX_TOLERATED_FAILURES,
+                    exc,
+                )
+                return self.data
             raise UpdateFailed(f"Error communicating with device: {exc}") from exc
         data = {}
         successful_fields = 0
@@ -295,6 +311,8 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         if self._modbus_fields and not successful_fields:
             _LOGGER.debug("No Modbus fields could be read successfully")
             raise UpdateFailed("Could not read any data from the Modbus device")
+
+        self._consecutive_failures = 0
 
         for entity_id, definition in self._entity_definitions.items():
             if definition.get("type") == "binary_sensor_from_register":
