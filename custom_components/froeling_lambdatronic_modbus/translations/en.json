@@ -1304,9 +1304,6 @@
       "pelletlager_restbestand": {
         "name": "Pellet Storage Remaining Stock"
       },
-      "start_der_1_pelletsbefuellung": {
-        "name": "Start of 1st Pellet Filling"
-      },
       "minimaltemperatur_zweitkessel": {
         "name": "Second Boiler Minimum Temperature"
       },
@@ -2169,6 +2166,11 @@
           "aus": "Off",
           "ein": "On"
         }
+      }
+    },
+    "time": {
+      "start_der_1_pelletsbefuellung": {
+        "name": "Start of 1st Pellet Filling"
       }
     }
   }

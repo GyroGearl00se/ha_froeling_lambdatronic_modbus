@@ -29,7 +29,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry, async_add_entitie
             for entity_id in entities:
                 if entity_id in ENTITY_DEFINITIONS[category]:
                     definition = ENTITY_DEFINITIONS[category][entity_id]
-                    if definition.get("type") in ["sensor", "text"]:
+                    if definition.get("type") in ["sensor", "text", "time_of_day_sensor"]:
                         sensors.append(FroelingSensor(coordinator, config, entity_id))
 
     async_add_entities(sensors)

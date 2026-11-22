@@ -1304,9 +1304,6 @@
       "pelletlager_restbestand": {
         "name": "Pelletlager Restbestand"
       },
-      "start_der_1_pelletsbefuellung": {
-        "name": "Start der 1. Pelletsbefüllung"
-      },
       "minimaltemperatur_zweitkessel": {
         "name": "Minimaltemperatur des Zweitkessel"
       },
@@ -2169,6 +2166,11 @@
           "aus": "Aus",
           "ein": "Ein"
         }
+      }
+    },
+    "time": {
+      "start_der_1_pelletsbefuellung": {
+        "name": "Start der 1. Pelletsbefüllung"
       }
     }
   }

@@ -114,7 +114,7 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             space = "discrete"
         elif (register := definition.get("register")) is not None:
             is_holding = (
-                definition.get("type") in ("number", "select")
+                definition.get("type") in ("number", "select", "time")
                 or 40001 <= register < 50000
                 or definition.get("register_type") == "holding"
             )
@@ -248,7 +248,7 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                 reg_type = definition.get("register_type")
 
                 is_holding = (
-                    entity_type in ("number", "select")
+                    entity_type in ("number", "select", "time")
                     or (40001 <= address < 50000)
                     or reg_type == "holding"
                 )
@@ -349,8 +349,15 @@ class FroelingDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         """Process a raw register value into a scaled and typed sensor value."""
         entity_type = definition.get("type")
 
-        if entity_type == "select":
+        if entity_type in ("select", "time"):
             return raw_value
+
+        if entity_type == "time_of_day_sensor":
+            try:
+                mins = int(raw_value)
+                return f"{mins // 60:02d}:{mins % 60:02d}"
+            except (ValueError, TypeError):
+                return raw_value
 
         if entity_type == "text":
             translation_key = definition.get("translation_key")

@@ -84,7 +84,13 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     return True
 
 
-PLATFORMS = [Platform.BINARY_SENSOR, Platform.NUMBER, Platform.SELECT, Platform.SENSOR]
+PLATFORMS = [
+    Platform.BINARY_SENSOR,
+    Platform.NUMBER,
+    Platform.SELECT,
+    Platform.SENSOR,
+    Platform.TIME,
+]
 
 
 async def async_cleanup_and_reload(hass: HomeAssistant, entry: ConfigEntry) -> None:

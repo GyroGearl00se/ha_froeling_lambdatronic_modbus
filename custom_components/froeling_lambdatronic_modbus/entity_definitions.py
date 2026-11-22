@@ -2973,19 +2973,11 @@ ENTITY_DEFINITIONS = {
         },
         "start_der_1_pelletsbefuellung": {
             "register": 40062,
-            "scaling": 1,
-            "decimals": 0,
-            "min": 0,
-            "max": 2400,
-            "signed": False,
-            "type": "number",
+            "type": "time",
         },
         "start_der_2_pelletsbefuellung": {
             "register": 40095,
-            "scaling": 1,
-            "decimals": 0,
-            "signed": False,
-            "type": "sensor",
+            "type": "time_of_day_sensor",
         },
     },
     "puffer01": {
