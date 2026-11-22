@@ -443,6 +443,9 @@
       "pelletverbrauch_gesamt": {
         "name": "Pelletverbrauch Gesamt"
       },
+      "start_der_2_pelletsbefuellung": {
+        "name": "Start der 2. Pelletsbefüllung"
+      },
       "ruecklauftemperatur_an_der_zirkulations_leitung": {
         "name": "Rücklauftemperatur an der Zirkulations Leitung"
       },
@@ -1300,6 +1303,9 @@
       },
       "pelletlager_restbestand": {
         "name": "Pelletlager Restbestand"
+      },
+      "start_der_1_pelletsbefuellung": {
+        "name": "Start der 1. Pelletsbefüllung"
       },
       "minimaltemperatur_zweitkessel": {
         "name": "Minimaltemperatur des Zweitkessel"

@@ -2971,6 +2971,22 @@ ENTITY_DEFINITIONS = {
             "signed": False,
             "type": "number",
         },
+        "start_der_1_pelletsbefuellung": {
+            "register": 40062,
+            "scaling": 1,
+            "decimals": 0,
+            "min": 0,
+            "max": 2400,
+            "signed": False,
+            "type": "number",
+        },
+        "start_der_2_pelletsbefuellung": {
+            "register": 40095,
+            "scaling": 1,
+            "decimals": 0,
+            "signed": False,
+            "type": "sensor",
+        },
     },
     "puffer01": {
         "puffer_1_temperatur_oben": {
