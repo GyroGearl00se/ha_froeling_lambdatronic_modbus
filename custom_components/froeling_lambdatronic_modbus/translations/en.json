@@ -443,9 +443,6 @@
       "pelletverbrauch_gesamt": {
         "name": "Total Pellet Consumption"
       },
-      "start_der_2_pelletsbefuellung": {
-        "name": "Start of 2nd Pellet Filling"
-      },
       "ruecklauftemperatur_an_der_zirkulations_leitung": {
         "name": "Return Temperature at the Circulation Line"
       },
@@ -2171,6 +2168,9 @@
     "time": {
       "start_der_1_pelletsbefuellung": {
         "name": "Start of 1st Pellet Filling"
+      },
+      "start_der_2_pelletsbefuellung": {
+        "name": "Start of 2nd Pellet Filling"
       }
     }
   }

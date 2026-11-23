@@ -2977,7 +2977,7 @@ ENTITY_DEFINITIONS = {
         },
         "start_der_2_pelletsbefuellung": {
             "register": 40095,
-            "type": "time_of_day_sensor",
+            "type": "time",
         },
     },
     "puffer01": {
